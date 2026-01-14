@@ -59,7 +59,9 @@ _allowed_hosts_set.add('127.0.0.1')
 ALLOWED_HOSTS = list(_allowed_hosts_set)
 
 # #region agent log
+import sys
 try:
+    # Log para arquivo
     with open(_log_path, 'a') as f:
         f.write(json.dumps({
             'sessionId': 'debug-session',
@@ -70,7 +72,10 @@ try:
             'data': {'ALLOWED_HOSTS': ALLOWED_HOSTS},
             'timestamp': int(time.time() * 1000)
         }) + '\n')
-except: pass
+    # Log para stderr (visível nos logs do Docker)
+    print(f"DEBUG: ALLOWED_HOSTS final = {ALLOWED_HOSTS}", file=sys.stderr)
+except Exception as e:
+    print(f"DEBUG LOG ERROR: {e}", file=sys.stderr)
 # #endregion
 
 
