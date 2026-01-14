@@ -26,58 +26,19 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-)o^vf8*r06uoi(@vo&q8c
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG', 'False') == 'True'
 
-# ALLOWED_HOSTS - permite localhost para healthchecks
+# ALLOWED_HOSTS - permite localhost para healthchecks e domínios de produção
+# Lê de variável de ambiente ALLOWED_HOSTS (separada por vírgulas)
+# Sempre inclui hosts internos necessários para healthchecks e comunicação entre containers
 allowed_hosts_env = os.environ.get('ALLOWED_HOSTS', '')
-ALLOWED_HOSTS = [host.strip() for host in allowed_hosts_env.split(',') if host.strip()] if allowed_hosts_env else []
+_allowed_hosts_list = [host.strip() for host in allowed_hosts_env.split(',') if host.strip()] if allowed_hosts_env else []
 
-# #region agent log
-import json
-import time
-_log_path = BASE_DIR / 'logs' / 'debug.log'
-os.makedirs(_log_path.parent, exist_ok=True)
-try:
-    with open(_log_path, 'a') as f:
-        f.write(json.dumps({
-            'sessionId': 'debug-session',
-            'runId': 'run1',
-            'hypothesisId': 'A',
-            'location': 'settings.py:31',
-            'message': 'ALLOWED_HOSTS inicial',
-            'data': {'allowed_hosts_env': allowed_hosts_env, 'ALLOWED_HOSTS': ALLOWED_HOSTS},
-            'timestamp': int(time.time() * 1000)
-        }) + '\n')
-except Exception as e:
-    import sys
-    print(f"DEBUG LOG ERROR: {e}", file=sys.stderr)
-# #endregion
-
-# SEMPRE adicionar hosts internos para healthchecks e comunicação entre containers
+# Sempre adicionar hosts internos para healthchecks e comunicação entre containers
 # Usar set para garantir unicidade e depois converter para list
-_allowed_hosts_set = set(ALLOWED_HOSTS)
+_allowed_hosts_set = set(_allowed_hosts_list)
 _allowed_hosts_set.add('localhost')
 _allowed_hosts_set.add('127.0.0.1')
 _allowed_hosts_set.add('web')  # Nome do container Docker
 ALLOWED_HOSTS = list(_allowed_hosts_set)
-
-# #region agent log
-import sys
-try:
-    # Log para arquivo
-    with open(_log_path, 'a') as f:
-        f.write(json.dumps({
-            'sessionId': 'debug-session',
-            'runId': 'run1',
-            'hypothesisId': 'A',
-            'location': 'settings.py:final',
-            'message': 'ALLOWED_HOSTS final garantido',
-            'data': {'ALLOWED_HOSTS': ALLOWED_HOSTS},
-            'timestamp': int(time.time() * 1000)
-        }) + '\n')
-    # Log para stderr (visível nos logs do Docker)
-    print(f"DEBUG: ALLOWED_HOSTS final = {ALLOWED_HOSTS}", file=sys.stderr)
-except Exception as e:
-    print(f"DEBUG LOG ERROR: {e}", file=sys.stderr)
-# #endregion
 
 
 # Application definition

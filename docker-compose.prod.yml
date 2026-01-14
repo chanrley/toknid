@@ -29,11 +29,12 @@ services:
     environment:
       - DJANGO_SETTINGS_MODULE=settings.settings
       - PYTHONUNBUFFERED=1
+      - ALLOWED_HOSTS=${ALLOWED_HOSTS:-localhost,127.0.0.1,web}
     restart: unless-stopped
     networks:
       - toknid_network
     healthcheck:
-      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health/')"]
+      test: ["CMD-SHELL", "curl -fsS -H 'Host: localhost' http://127.0.0.1:8000/health/ || exit 1"]
       interval: 30s
       timeout: 10s
       retries: 3
