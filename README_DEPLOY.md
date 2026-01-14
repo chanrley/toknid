@@ -29,11 +29,19 @@ sudo chmod 644 ./nginx/ssl/*.pem
 
 ### 3. Deploy
 
+**IMPORTANTE:** Antes de executar o deploy, corrija a SECRET_KEY no arquivo `.env` (veja `CORRECAO_ENV.md`).
+
 ```bash
 # Dar permissão de execução aos scripts
-chmod +x deploy.sh backup.sh rollback.sh
+chmod +x deploy.sh backup.sh rollback.sh fix-env-secret.sh
+
+# Corrigir SECRET_KEY (se necessário)
+./fix-env-secret.sh
 
 # Executar deploy
+docker compose -f docker-compose.prod.yml up -d --build --force-recreate
+
+# OU usar o script automatizado
 ./deploy.sh
 ```
 
@@ -61,21 +69,29 @@ docker-compose -f docker-compose.prod.yml logs -f web
 
 ### Ver logs
 ```bash
+docker compose -f docker-compose.prod.yml logs -f
+# ou (se usar Docker Compose V1)
 docker-compose -f docker-compose.prod.yml logs -f
 ```
 
 ### Reiniciar serviços
 ```bash
+docker compose -f docker-compose.prod.yml restart
+# ou
 docker-compose -f docker-compose.prod.yml restart
 ```
 
 ### Executar migrations manualmente
 ```bash
+docker compose -f docker-compose.prod.yml exec web python manage.py migrate
+# ou
 docker-compose -f docker-compose.prod.yml exec web python manage.py migrate
 ```
 
 ### Criar superusuário
 ```bash
+docker compose -f docker-compose.prod.yml exec web python manage.py createsuperuser
+# ou
 docker-compose -f docker-compose.prod.yml exec web python manage.py createsuperuser
 ```
 
