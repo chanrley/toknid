@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import Http404, JsonResponse
+from django.http import Http404, JsonResponse, HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_http_methods
 from pathlib import Path
@@ -16,6 +16,16 @@ def healthcheck(request):
     Usado pelos healthchecks internos do Docker.
     """
     return JsonResponse({'status': 'ok', 'service': 'django'}, status=200)
+
+@require_http_methods(["GET"])
+def healthz_view(request):
+    """
+    Endpoint de liveness para healthcheck do Docker.
+    Sempre retorna 200 OK com texto simples "ok".
+    Não depende de banco de dados, cache ou autenticação.
+    Usado exclusivamente para verificar se o container está vivo.
+    """
+    return HttpResponse("ok", content_type="text/plain", status=200)
 def index(request):
     # home já renderiza o dashboard direto
     return render(
