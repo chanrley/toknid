@@ -10,3 +10,4 @@ chan brazil: 5KvknWL6hCfdJZFX68ioZFwHy48hxjaJudFLHARRNEJ8
     "valor": 0.01,
     "carteira_destino": "3jSxbJtTrCvDVvwTrwP8t1vQKK5nzjz58qxYDRLEBtFn"
   }
+
