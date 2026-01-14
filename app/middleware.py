@@ -2,10 +2,12 @@ import json
 import os
 from pathlib import Path
 from django.core.exceptions import DisallowedHost
+from django.http import JsonResponse
 
 class DebugHostMiddleware:
     """
     Middleware para debug de problemas com ALLOWED_HOSTS
+    Permite healthcheck sem validação de host
     """
     def __init__(self, get_response):
         self.get_response = get_response
@@ -19,13 +21,21 @@ class DebugHostMiddleware:
             http_host = request.META.get('HTTP_HOST', '')
             from django.conf import settings
             
-            # Garantir que 127.0.0.1 e localhost estejam sempre em ALLOWED_HOSTS
-            if '127.0.0.1' not in settings.ALLOWED_HOSTS:
-                settings.ALLOWED_HOSTS.append('127.0.0.1')
-                print(f"DEBUG: Adicionado 127.0.0.1 ao ALLOWED_HOSTS no middleware", file=sys.stderr)
-            if 'localhost' not in settings.ALLOWED_HOSTS:
-                settings.ALLOWED_HOSTS.append('localhost')
-                print(f"DEBUG: Adicionado localhost ao ALLOWED_HOSTS no middleware", file=sys.stderr)
+            # Extrair host sem porta para validação
+            host = http_host.split(':')[0] if ':' in http_host else http_host
+            
+            # Garantir que hosts internos estejam sempre em ALLOWED_HOSTS
+            # Isso é crítico para healthchecks do Docker
+            internal_hosts = ['127.0.0.1', 'localhost', 'web']
+            for internal_host in internal_hosts:
+                if internal_host not in settings.ALLOWED_HOSTS:
+                    settings.ALLOWED_HOSTS.append(internal_host)
+            
+            # Para healthcheck ou hosts internos, garantir que o host específico esteja permitido
+            if request.path == '/health/' or host in internal_hosts or host.startswith('127.'):
+                if host and host not in settings.ALLOWED_HOSTS:
+                    settings.ALLOWED_HOSTS.append(host)
+                    print(f"DEBUG: Adicionado {host} ao ALLOWED_HOSTS no middleware", file=sys.stderr)
             
             with open(log_path, 'a') as f:
                 f.write(json.dumps({

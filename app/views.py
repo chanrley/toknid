@@ -8,6 +8,14 @@ import subprocess
 import platform
 
 # Create your views here.
+
+def healthcheck(request):
+    """
+    Endpoint de healthcheck para Docker.
+    Retorna status 200 OK sem validar host ou autenticação.
+    Usado pelos healthchecks internos do Docker.
+    """
+    return JsonResponse({'status': 'ok', 'service': 'django'}, status=200)
 def index(request):
     # home já renderiza o dashboard direto
     return render(

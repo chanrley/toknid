@@ -51,11 +51,12 @@ except Exception as e:
     print(f"DEBUG LOG ERROR: {e}", file=sys.stderr)
 # #endregion
 
-# SEMPRE adicionar localhost e 127.0.0.1 para healthchecks e desenvolvimento interno
+# SEMPRE adicionar hosts internos para healthchecks e comunicação entre containers
 # Usar set para garantir unicidade e depois converter para list
 _allowed_hosts_set = set(ALLOWED_HOSTS)
 _allowed_hosts_set.add('localhost')
 _allowed_hosts_set.add('127.0.0.1')
+_allowed_hosts_set.add('web')  # Nome do container Docker
 ALLOWED_HOSTS = list(_allowed_hosts_set)
 
 # #region agent log

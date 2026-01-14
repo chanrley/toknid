@@ -12,6 +12,7 @@ build
 venv
 env
 ENV
+.env
 .venv
 node_modules
 .git
