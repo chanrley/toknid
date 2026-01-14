@@ -1,0 +1,43 @@
+# Arquivos ignorados pelo Cursor
+# O .env NÃO está aqui, então pode ser editado
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/*.log
+
+# Database
+*.sqlite3
+*.db
+
+# Media e staticfiles (podem ser grandes)
+media/*
+!media/.gitkeep
+staticfiles/*
+!staticfiles/.gitkeep
