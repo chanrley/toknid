@@ -139,7 +139,12 @@ if not DEBUG:
     SECURE_HSTS_PRELOAD = True
 
 # CSRF settings
-CSRF_TRUSTED_ORIGINS = os.environ.get('CSRF_TRUSTED_ORIGINS', '').split(',') if os.environ.get('CSRF_TRUSTED_ORIGINS') else []
+csrf_origins = os.environ.get('CSRF_TRUSTED_ORIGINS', '')
+CSRF_TRUSTED_ORIGINS = [
+    origin.strip() 
+    for origin in csrf_origins.split(',') 
+    if origin.strip() and (origin.strip().startswith('http://') or origin.strip().startswith('https://'))
+] if csrf_origins else []
 
 # Logging configuration
 LOGGING = {
