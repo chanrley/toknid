@@ -1,0 +1,110 @@
+{% load static %}
+{% extends "app/base.html" %}
+
+{% block title %}Cliente não recebeu moedas — Ajuda Tokn.id{% endblock %}
+
+{% block header_title %}
+  <h1>Cliente não recebeu moedas</h1>
+  <p class="tokn-header-sub">Descubra o motivo e resolva em menos de 1 minuto.</p>
+{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'app/css/ajuda.css' %}">
+
+<div class="tokn-help-article">
+
+  <a href="/ajuda" class="tokn-help-back">← Voltar para Ajuda</a>
+
+  <h2 class="tokn-help-title">Cliente não recebeu moedas</h2>
+  <p class="tokn-help-sub">
+    Use este passo a passo sempre que o cliente disser que não recebeu moedas após uma compra.
+  </p>
+
+  <div class="tokn-help-actions">
+    <a href="/transacoes" class="tokn-help-btn danger">Abrir transações</a>
+    <a href="/clientes" class="tokn-help-btn">Creditar moedas</a>
+  </div>
+
+  <section class="tokn-help-section">
+    <h3>Diagnóstico rápido (30s)</h3>
+    <ul>
+      <li>Veja se a campanha aplicada está ativa e dentro da vigência.</li>
+      <li>Confirme se a carteira Phantom do cliente foi colada corretamente.</li>
+      <li>Cheque se a compra atingiu o valor mínimo definido na campanha.</li>
+    </ul>
+  </section>
+
+  <section class="tokn-help-section">
+    <h3>Passo a passo</h3>
+    <ul>
+      <li>Abra <strong>Transações</strong> e busque pelo nome ou telefone do cliente.</li>
+      <li>
+        Se existir uma transação <strong>Pendente</strong>, aguarde 1–2 minutos e atualize a tela.
+      </li>
+      <li>
+        Se não existir transação, faça o crédito manual em
+        <strong>Clientes → Creditar moedas</strong>.
+      </li>
+      <li>
+        Peça ao cliente para abrir a Phantom, puxar o histórico e conferir o saldo atualizado.
+      </li>
+    </ul>
+  </section>
+
+  <section class="tokn-help-section">
+    <h3>Erros comuns</h3>
+    <ul>
+      <li><strong>Campanha pausada:</strong> reative a campanha ou ajuste a regra padrão.</li>
+      <li><strong>Carteira errada:</strong> peça o QR novamente e confira todos os caracteres.</li>
+      <li>
+        <strong>Compra abaixo do mínimo:</strong> explique a regra e oriente para a próxima compra.
+      </li>
+    </ul>
+  </section>
+
+  <section class="tokn-help-section">
+    <h3>Se ainda não resolveu</h3>
+    <p>
+      Fale com o suporte e envie: nome do cliente, prints da compra, prints das transações
+      e o endereço da carteira Phantom.
+    </p>
+  </section>
+
+  <a href="https://wa.me/5511999999999" target="_blank" class="tokn-help-final">
+    Abrir WhatsApp do suporte
+  </a>
+</div>
+
+<!-- =====================================================
+   BLOCO UNIVERSAL — FINAL DO ARTIGO
+===================================================== -->
+
+<section class="tokn-help-article-next">
+
+  <h3>O que você pode fazer agora</h3>
+
+  <div class="tokn-next-actions">
+    <a href="/clientes" class="tokn-btn tokn-btn--ghost">
+      👥 Ir para lista de clientes
+    </a>
+
+    <a href="/transacoes" class="tokn-btn tokn-btn--ghost">
+      🔄 Ver transações
+    </a>
+
+    <a href="https://wa.me/5511999999999?text=Oi%20Tokn.id%2C%20preciso%20de%20ajuda%20sobre%20{{ request.path }}"
+       target="_blank"
+       class="tokn-btn tokn-btn--primary">
+      💬 Falar com o suporte
+    </a>
+  </div>
+
+  <div class="tokn-feedback">
+    <p>Este guia te ajudou?</p>
+    <button class="tokn-feedback-btn" onclick="toknUI.soon('Obrigado pelo feedback!')">Sim 😊</button>
+    <button class="tokn-feedback-btn" onclick="toknUI.soon('Vamos melhorar!')">Quase 😕</button>
+  </div>
+
+</section>
+
+{% endblock %}

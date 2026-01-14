@@ -1,0 +1,118 @@
+{% load static %}
+{% extends "app/base.html" %}
+
+{% block title %}Carteira Phantom: o que o cliente precisa fazer — Ajuda Tokn.id{% endblock %}
+
+{% block header_title %}
+  <h1>Carteira Phantom: o que o cliente precisa fazer</h1>
+  <p class="tokn-header-sub">Orientação simples para você explicar para o cliente.</p>
+{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'app/css/ajuda.css' %}">
+
+<div class="tokn-help-article">
+
+  <a href="/ajuda" class="tokn-help-back">← Voltar para Ajuda</a>
+
+  <h2 class="tokn-help-title">Como o cliente cria a carteira Phantom</h2>
+  <p class="tokn-help-sub">
+    Use este roteiro para orientar o cliente pelo WhatsApp ou no balcão.
+  </p>
+
+  <section class="tokn-help-section">
+    <h3>1. Baixar a Phantom</h3>
+    <ul>
+      <li>Peça para o cliente abrir a loja de aplicativos do celular (App Store ou Play Store).</li>
+      <li>Pesquisar por <strong>“Phantom Wallet”</strong>.</li>
+      <li>Instalar o aplicativo oficial Phantom.</li>
+    </ul>
+  </section>
+
+  <section class="tokn-help-section">
+    <h3>2. Criar a carteira</h3>
+    <ul>
+      <li>No primeiro acesso, o cliente escolhe <strong>“Create a new wallet”</strong>.</li>
+
+      <li>
+        A forma <strong>mais rápida e fácil</strong> é criar usando:
+        <br>
+        – <strong>Continuar com e-mail</strong> (Google, Apple/iCloud);
+        <br>
+        – Ou seja, login tradicional, sem precisar lidar com frase secreta agora.
+      </li>
+
+      <li>
+        Essa opção é ideal para quem quer apenas começar rápido — o acesso fica protegido
+        pelo e-mail e senha do próprio cliente, e ele pode usar a carteira imediatamente.
+      </li>
+
+      <li>
+        Se o cliente preferir o modo clássico, o app mostrará uma
+        <strong>frase secreta (seed phrase)</strong>.
+        Oriente para anotar em papel e guardar em lugar seguro.
+      </li>
+
+      <li>
+        Reforce sempre: <strong>vocês do estabelecimento nunca pedem essa frase</strong>.
+        Nem o comércio nem a Tokn.id têm acesso às chaves do cliente.
+      </li>
+    </ul>
+  </section>
+
+  <section class="tokn-help-section">
+    <h3>3. Enviar o endereço para o comércio</h3>
+    <ul>
+      <li>Na Phantom, o cliente toca em <strong>Receive</strong> e copia o endereço da carteira.</li>
+      <li>Ele cola esse endereço no WhatsApp ou mostra o QR code no balcão.</li>
+      <li>Você usa esse endereço para cadastrar o cliente no programa Tokn.id.</li>
+    </ul>
+  </section>
+
+  <section class="tokn-help-section">
+    <h3>O que deixar bem claro para o cliente</h3>
+    <ul>
+      <li>A Phantom é <strong>do cliente</strong>; a Tokn.id e o comércio não têm acesso às chaves.</li>
+      <li>Se ele perder o acesso ao e-mail, senha ou frase secreta, ninguém consegue recuperar — é responsabilidade dele.</li>
+      <li>As moedas de fidelidade serão enviadas sempre para essa carteira.</li>
+    </ul>
+  </section>
+
+  <a href="https://wa.me/5511999999999" target="_blank" class="tokn-help-final">
+    Enviar roteiro de carteira por WhatsApp
+  </a>
+</div>
+
+<!-- =====================================================
+   BLOCO UNIVERSAL — FINAL DO ARTIGO
+===================================================== -->
+
+<section class="tokn-help-article-next">
+
+  <h3>O que você pode fazer agora</h3>
+
+  <div class="tokn-next-actions">
+    <a href="/clientes" class="tokn-btn tokn-btn--ghost">
+      👥 Ir para lista de clientes
+    </a>
+
+    <a href="/transacoes" class="tokn-btn tokn-btn--ghost">
+      🔄 Ver transações
+    </a>
+
+    <a href="https://wa.me/5511999999999?text=Oi%20Tokn.id%2C%20preciso%20de%20ajuda%20sobre%20{{ request.path }}"
+       target="_blank"
+       class="tokn-btn tokn-btn--primary">
+      💬 Falar com o suporte
+    </a>
+  </div>
+
+  <div class="tokn-feedback">
+    <p>Este guia te ajudou?</p>
+    <button class="tokn-feedback-btn" onclick="toknUI.soon('Obrigado pelo feedback!')">Sim 😊</button>
+    <button class="tokn-feedback-btn" onclick="toknUI.soon('Vamos melhorar!')">Quase 😕</button>
+  </div>
+
+</section>
+
+{% endblock %}

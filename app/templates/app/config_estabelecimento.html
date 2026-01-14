@@ -1,0 +1,203 @@
+{% extends "app/base.html" %}
+
+{% block title %}Editar dados do estabelecimento — tokn.id | partners{% endblock %}
+
+{% block header_title %}
+  <h1>Editar dados do estabelecimento</h1>
+  <p class="tokn-header-sub">
+    Atualize as informações que aparecem para seus clientes.
+  </p>
+{% endblock %}
+
+{% block content %}
+
+<section class="tokn-settings-wrap">
+
+  <!-- COLUNA ESQUERDA (FORM) -->
+  <div class="tokn-settings-col tokn-settings-col--form">
+
+    <!-- Informações principais -->
+    <section class="tokn-settings-card">
+      <header class="tokn-settings-card-head">
+        <div>
+          <h2 class="tokn-settings-title">Informações principais</h2>
+          <p class="tokn-settings-sub">
+            Nome, documento e segmento do seu estabelecimento.
+          </p>
+        </div>
+      </header>
+
+      <div class="tokn-settings-fields">
+        <div class="tokn-settings-field">
+          <label class="tokn-settings-label" for="cfg-nome-fantasia">
+            Nome fantasia
+          </label>
+          <input
+            id="cfg-nome-fantasia"
+            class="tokn-input tokn-input--full"
+            type="text"
+            value="Comércio Demo"
+          />
+        </div>
+
+        <div class="tokn-settings-field">
+          <label class="tokn-settings-label" for="cfg-cnpj">
+            CNPJ
+          </label>
+          <input
+            id="cfg-cnpj"
+            class="tokn-input tokn-input--full"
+            type="text"
+            value="00.000.000/0001-00"
+          />
+        </div>
+
+        <div class="tokn-settings-field">
+          <label class="tokn-settings-label" for="cfg-segmento">
+            Segmento
+          </label>
+          <select
+            id="cfg-segmento"
+            class="tokn-input tokn-input--full"
+          >
+            <option selected>Restaurante / Alimentação</option>
+            <option>Comércio em geral</option>
+            <option>Beleza / Estética</option>
+            <option>Serviços</option>
+          </select>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contato e canais -->
+    <section class="tokn-settings-card">
+      <header class="tokn-settings-card-head">
+        <div>
+          <h2 class="tokn-settings-title">Contato e canais</h2>
+          <p class="tokn-settings-sub">
+            Como seus clientes falam com você e usam o programa.
+          </p>
+        </div>
+      </header>
+
+      <div class="tokn-settings-fields">
+        <div class="tokn-settings-field">
+          <label class="tokn-settings-label" for="cfg-whats">
+            WhatsApp principal
+          </label>
+          <input
+            id="cfg-whats"
+            class="tokn-input tokn-input--full"
+            type="tel"
+            value="(11) 98888-0000"
+          />
+        </div>
+
+        <div class="tokn-settings-field">
+          <label class="tokn-settings-label" for="cfg-email">
+            E-mail
+          </label>
+          <input
+            id="cfg-email"
+            class="tokn-input tokn-input--full"
+            type="email"
+            value="contato@comerciodemo.com"
+          />
+        </div>
+
+        <div class="tokn-settings-field">
+          <label class="tokn-settings-label" for="cfg-instagram">
+            Instagram
+          </label>
+          <input
+            id="cfg-instagram"
+            class="tokn-input tokn-input--full"
+            type="text"
+            value="@comerciodemo"
+          />
+        </div>
+      </div>
+
+      <div class="tokn-settings-tags-group">
+        <span class="tokn-settings-label">Canais em que o programa é usado</span>
+        <div class="tokn-settings-tags">
+          <button type="button" class="tokn-settings-tag is-active">PDV</button>
+          <button type="button" class="tokn-settings-tag is-active">WhatsApp</button>
+          <button type="button" class="tokn-settings-tag">App / Link</button>
+        </div>
+        <p class="tokn-note tokn-settings-note">
+          Esses indicadores serão usados depois para regras específicas em cada canal.
+        </p>
+      </div>
+    </section>
+
+    <!-- AÇÕES (abaixo do card de contato) -->
+    <section class="tokn-settings-actions">
+      <div class="tokn-settings-actions-inner">
+        <button
+          type="button"
+          class="tokn-btn tokn-btn--primary"
+          onclick="toknUI.soon('Salvar alterações do estabelecimento')"
+        >
+          Salvar alterações
+        </button>
+
+        <button
+          type="button"
+          class="tokn-btn"
+          onclick="toknUI.soon('Salvar rascunho do estabelecimento')"
+        >
+          Salvar como rascunho
+        </button>
+
+        <button
+          type="button"
+          class="tokn-btn tokn-btn--ghost"
+          onclick="window.history.back()"
+        >
+          Voltar sem salvar
+        </button>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- COLUNA DIREITA – resumo -->
+  <div class="tokn-settings-col tokn-settings-col--summary">
+
+    <section class="tokn-settings-card">
+      <header class="tokn-settings-card-head">
+        <div>
+          <h2 class="tokn-settings-title">Resumo</h2>
+          <p class="tokn-settings-sub">
+            Confira rapidamente antes de salvar.
+          </p>
+        </div>
+      </header>
+
+      <div class="tokn-settings-summary">
+        <div class="tokn-settings-field">
+          <span class="tokn-settings-label">Nome fantasia</span>
+          <span class="tokn-settings-value">Comércio Demo</span>
+        </div>
+        <div class="tokn-settings-field">
+          <span class="tokn-settings-label">CNPJ</span>
+          <span class="tokn-settings-value">00.000.000/0001-00</span>
+        </div>
+        <div class="tokn-settings-field">
+          <span class="tokn-settings-label">Segmento</span>
+          <span class="tokn-settings-value">Restaurante / Alimentação</span>
+        </div>
+      </div>
+
+      <p class="tokn-note tokn-settings-note">
+        Nesta fase os dados são apenas ilustrativos.
+        Depois o dev conecta no backend.
+      </p>
+    </section>
+
+  </div>
+
+</section>
+
+{% endblock %}

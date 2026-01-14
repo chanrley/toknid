@@ -1,0 +1,796 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- ### AJUSTE: title só aparece na aba -->
+  <title>{% block title %}tokn.id | partners{% endblock %}</title>
+
+  <!-- Fonte Montserrat -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- CSS principal dos módulos -->
+  <link rel="stylesheet" href="{% static 'app/css/clientes.css' %}">
+  <!-- CSS da página de ajuda (override em cima do restante) -->
+  <link rel="stylesheet" href="{% static 'app/css/ajuda.css' %}">
+</head>
+<body>
+
+  <div class="tokn-shell">
+    
+    <!-- NAV / SIDEBAR -->
+    <nav class="tokn-nav">
+      <div class="tokn-nav-top">
+        <!-- ### LOGO NO TOPO ESQUERDA -->
+        <a href="{% url 'index' %}" class="tokn-nav-brand">
+          <img
+            class="tokn-nav-logo"
+            src="https://app.toknid.com/wp-content/uploads/2025/11/logo-tokn-id-app2.png"
+            alt="Tokn.id"
+          >
+        </a>
+
+        <!-- ÁREA DIREITA (AVATAR + HAMBÚRGUER) – mobile -->
+        <div class="tokn-nav-top-right">
+          <div class="tokn-nav-avatar-sm">P</div>
+          <button
+            id="toknNavToggle"
+            class="tokn-nav-toggle"
+            type="button"
+            aria-label="Abrir menu"
+            aria-expanded="false"
+          >
+            ☰
+          </button>
+        </div>
+      </div>
+
+      <!-- ITENS + BLOCO DO USUÁRIO NO TOPO DO MENU MOBILE -->
+      <div class="tokn-nav-items">
+        <div class="tokn-nav-mobile-user">
+          <div class="tokn-nav-avatar-lg">P</div>
+          <div class="tokn-nav-mobile-user-text">
+            <span class="tokn-nav-mobile-name">Parceiro Demo</span>
+            <span class="tokn-nav-mobile-store">Comércio Demo</span>
+          </div>
+        </div>
+
+        {# Dashboard: ativo em "/" ou "/dashboard" #}
+        <a href="{% url 'index' %}" class="tokn-nav-item {% if current == '/' or '/dashboard' in current %}is-active{% endif %}">
+          <span class="tokn-nav-icon">▤</span>
+          <span class="tokn-nav-label">Dashboard</span>
+        </a>
+
+        {# Clientes #}
+        <a href="/clientes" class="tokn-nav-item {% if '/clientes' in current %}is-active{% endif %}">
+          <span class="tokn-nav-icon">👥</span>
+          <span class="tokn-nav-label">Clientes</span>
+        </a>
+
+        {# Transações #}
+        <a href="/transacoes" class="tokn-nav-item {% if '/transacoes' in current %}is-active{% endif %}">
+          <span class="tokn-nav-icon">⇄</span>
+          <span class="tokn-nav-label">Transações</span>
+        </a>
+
+        {# Campanhas #}
+        <a href="/campanhas" class="tokn-nav-item {% if '/campanhas' in current %}is-active{% endif %}">
+          <span class="tokn-nav-icon">◎</span>
+          <span class="tokn-nav-label">Campanhas</span>
+        </a>
+
+        {# Configurações #}
+        <a href="/configuracoes" class="tokn-nav-item {% if '/configuracoes' in current %}is-active{% endif %}">
+          <span class="tokn-nav-icon">⚙</span>
+          <span class="tokn-nav-label">Configurações</span>
+        </a>
+
+        <!-- AJUDA / SUPORTE -->
+        <a href="/ajuda" class="tokn-nav-item {% if '/ajuda' in current %}is-active{% endif %}">
+          <span class="tokn-nav-icon">?</span>
+          <span class="tokn-nav-label">Ajuda / Suporte</span>
+        </a>
+      </div>
+
+      <!-- Rodapé do menu (modo parceiro) – some no mobile via CSS -->
+      <div class="tokn-nav-foot">
+        <span class="tokn-nav-foot-label">Modo parceiro</span>
+      </div>
+    </nav>
+
+    <!-- ÁREA PRINCIPAL -->
+    <div class="tokn-main-wrap">
+
+      <!-- HEADER BRANCA (só desktop) -->
+      <header class="tokn-header">
+        <div class="tokn-header-left">
+          {% block header_title %}
+          <h1>Painel</h1>
+          <p class="tokn-header-sub">Painel do parceiro ToknId</p>
+          {% endblock %}
+        </div>
+
+        <div class="tokn-header-right">
+          <div class="tokn-header-user">
+            <div class="tokn-header-user-info">
+              <span class="tokn-header-user-name">Parceiro Demo</span>
+              <span class="tokn-header-user-meta">Plano beta</span>
+            </div>
+            <div class="tokn-header-avatar">P</div>
+          </div>
+        </div>
+      </header>
+
+      <!-- CONTEÚDO -->
+      <main class="tokn-main">
+        {% block content %}{% endblock %}
+      </main>
+
+      <!-- (FAB saiu daqui – agora é por página) -->
+
+    </div>
+  </div>
+
+  <!-- Overlay geral para modais -->
+  <div id="toknModalOverlay" class="tokn-modal-overlay" onclick="toknUI.closeModals()"></div>
+
+  <!-- Modal de Creditar Moedas -->
+  <section
+    id="toknCreditModal"
+    class="tokn-modal"
+    aria-hidden="true"
+    aria-labelledby="tokn-credit-title"
+  >
+    <div class="tokn-modal-head">
+      <div>
+        <h2 id="tokn-credit-title">Creditar moedas</h2>
+        <p class="tokn-modal-sub">
+          Identifique o cliente e defina a campanha e o valor de moedas.
+        </p>
+      </div>
+      <button
+        type="button"
+        class="tokn-modal-x"
+        aria-label="Fechar"
+        onclick="toknUI.closeModals()"
+      >
+        ✕
+      </button>
+    </div>
+
+    <div class="tokn-modal-body tokn-modal-body--split">
+      <!-- Coluna 1: Identificar cliente -->
+      <div class="tokn-modal-col">
+        <h3 class="tokn-modal-label">1. Identificar cliente</h3>
+        <p class="tokn-modal-help">
+          Use o QR Code Tokn.id, busque pelo cadastro ou informe o endereço da carteira.
+        </p>
+
+        <div class="tokn-modal-actions">
+          <button
+            type="button"
+            class="tokn-chip-action"
+            onclick="toknUI.soon('Leitura de QR Code')"
+          >
+            📷 Ler QR Code <span class="tokn-chip-badge">em breve</span>
+          </button>
+
+          <button
+            type="button"
+            class="tokn-chip-action"
+            onclick="toknUI.soon('Busca por cliente')"
+          >
+            👤 Buscar cliente cadastrado
+          </button>
+        </div>
+
+        <label class="tokn-field-label" for="tokn-wallet-input">
+          Endereço da carteira Phantom do cliente
+        </label>
+        <input
+          id="tokn-wallet-input"
+          class="tokn-input tokn-input--full"
+          type="text"
+          placeholder="Cole aqui o endereço da carteira do clientee"
+          value="3jSxbJtTrCvDVvwTrwP8t1vQKK5nzjz58qxYDRLEBtFn"
+        />
+        <p class="tokn-note">
+          A carteira Phantom é sempre criada e controlada pelo próprio cliente.
+          A Tokn.id não cria nem guarda carteiras ou chaves.
+        </p>
+
+        <!-- BLOCO: Cliente identificado (começa escondido) -->
+        <div id="toknFoundClient" class="tokn-found is-hidden">
+          <div class="tokn-found-main">
+            <div id="toknFoundAvatar" class="tokn-found-avatar">CL</div>
+
+            <div class="tokn-found-info">
+              <div id="toknFoundName" class="tokn-found-name">
+                Nome do cliente
+              </div>
+              <div id="toknFoundMeta" class="tokn-found-meta">
+                +55 (11) 98888-0000 · cliente@email.com
+              </div>
+              <div id="toknFoundExtra" class="tokn-found-extra">
+                Canal principal: WhatsApp · Cliente VIP · ID Tokn: CLT-000123
+              </div>
+            </div>
+          </div>
+
+          <div class="tokn-found-foot">
+            <span id="toknFoundStatus" class="tokn-found-ok">
+              ✓ Cliente identificado com sucesso
+            </span>
+
+            <button
+              type="button"
+              class="tokn-link-btn"
+              onclick="toknUI.clearFoundClient()"
+            >
+              Trocar cliente
+            </button>
+          </div>
+        </div>
+
+        <!-- BOTÃO DE DEBUG – apenas para visualizar o bloco (remover depois) -->
+        <button
+          type="button"
+          class="tokn-link-btn tokn-debug-btn"
+          style="margin-top: 0.5rem;"
+          onclick="toknUI.debugShowFoundClient()"
+        >
+          [DEBUG] Simular cliente encontrado
+        </button>
+
+        <!-- Link pra cadastrar novo cliente -->
+        <button
+          type="button"
+          class="tokn-link-btn"
+          onclick="toknUI.openNewClientModal()"
+        >
+          + Cadastrar novo cliente
+        </button>
+      </div>
+
+      <!-- Coluna 2: Detalhes da transação -->
+      <div class="tokn-modal-col">
+        <h3 class="tokn-modal-label">2. Detalhes da transação</h3>
+
+        <label class="tokn-field-label" for="tokn-campanha">
+          Campanha
+        </label>
+        <select id="tokn-campanha" class="tokn-input tokn-input--full">
+          <option>Selecione uma campanha ativa</option>
+          <option>Outubro em Dobro</option>
+          <option>Cashback Fritella</option>
+          <option>Aniversariante do Mês</option>
+        </select>
+
+        <label class="tokn-field-label" for="tokn-valor-compra">
+          Valor da compra (opcional)
+        </label>
+        <input
+          id="tokn-valor-compra"
+          class="tokn-input tokn-input--full"
+          type="number"
+          min="0"
+          step="0.01"
+          placeholder="Ex.: 125,90"
+          value="125.90"
+        />
+
+        <label class="tokn-field-label" for="tokn-moedas">
+          Moedas a creditar
+        </label>
+        <input
+          id="tokn-moedas"
+          class="tokn-input tokn-input--full"
+          type="number"
+          min="0"
+          placeholder="Ex.: 150"
+        />
+        <p class="tokn-note">
+          Futuramente essas moedas podem ser calculadas automaticamente pela regra da campanha.
+        </p>
+      </div>
+    </div>
+
+    <div class="tokn-modal-foot">
+      <button
+        type="button"
+        class="tokn-btn tokn-btn--ghost"
+        onclick="toknUI.closeModals()"
+      >
+        Cancelar
+      </button>
+      <button
+        type="button"
+        id="tokn-confirm-credit-btn"
+        class="tokn-btn tokn-btn--primary"
+      >
+        Confirmar crédito
+      </button>
+    </div>
+  </section>
+
+  <!-- Modal de Cadastro de Cliente -->
+  <section
+    id="toknNewClientModal"
+    class="tokn-modal"
+    aria-hidden="true"
+    aria-labelledby="tokn-newclient-title"
+  >
+    <div class="tokn-modal-head">
+      <div>
+        <h2 id="tokn-newclient-title">Cadastrar cliente</h2>
+        <p class="tokn-modal-sub">
+          Cadastre o cliente para depois creditar moedas nas campanhas.
+        </p>
+      </div>
+      <button
+        type="button"
+        class="tokn-modal-x"
+        aria-label="Fechar"
+        onclick="toknUI.closeModals()"
+      >
+        ✕
+      </button>
+    </div>
+
+    <div class="tokn-modal-tabs">
+      <button
+        type="button"
+        class="tokn-tab is-active"
+        data-newclient-tab="zap"
+      >
+        Via WhatsApp
+      </button>
+      <button
+        type="button"
+        class="tokn-tab"
+        data-newclient-tab="manual"
+      >
+        Cadastro manual
+      </button>
+    </div>
+
+    <div class="tokn-modal-body">
+      <!-- Pane: WhatsApp -->
+      <div
+        class="tokn-tab-pane is-active"
+        data-newclient-pane="zap"
+      >
+        <p class="tokn-modal-help">
+          Envie uma mensagem pelo WhatsApp para o cliente fazer o próprio cadastro
+          e criar a carteira Phantom dele.
+        </p>
+
+        <label class="tokn-field-label" for="tokn-zap-phone">
+          WhatsApp do cliente
+        </label>
+        <input
+          id="tokn-zap-phone"
+          class="tokn-input tokn-input--full"
+          type="tel"
+          placeholder="(11) 98888-0000"
+        />
+
+        <label class="tokn-field-label" for="tokn-zap-msg">
+          Mensagem sugerida
+        </label>
+        <textarea
+          id="tokn-zap-msg"
+          class="tokn-input tokn-input--full tokn-textarea"
+          rows="5"
+          readonly
+        >Olá! 👋
+
+Aqui é do programa de fidelidade Tokn.id do *Comércio Demo*.
+
+Para acumular moedas e trocar por benefícios:
+1) Baixe a carteira Phantom na loja de aplicativos do seu celular;
+2) Crie a sua carteira pelo jeito mais fácil pra você:
+   • você pode usar a opção “continuar com e-mail” (Google, Apple ou iCloud); ou
+   • criar do modo tradicional, anotando a frase secreta em um lugar seguro.
+   O importante é guardar muito bem esse acesso, porque só você consegue recuperar a carteira.
+3) Depois me envie aqui no WhatsApp o endereço da sua carteira, basta clicar em "Receive ou Receber" > Solana > Compartilhe o endereço conosco ou copie e cole aqui nessa conversa (começa com uma sequência grande de letras e números).
+
+Assim que você enviar o endereço, eu cadastro você no programa e já credito suas moedas. 🚀
+</textarea>
+
+        <p class="tokn-note">
+          A Tokn.id <strong>não</strong> cria nem guarda carteiras.
+          O cliente é o único responsável pela Phantom e pela frase secreta.
+        </p>
+
+        <button
+          type="button"
+          class="tokn-btn"
+          onclick="toknUI.soon('Integração com WhatsApp / copiar mensagem')"
+        >
+          Copiar mensagem para enviar
+        </button>
+      </div>
+
+      <!-- Pane: Manual -->
+      <div
+        class="tokn-tab-pane"
+        data-newclient-pane="manual"
+      >
+        <p class="tokn-modal-help">
+          Preencha os dados básicos do cliente para registrá-lo no programa.
+          Depois você poderá creditar moedas normalmente.
+        </p>
+
+        <div class="tokn-grid-2">
+          <div class="tokn-grid-col">
+            <label class="tokn-field-label" for="tokn-nome">
+              Nome completo
+            </label>
+            <input
+              id="tokn-nome"
+              class="tokn-input tokn-input--full"
+              type="text"
+              placeholder="Nome do cliente"
+            />
+          </div>
+          <div class="tokn-grid-col">
+            <label class="tokn-field-label" for="tokn-cpf">
+              CPF
+            </label>
+            <input
+              id="tokn-cpf"
+              class="tokn-input tokn-input--full"
+              type="text"
+              placeholder="000.000.000-00"
+            />
+          </div>
+        </div>
+
+        <div class="tokn-grid-2">
+          <div class="tokn-grid-col">
+            <label class="tokn-field-label" for="tokn-cel">
+              Celular
+            </label>
+            <input
+              id="tokn-cel"
+              class="tokn-input tokn-input--full"
+              type="tel"
+              placeholder="(11) 98888-0000"
+            />
+          </div>
+          <div class="tokn-grid-col">
+            <label class="tokn-field-label" for="tokn-email">
+              E-mail
+            </label>
+            <input
+              id="tokn-email"
+              class="tokn-input tokn-input--full"
+              type="email"
+              placeholder="cliente@email.com"
+            />
+          </div>
+        </div>
+
+        <label class="tokn-field-label" for="tokn-nasc">
+          Data de nascimento
+        </label>
+        <input
+          id="tokn-nasc"
+          class="tokn-input tokn-input--full"
+          type="date"
+        />
+
+        <p class="tokn-note">
+          Depois que o cliente criar a própria carteira Phantom e enviar o endereço,
+          você poderá vincular essa carteira ao cadastro dele e creditar moedas.
+        </p>
+      </div>
+    </div>
+
+    <div class="tokn-modal-foot">
+      <button
+        type="button"
+        class="tokn-btn tokn-btn--ghost"
+        onclick="toknUI.closeModals()"
+      >
+        Cancelar
+      </button>
+      <button
+        type="button"
+        class="tokn-btn tokn-btn--primary"
+        onclick="toknUI.soon('Salvar cadastro de cliente')"
+      >
+        Salvar cliente
+      </button>
+    </div>
+  </section>
+
+  <!-- Modal de Criar / Editar Campanha -->
+  <section
+    id="toknCampaignModal"
+    class="tokn-modal"
+    aria-hidden="true"
+    aria-labelledby="tokn-campaign-title"
+  >
+    <div class="tokn-modal-head">
+      <div>
+        <h2 id="tokn-campaign-title">Criar campanha</h2>
+        <p class="tokn-modal-sub">
+          Defina as regras de moedas e o período da campanha.
+        </p>
+      </div>
+      <button
+        type="button"
+        class="tokn-modal-x"
+        aria-label="Fechar"
+        onclick="toknUI.closeModals()"
+      >
+        ✕
+      </button>
+    </div>
+
+    <div class="tokn-modal-body tokn-modal-body--split">
+      <!-- Coluna 1: detalhes básicos -->
+      <div class="tokn-modal-col">
+        <h3 class="tokn-modal-label">1. Detalhes da campanha</h3>
+
+        <label class="tokn-field-label" for="tokn-camp-nome">
+          Nome da campanha
+        </label>
+        <input
+          id="tokn-camp-nome"
+          class="tokn-input tokn-input--full"
+          type="text"
+          placeholder="Ex.: Outubro em Dobro"
+        />
+
+        <label class="tokn-field-label" for="tokn-camp-objetivo">
+          Objetivo principal
+        </label>
+        <select
+          id="tokn-camp-objetivo"
+          class="tokn-input tokn-input--full"
+        >
+          <option>Incentivar mais visitas</option>
+          <option>Aumentar tíquete médio</option>
+          <option>Trazer clientes inativos</option>
+          <option>Fortalecer datas especiais</option>
+        </select>
+
+        <label class="tokn-field-label">
+          Modelo (opcional)
+        </label>
+        <div class="tokn-modal-actions">
+          <button
+            type="button"
+            class="tokn-chip-action"
+            onclick="toknUI.soon('Modelo de cashback')"
+          >
+            Cashback sobre valor gasto
+          </button>
+          <button
+            type="button"
+            class="tokn-chip-action"
+            onclick="toknUI.soon('Modelo aniversário')"
+          >
+            Aniversário do cliente
+          </button>
+          <button
+            type="button"
+            class="tokn-chip-action"
+            onclick="toknUI.soon('Modelo indique e ganhe')"
+          >
+            Indique e ganhe
+          </button>
+        </div>
+
+        <div class="tokn-grid-2">
+          <div class="tokn-grid-col">
+            <label class="tokn-field-label" for="tokn-camp-inicio">
+              Início
+            </label>
+            <input
+              id="tokn-camp-inicio"
+              class="tokn-input tokn-input--full"
+              type="date"
+            />
+          </div>
+          <div class="tokn-grid-col">
+            <label class="tokn-field-label" for="tokn-camp-fim">
+              Fim
+            </label>
+            <input
+              id="tokn-camp-fim"
+              class="tokn-input tokn-input--full"
+              type="date"
+            />
+          </div>
+        </div>
+
+        <p class="tokn-note">
+          Você poderá pausar ou estender o período da campanha a qualquer momento.
+        </p>
+      </div>
+
+      <!-- Coluna 2: regras de moedas -->
+      <div class="tokn-modal-col">
+        <h3 class="tokn-modal-label">2. Regras de moedas</h3>
+
+        <label class="tokn-field-label" for="tokn-camp-canal">
+          Canal principal
+        </label>
+        <select
+          id="tokn-camp-canal"
+          class="tokn-input tokn-input--full"
+        >
+          <option>Todos os canais</option>
+          <option>PDV</option>
+          <option>WhatsApp</option>
+          <option>App / Link</option>
+        </select>
+
+        <label class="tokn-field-label" for="tokn-camp-minimo">
+          Valor mínimo da compra (opcional)
+        </label>
+        <input
+          id="tokn-camp-minimo"
+          class="tokn-input tokn-input--full"
+          type="number"
+          min="0"
+          step="0.01"
+          placeholder="Ex.: 50,00"
+        />
+
+        <div class="tokn-grid-2">
+          <div class="tokn-grid-col">
+            <label class="tokn-field-label" for="tokn-camp-por">
+              Para cada (R$)
+            </label>
+            <input
+              id="tokn-camp-por"
+              class="tokn-input tokn-input--full"
+              type="number"
+              min="0"
+              step="0.01"
+              placeholder="Ex.: 10,00"
+            />
+          </div>
+          <div class="tokn-grid-col">
+            <label class="tokn-field-label" for="tokn-camp-moedas">
+              Credite (moedas)
+            </label>
+            <input
+              id="tokn-camp-moedas"
+              class="tokn-input tokn-input--full"
+              type="number"
+              min="0"
+              placeholder="Ex.: 1"
+            />
+          </div>
+        </div>
+
+        <label class="tokn-field-label" for="tokn-camp-bonus">
+          Bônus em datas especiais (opcional)
+        </label>
+        <input
+          id="tokn-camp-bonus"
+          class="tokn-input tokn-input--full"
+          type="text"
+          placeholder="Ex.: 2x moedas no aniversário do cliente"
+        />
+
+        <label class="tokn-field-label" for="tokn-camp-limite">
+          Limite máximo por cliente (opcional)
+        </label>
+        <input
+          id="tokn-camp-limite"
+          class="tokn-input tokn-input--full"
+          type="number"
+          min="0"
+          placeholder="Ex.: 1000"
+        />
+
+        <p class="tokn-note">
+          Esses campos são apenas o rascunho visual. Depois o dev conecta na lógica real das
+          transações.
+        </p>
+      </div>
+    </div>
+
+    <div class="tokn-modal-foot tokn-modal-foot--camp">
+      <button
+        type="button"
+        class="tokn-btn tokn-btn--ghost tokn-camp-btn-cancel"
+        onclick="toknUI.closeModals()"
+      >
+        Cancelar
+      </button>
+      <button
+        type="button"
+        class="tokn-btn tokn-camp-btn-draft"
+        onclick="toknUI.soon('Salvar rascunho da campanha')"
+      >
+        Salvar como rascunho
+      </button>
+      <button
+        type="button"
+        class="tokn-btn tokn-btn--primary tokn-camp-btn-create"
+        onclick="toknUI.soon('Criar campanha')"
+      >
+        Criar campanha
+      </button>
+    </div>
+  </section>
+
+  <!-- Modal de Sucesso - Crédito de Moedas -->
+  <section
+    id="toknSuccessModal"
+    class="tokn-modal"
+    aria-hidden="true"
+    aria-labelledby="tokn-success-title"
+  >
+    <div class="tokn-modal-head">
+      <div>
+        <h2 id="tokn-success-title">Moedas creditadas com sucesso!</h2>
+        <p class="tokn-modal-sub">
+          A transação foi processada na rede Solana.
+        </p>
+      </div>
+      <button
+        type="button"
+        class="tokn-modal-x"
+        aria-label="Fechar"
+        onclick="toknUI.closeModals()"
+      >
+        ✕
+      </button>
+    </div>
+
+    <div class="tokn-modal-body">
+      <div style="text-align: center; padding: 1rem 0;">
+        <div style="font-size: 3rem; margin-bottom: 1rem;">✓</div>
+        <p style="font-size: 0.9rem; color: #9ca3af; margin-bottom: 1.5rem;">
+          A transação foi confirmada na blockchain.
+        </p>
+      </div>
+
+      <div style="background: #0a0a0a; border: 1px solid #171717; border-radius: 0.75rem; padding: 1rem; margin-bottom: 1rem;">
+        <div style="font-size: 0.8rem; color: #9ca3af; margin-bottom: 0.5rem;">Signature:</div>
+        <div id="tokn-success-signature" style="font-family: monospace; font-size: 0.85rem; color: #f9fafb; word-break: break-all;">
+          -
+        </div>
+      </div>
+
+      <div style="text-align: center;">
+        <a
+          id="tokn-success-explorer"
+          href="#"
+          target="_blank"
+          class="tokn-btn tokn-btn--primary"
+          style="text-decoration: none; display: inline-flex;"
+        >
+          Ver no Explorer
+        </a>
+      </div>
+    </div>
+
+    <div class="tokn-modal-foot">
+      <button
+        type="button"
+        class="tokn-btn tokn-btn--primary"
+        onclick="toknUI.closeModals()"
+      >
+        Fechar
+      </button>
+    </div>
+  </section>
+
+  <script src="{% static 'app/js/clientes.js' %}"></script>
+ 
+</body>
+</html>

@@ -1,0 +1,123 @@
+{% load static %}
+{% extends "app/base.html" %}
+
+{% block title %}Checklist — Problemas comuns{% endblock %}
+
+{% block header_title %}
+  <h1>Checklist de problemas comuns</h1>
+  <p class="tokn-header-sub">Antes de chamar suporte, passe rápido por aqui.</p>
+{% endblock %}
+
+{% block content %}
+
+<article class="tokn-help-article">
+
+  <a href="/ajuda" class="tokn-help-back">← Voltar para Ajuda</a>
+
+  <h2 class="tokn-help-title">Checklist de diagnóstico rápido</h2>
+  <p class="tokn-help-sub">
+    Use este checklist quando “algo não bateu”: saldo estranho, cliente sem moedas,
+    resgate que não aparece ou dúvida com a carteira Phantom.
+  </p>
+
+  <section class="tokn-help-section">
+    <h3>1. Cliente diz que não recebeu moedas</h3>
+    <ol>
+      <li>Campanha está <strong>ativa</strong> e dentro da vigência?</li>
+      <li>Compra atingiu o <strong>valor mínimo</strong> da campanha?</li>
+      <li>Endereço da carteira Phantom foi colado sem cortar caracteres?</li>
+      <li>Existe transação registrada em <strong>Transações</strong> na data da compra?</li>
+    </ol>
+    <p>
+      Se ainda assim não bater, siga o guia completo:
+      <a href="/ajuda/cliente-nao-recebeu-moedas">Cliente não recebeu moedas</a>.
+    </p>
+  </section>
+
+  <section class="tokn-help-section">
+    <h3>2. Resgate não apareceu ou deu conflito</h3>
+    <ol>
+      <li>Confirme com o cliente se ele está olhando a carteira/canal correto.</li>
+      <li>Veja em <strong>Transações</strong> se há resgate pendente ou cancelado.</li>
+      <li>Cheque se o benefício ainda está disponível na campanha/regra.</li>
+      <li>Garanta que ninguém do time fez um resgate duplicado por engano.</li>
+    </ol>
+    <p>
+      Para ver o passo a passo ideal de balcão, abra:
+      <a href="/ajuda/como-resgatar-no-balcao">Como resgatar moedas no balcão</a>.
+    </p>
+  </section>
+
+  <section class="tokn-help-section">
+    <h3>3. Problemas com carteira Phantom / QR Code</h3>
+    <ul>
+      <li>O cliente baixou a <strong>Phantom oficial</strong> na loja de aplicativos?</li>
+      <li>Ele criou a carteira e salvou a seed / frase secreta? (você nunca pede isso).</li>
+      <li>Endereço enviado é mesmo o da rede <strong>Solana</strong>, não de outra rede?</li>
+      <li>Se estiver usando QR Code, confirme se ele não está desatualizado na comunicação.</li>
+    </ul>
+    <p>
+      Em caso de dúvida, use o guia:
+      <a href="/ajuda/carteira-phantom-o-que-o-cliente-precisa-fazer">
+        Carteira Phantom: o que o cliente precisa fazer
+      </a>.
+    </p>
+  </section>
+
+  <section class="tokn-help-section">
+    <h3>4. Problemas que podem ser integração / sistema</h3>
+    <ul>
+      <li>Integração com PDV foi finalizada pelo time Tokn.id?</li>
+      <li>O sistema de caixa está sincronizando vendas corretamente?</li>
+      <li>Alguma atualização recente de sistema pode ter mudado o fluxo?</li>
+    </ul>
+    <p>
+      Quando desconfiar disso, consulte:
+      <a href="/ajuda/integracoes-pdv-e-whatsapp">Integrações: PDV e WhatsApp</a>
+      e, se continuar estranho, chame o suporte.
+    </p>
+  </section>
+
+  <section class="tokn-help-section">
+    <h3>5. Quando vale chamar o suporte direto</h3>
+    <p>Chame o time Tokn.id quando:</p>
+    <ul>
+      <li>O checklist acima não explicou o que está acontecendo.</li>
+      <li>Mais de um cliente está com o mesmo problema ao mesmo tempo.</li>
+      <li>Você percebe diferença grande entre o que o painel mostra e o que o caixa registra.</li>
+    </ul>
+    <p>
+      Ao chamar, ajuda muito se você já mandar:
+    </p>
+    <ul>
+      <li>Nome do cliente e telefone.</li>
+      <li>Data e valor da compra/resgate.</li>
+      <li>Print das telas de <strong>Transações</strong> e da carteira Phantom (se possível).</li>
+    </ul>
+  </section>
+
+  <a
+    href="https://wa.me/5511999999999?text=Oi%20time%20Tokn.id%2C%20passei%20pelo%20checklist%20de%20problemas%20comuns%20e%20ainda%20preciso%20de%20ajuda%20com%3A%20"
+    target="_blank"
+    class="tokn-help-final"
+  >
+    Fiz o checklist e ainda preciso de ajuda →
+  </a>
+
+  <div class="tokn-help-article-next">
+    <h3>Próximos passos sugeridos</h3>
+    <div class="tokn-next-actions">
+      <a href="/ajuda/guias-rapidos">Ver guias rápidos para balcão</a>
+      <a href="/ajuda/boas-praticas-para-crescer">Ler boas práticas para crescer</a>
+    </div>
+
+    <div class="tokn-feedback">
+      <p>Esse checklist foi útil?</p>
+      <button type="button" class="tokn-feedback-btn">✅ Sim, clareou bem</button>
+      <button type="button" class="tokn-feedback-btn">📝 Precisa de ajustes</button>
+    </div>
+  </div>
+
+</article>
+
+{% endblock %}

@@ -1,0 +1,286 @@
+{% extends "app/base.html" %}
+
+{% block title %}Configurações — tokn.id | partners{% endblock %}
+
+{% block header_title %}
+  <h1>Configurações</h1>
+  <p class="tokn-header-sub">
+    Ajuste os dados do estabelecimento e do seu programa de fidelidade.
+  </p>
+{% endblock %}
+
+{% block content %}
+
+<section class="tokn-settings-wrap">
+
+  <!-- COLUNA ESQUERDA -->
+  <div class="tokn-settings-col">
+
+    <!-- Identidade do estabelecimento -->
+    <section class="tokn-settings-card">
+      <header class="tokn-settings-card-head">
+        <div>
+          <h2 class="tokn-settings-title">Identidade do estabelecimento</h2>
+          <p class="tokn-settings-sub">
+            Revise as informações principais que aparecem para seus clientes.
+          </p>
+        </div>
+        <!-- AJUSTE: vira link para a tela de edição -->
+        <a
+          href="/configuracoes/estabelecimento"
+          class="tokn-btn tokn-btn--ghost tokn-settings-head-btn"
+        >
+          Editar dados
+        </a>
+      </header>
+
+      <div class="tokn-settings-merchant">
+        <div class="tokn-settings-logo-circle">CD</div>
+        <div class="tokn-settings-merchant-text">
+          <strong class="tokn-settings-merchant-name">Comércio Demo</strong>
+          <span class="tokn-settings-merchant-program">
+            Programa de fidelidade Tokn.id
+          </span>
+        </div>
+      </div>
+
+      <div class="tokn-settings-fields">
+        <div class="tokn-settings-field">
+          <span class="tokn-settings-label">Nome fantasia</span>
+          <span class="tokn-settings-value">Comércio Demo</span>
+        </div>
+        <div class="tokn-settings-field">
+          <span class="tokn-settings-label">CNPJ</span>
+          <span class="tokn-settings-value">00.000.000/0001-00</span>
+        </div>
+        <div class="tokn-settings-field">
+          <span class="tokn-settings-label">Segmento</span>
+          <span class="tokn-settings-value">Restaurante / Alimentação</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contato & canais -->
+    <section class="tokn-settings-card">
+      <header class="tokn-settings-card-head">
+        <div>
+          <h2 class="tokn-settings-title">Contato e canais</h2>
+          <p class="tokn-settings-sub">
+            Personalize como os clientes encontram seu programa de fidelidade.
+          </p>
+        </div>
+      </header>
+
+      <div class="tokn-settings-fields">
+        <div class="tokn-settings-field">
+          <span class="tokn-settings-label">WhatsApp principal</span>
+          <span class="tokn-settings-value">(11) 98888-0000</span>
+        </div>
+        <div class="tokn-settings-field">
+          <span class="tokn-settings-label">E-mail</span>
+          <span class="tokn-settings-value">contato@comerciodemo.com</span>
+        </div>
+        <div class="tokn-settings-field">
+          <span class="tokn-settings-label">Instagram</span>
+          <span class="tokn-settings-value">@comerciodemo</span>
+        </div>
+      </div>
+
+      <div class="tokn-settings-tags-group">
+        <span class="tokn-settings-label">Canais em que o programa é usado</span>
+        <div class="tokn-settings-tags">
+          <span class="tokn-settings-tag is-active">PDV</span>
+          <span class="tokn-settings-tag is-active">WhatsApp</span>
+          <span class="tokn-settings-tag">App / Link</span>
+        </div>
+        <p class="tokn-note tokn-settings-note">
+          Esses canais são apenas indicadores visuais por enquanto.
+          Depois você poderá ativar regras específicas para cada um.
+        </p>
+      </div>
+    </section>
+
+    <!-- Preferências do programa -->
+    <section class="tokn-settings-card">
+      <header class="tokn-settings-card-head">
+        <div>
+          <h2 class="tokn-settings-title">Preferências do programa</h2>
+          <p class="tokn-settings-sub">
+            Defina como suas moedas se comportam no dia a dia.
+          </p>
+        </div>
+      </header>
+
+      <div class="tokn-settings-fields">
+        <div class="tokn-settings-field">
+          <span class="tokn-settings-label">Nome da moeda</span>
+          <span class="tokn-settings-value">TOKN Demo</span>
+        </div>
+        <div class="tokn-settings-field">
+          <span class="tokn-settings-label">Símbolo interno</span>
+          <span class="tokn-settings-value">TDEM</span>
+        </div>
+        <div class="tokn-settings-field">
+          <span class="tokn-settings-label">Valor sugerido</span>
+          <span class="tokn-settings-value">
+            1 moeda ≈ R$ 0,10 em benefícios potenciais
+          </span>
+        </div>
+      </div>
+
+      <div class="tokn-settings-rule-box">
+        <h3 class="tokn-settings-rule-title">Regra padrão de acúmulo</h3>
+        <p class="tokn-settings-rule-text">
+          Para cada <strong>R$ 10,00</strong> em compras, credite
+          <strong>1 moeda</strong> para o cliente.
+        </p>
+        <!-- AJUSTE: link para a tela de regra padrão -->
+        <a
+          href="/configuracoes/regra-padrao"
+          class="tokn-link-btn"
+        >
+          Ajustar regra padrão
+        </a>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- COLUNA DIREITA -->
+  <div class="tokn-settings-col">
+
+    <!-- Equipe & acessos -->
+    <section class="tokn-settings-card">
+      <header class="tokn-settings-card-head">
+        <div>
+          <h2 class="tokn-settings-title">Equipe e acessos</h2>
+          <p class="tokn-settings-sub">
+            Controle quem pode acessar o painel Tokn.id do seu estabelecimento.
+          </p>
+        </div>
+        <span class="tokn-settings-badge">Em breve</span>
+      </header>
+
+      <div class="tokn-settings-team">
+        <p class="tokn-settings-empty">
+          No momento apenas este usuário tem acesso ao painel.
+        </p>
+        <ul class="tokn-settings-list">
+          <li class="tokn-settings-list-item">
+            <div class="tokn-settings-avatar">P</div>
+            <div class="tokn-settings-list-text">
+              <span class="tokn-settings-list-title">Parceiro Demo</span>
+              <span class="tokn-settings-list-sub">Administrador</span>
+            </div>
+          </li>
+        </ul>
+        <button
+          type="button"
+          class="tokn-btn tokn-btn--ghost"
+          onclick="toknUI.soon('Convidar membros da equipe')"
+        >
+          Convidar membro da equipe
+        </button>
+      </div>
+    </section>
+
+    <!-- Integrações -->
+    <section class="tokn-settings-card">
+      <header class="tokn-settings-card-head">
+        <div>
+          <h2 class="tokn-settings-title">Integrações</h2>
+          <p class="tokn-settings-sub">
+            Conecte seu programa de fidelidade com ferramentas do dia a dia.
+          </p>
+        </div>
+        <span class="tokn-settings-badge">Em breve</span>
+      </header>
+
+      <ul class="tokn-settings-list">
+        <li class="tokn-settings-list-item">
+          <div class="tokn-settings-list-text">
+            <span class="tokn-settings-list-title">Integração com WhatsApp</span>
+            <span class="tokn-settings-list-sub">
+              Envie convites e atualizações direto para o cliente.
+            </span>
+          </div>
+          <button
+            type="button"
+            class="tokn-link-btn"
+            onclick="toknUI.soon('Integração com WhatsApp')"
+          >
+            Configurar
+          </button>
+        </li>
+        <li class="tokn-settings-list-item">
+          <div class="tokn-settings-list-text">
+            <span class="tokn-settings-list-title">Integração com PDV</span>
+            <span class="tokn-settings-list-sub">
+              Conecte seu sistema de caixa para creditar moedas automaticamente.
+            </span>
+          </div>
+          <button
+            type="button"
+            class="tokn-link-btn"
+            onclick="toknUI.soon('Integração com PDV')"
+          >
+            Ver opções
+          </button>
+        </li>
+        <li class="tokn-settings-list-item">
+          <div class="tokn-settings-list-text">
+            <span class="tokn-settings-list-title">API / Webhooks</span>
+            <span class="tokn-settings-list-sub">
+              Use integrações avançadas com o backend da Tokn.id.
+            </span>
+          </div>
+          <button
+            type="button"
+            class="tokn-link-btn"
+            onclick="toknUI.soon('API / Webhooks')"
+          >
+            Documentação
+          </button>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Plano e faturamento -->
+    <section class="tokn-settings-card">
+      <header class="tokn-settings-card-head">
+        <div>
+          <h2 class="tokn-settings-title">Plano e faturamento</h2>
+          <p class="tokn-settings-sub">
+            Veja em qual plano você está e como evoluir junto com a Tokn.id.
+          </p>
+        </div>
+      </header>
+
+      <div class="tokn-settings-plan">
+        <div class="tokn-settings-plan-main">
+          <span class="tokn-settings-label">Plano atual</span>
+          <span class="tokn-settings-plan-name">Plano beta</span>
+          <span class="tokn-settings-plan-note">
+            Você está no período de testes com todos os recursos liberados.
+          </span>
+        </div>
+        <button
+          type="button"
+          class="tokn-btn"
+          onclick="toknUI.soon('Falar com o time comercial')"
+        >
+          Falar com o time comercial
+        </button>
+      </div>
+
+      <p class="tokn-note tokn-settings-note">
+        Futuramente aqui você poderá acompanhar cobranças, notas fiscais e
+        limites de uso do seu programa.
+      </p>
+    </section>
+
+  </div>
+
+</section>
+
+{% endblock %}

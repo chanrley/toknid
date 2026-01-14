@@ -1,0 +1,116 @@
+{% load static %}
+{% extends "app/base.html" %}
+
+{% block title %}Guias rápidos — Ajuda Tokn.id{% endblock %}
+
+{% block header_title %}
+  <h1>Guias rápidos</h1>
+  <p class="tokn-header-sub">Use estes fluxos quando estiver no balcão.</p>
+{% endblock %}
+
+{% block content %}
+
+<article class="tokn-help-article">
+
+  <a href="/ajuda" class="tokn-help-back">← Voltar para Ajuda</a>
+
+  <h2 class="tokn-help-title">Guias rápidos para o dia a dia</h2>
+  <p class="tokn-help-sub">
+    Quando o movimento está rolando, você não tem tempo para filosofar.
+    Aqui ficam os fluxos mais usados, direto ao ponto.
+  </p>
+
+  <div class="tokn-help-actions">
+    <a href="/ajuda/cliente-nao-recebeu-moedas" class="tokn-help-btn danger">
+      ⚠ Cliente não recebeu moedas
+    </a>
+    <a href="/ajuda/como-resgatar-no-balcao" class="tokn-help-btn">
+      💳 Resgatar moedas no balcão
+    </a>
+    <a href="/ajuda/campanhas-como-criar-e-usar" class="tokn-help-btn">
+      ◎ Criar campanha rápida
+    </a>
+    <a href="/ajuda/integracoes-pdv-e-whatsapp" class="tokn-help-btn">
+      🔌 Ver integrações (PDV / WhatsApp)
+    </a>
+  </div>
+
+  <section class="tokn-help-section">
+    <h3>1. Se o cliente não recebeu moedas</h3>
+    <p>Use este fluxo quando o cliente reclama que comprou e o saldo não subiu.</p>
+    <ol>
+      <li>Abra <strong>Transações</strong> e pesquise pelo nome ou telefone.</li>
+      <li>Veja se existe transação como <strong>Pendente</strong> ou não confirmada.</li>
+      <li>Se não existir, siga o guia
+        <a href="/ajuda/cliente-nao-recebeu-moedas">Cliente não recebeu moedas</a>.
+      </li>
+    </ol>
+  </section>
+
+  <section class="tokn-help-section">
+    <h3>2. Se o cliente quer usar as moedas agora</h3>
+    <p>Perfeito para situações “tô aqui no caixa, quero usar agora”.</p>
+    <ol>
+      <li>Acesse <strong>Clientes</strong> e encontre o cliente.</li>
+      <li>Clique em <strong>Resgatar</strong>.</li>
+      <li>Escolha o benefício combinado e confirme.</li>
+      <li>Marque na comanda / sistema interno que o benefício foi usado.</li>
+    </ol>
+    <p>
+      Para o passo a passo completo, abra o guia
+      <a href="/ajuda/como-resgatar-no-balcao">Como resgatar moedas no balcão</a>.
+    </p>
+  </section>
+
+  <section class="tokn-help-section">
+    <h3>3. Preciso criar uma campanha rapidinho</h3>
+    <p>Quando você quer colocar algo no ar ainda hoje.</p>
+    <ol>
+      <li>Entre em <strong>Campanhas</strong> e clique em <strong>Criar campanha</strong>.</li>
+      <li>Use um dos modelos sugeridos (cashback, aniversário, indique e ganhe).</li>
+      <li>Comece simples: valor mínimo, regra de moedas e período.</li>
+    </ol>
+    <p>
+      Depois, aprofunde no guia
+      <a href="/ajuda/campanhas-como-criar-e-usar">Campanhas: como criar e usar bem</a>.
+    </p>
+  </section>
+
+  <section class="tokn-help-section">
+    <h3>4. Quando envolver WhatsApp ou PDV</h3>
+    <p>
+      Se a dúvida envolver integração com sistema de caixa ou WhatsApp do comércio:
+    </p>
+    <ul>
+      <li>Veja primeiro o guia
+        <a href="/ajuda/integracoes-pdv-e-whatsapp">Integrações: PDV e WhatsApp</a>.
+      </li>
+      <li>Se não resolver, fale com o time Tokn.id direto pelo WhatsApp.</li>
+    </ul>
+  </section>
+
+  <a
+    href="https://wa.me/5511999999999?text=Oi%20time%20Tokn.id%2C%20estou%20usando%20os%20Guias%20R%C3%A1pidos%20e%20preciso%20de%20ajuda%20com%3A%20"
+    target="_blank"
+    class="tokn-help-final"
+  >
+    Preciso de ajuda agora → Falar com o suporte
+  </a>
+
+  <div class="tokn-help-article-next">
+    <h3>Próximos passos sugeridos</h3>
+    <div class="tokn-next-actions">
+      <a href="/ajuda/checklist-problemas-comuns">Ver checklist de problemas comuns</a>
+      <a href="/ajuda/boas-praticas-para-crescer">Ler boas práticas para crescer</a>
+    </div>
+
+    <div class="tokn-feedback">
+      <p>Esse conteúdo ajudou?</p>
+      <button type="button" class="tokn-feedback-btn">👍 Sim, resolveu</button>
+      <button type="button" class="tokn-feedback-btn">🤔 Ajudou, mas faltou algo</button>
+    </div>
+  </div>
+
+</article>
+
+{% endblock %}

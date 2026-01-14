@@ -1,0 +1,101 @@
+{% load static %}
+{% extends "app/base.html" %}
+
+{% block title %}Ajustar regra padrão — Ajuda Tokn.id{% endblock %}
+
+{% block header_title %}
+  <h1>Ajustar regra padrão</h1>
+  <p class="tokn-header-sub">Quando os números não batem, comece por aqui.</p>
+{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'app/css/ajuda.css' %}">
+
+<div class="tokn-help-article">
+
+  <a href="/ajuda" class="tokn-help-back">← Voltar para Ajuda</a>
+
+  <h2 class="tokn-help-title">Regra padrão do programa</h2>
+  <p class="tokn-help-sub">
+    A regra padrão é o “plano base” de acúmulo de moedas, usado quando não há campanha específica.
+  </p>
+
+  <div class="tokn-help-actions">
+    <a href="/configuracoes/regra-padrao" class="tokn-help-btn">Abrir configuração</a>
+  </div>
+
+  <section class="tokn-help-section">
+    <h3>Quando revisar a regra padrão</h3>
+    <ul>
+      <li>Quando clientes estão recebendo moedas a mais ou a menos.</li>
+      <li>Quando o benefício está “caro demais” ou “barato demais”.</li>
+      <li>Quando você muda preços ou estratégia do negócio.</li>
+    </ul>
+  </section>
+
+  <section class="tokn-help-section">
+    <h3>Como funciona na prática</h3>
+    <ul>
+      <li>Defina: <strong>para cada R$ X em compras, o cliente ganha Y moedas</strong>.</li>
+      <li>Essa regra vale para todos os canais, a não ser que uma campanha diga o contrário.</li>
+      <li>Campanhas específicas sempre têm prioridade sobre a regra padrão.</li>
+    </ul>
+  </section>
+
+  <section class="tokn-help-section">
+    <h3>Passo a passo para ajustar</h3>
+    <ul>
+      <li>Acesse <strong>Configurações → Preferências do programa → Ajustar regra padrão</strong>.</li>
+      <li>Simule rapidamente quanto um cliente acumula em um mês típico.</li>
+      <li>Simule também quanto ele precisaria para trocar por um benefício relevante.</li>
+      <li>Salve e comunique ao time qualquer mudança na conversa com o cliente.</li>
+    </ul>
+  </section>
+
+  <section class="tokn-help-section">
+    <h3>Sinais de que a regra não está ideal</h3>
+    <ul>
+      <li>Muitos clientes acumulando e quase ninguém resgatando.</li>
+      <li>Muitos resgates com valor alto demais de benefício.</li>
+      <li>Equipe confusa para explicar como funciona.</li>
+    </ul>
+  </section>
+
+  <a href="/ajuda/boas-praticas-para-crescer" class="tokn-help-final">
+    Ver boas práticas para equilibrar acúmulo e resgates
+  </a>
+</div>
+
+<!-- =====================================================
+   BLOCO UNIVERSAL — FINAL DO ARTIGO
+===================================================== -->
+
+<section class="tokn-help-article-next">
+
+  <h3>O que você pode fazer agora</h3>
+
+  <div class="tokn-next-actions">
+    <a href="/clientes" class="tokn-btn tokn-btn--ghost">
+      👥 Ir para lista de clientes
+    </a>
+
+    <a href="/transacoes" class="tokn-btn tokn-btn--ghost">
+      🔄 Ver transações
+    </a>
+
+    <a href="https://wa.me/5511999999999?text=Oi%20Tokn.id%2C%20preciso%20de%20ajuda%20sobre%20{{ request.path }}"
+       target="_blank"
+       class="tokn-btn tokn-btn--primary">
+      💬 Falar com o suporte
+    </a>
+  </div>
+
+  <div class="tokn-feedback">
+    <p>Este guia te ajudou?</p>
+    <button class="tokn-feedback-btn" onclick="toknUI.soon('Obrigado pelo feedback!')">Sim 😊</button>
+    <button class="tokn-feedback-btn" onclick="toknUI.soon('Vamos melhorar!')">Quase 😕</button>
+  </div>
+
+</section>
+
+{% endblock %}

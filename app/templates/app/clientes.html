@@ -1,0 +1,167 @@
+{% extends "app/base.html" %}
+
+{% block title %}Clientes — tokn.id | partners{% endblock %}
+
+{% block header_title %}
+  <h1>Clientes</h1>
+  <p class="tokn-header-sub">Gerencie seus clientes, saldos de moedas e histórico de relacionamento.</p>
+{% endblock %}
+
+{% block content %}
+
+<!-- AÇÕES TOPO -->
+<div class="tokn-actions">
+  <!-- ícones flat, pegam a cor do texto -->
+  <button class="tokn-btn tokn-btn--primary" onclick="toknUI.newClient()">
+    <span>+</span> Novo Cliente
+  </button>
+
+  <button class="tokn-btn" onclick="toknUI.exportCsv()">
+    <span>↓</span> Exportar CSV
+  </button>
+</div>
+
+<!-- BUSCA -->
+<form class="tokn-search" onsubmit="return toknUI.search(this)">
+  <input id="tokn-q" name="q" class="tokn-input"
+         placeholder="Buscar por nome, telefone, e-mail ou ID do cliente">
+  <button class="tokn-btn">Pesquisar</button>
+</form>
+
+<!-- KPIs -->
+<div class="tokn-kpis">
+  <div class="tokn-kpi">
+    <div class="tokn-kpi-value">1477</div>
+    <div class="tokn-kpi-label">CLIENTES CADASTRADOS</div>
+  </div>
+
+  <div class="tokn-kpi">
+    <div class="tokn-kpi-value">925</div>
+    <div class="tokn-kpi-label">CLIENTES ATIVOS (ÚLTIMOS 30 DIAS)</div>
+  </div>
+
+  <div class="tokn-kpi">
+    <div class="tokn-kpi-value">7495</div>
+    <div class="tokn-kpi-label">MOEDAS EM CIRCULAÇÃO</div>
+  </div>
+</div>
+
+<!-- FILTROS -->
+<div class="tokn-filtros">
+  <button class="tokn-pill is-active" onclick="toknUI.filter('todos')">Todos</button>
+  <button class="tokn-pill" onclick="toknUI.filter('ativos')">Ativos</button>
+  <button class="tokn-pill" onclick="toknUI.filter('inativos')">Inativos</button>
+  <button class="tokn-pill" onclick="toknUI.filter('saldo')">Com saldo</button>
+  <button class="tokn-pill" onclick="toknUI.filter('semsaldo')">Sem saldo</button>
+</div>
+
+<!-- TABELA -->
+<div class="tokn-table-wrap">
+  <table class="tokn-table">
+    <thead>
+      <tr>
+        <th>CLIENTE</th>
+        <th>MOEDAS</th>
+        <th>ÚLTIMA ATIVIDADE</th>
+        <th>CANAL PRINCIPAL</th>
+        <th>STATUS</th>
+        <th style="text-align:right">AÇÕES</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      {% for c in clientes %}
+      <tr>
+        <!-- ### AJUSTE: data-label para cards mobile -->
+        <td data-label="Cliente">
+          <div class="tokn-name">
+            {{ c.nome }}
+            {% if c.vip %}
+              <span class="tokn-badge">VIP</span>
+            {% endif %}
+          </div>
+          <div class="tokn-meta">{{ c.contato }}</div>
+        </td>
+
+        <td data-label="Moedas">{{ c.moedas }}</td>
+
+        <td data-label="Última atividade">
+          {{ c.ultima }}
+          <br>
+          <span class="tokn-meta">{{ c.ultima_data }}</span>
+        </td>
+
+        <td data-label="Canal principal">{{ c.canal }}</td>
+
+        <td data-label="Status">
+          {% if c.status == "Ativo" %}
+          <span class="tokn-status tokn-status--on">Ativo</span>
+          {% else %}
+          <span class="tokn-status tokn-status--off">Inativo</span>
+          {% endif %}
+        </td>
+
+        <td data-label="Ações">
+          <div class="tokn-acts">
+            <button class="tokn-act" onclick="toknUI.openPanel('{{ c.nome }}')">🔍</button>
+            <button class="tokn-act">💬</button>
+            <button class="tokn-act">💰</button>
+          </div>
+        </td>
+
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<!-- OVERLAY E PAINEL -->
+<div class="tokn-overlay" onclick="toknUI.closePanel()"></div>
+
+<aside class="tokn-panel" aria-hidden="true">
+  <div class="tokn-phd">
+    <div id="tokn-avatar" class="tokn-avatar">CL</div>
+
+    <div>
+      <div id="tokn-panel-title" style="font-weight:700">Cliente</div>
+      <div class="tokn-meta">Cliente desde 10/2025 · VIP</div>
+
+      <div class="tokn-pbtns">
+        <button class="tokn-pbtn tokn-pbtn--pink">💰 Creditar moedas</button>
+      </div>
+    </div>
+
+    <button class="tokn-x" onclick="toknUI.closePanel()">✕</button>
+  </div>
+
+  <div class="tokn-sec">
+    <div class="tokn-sectit">Dados do cliente</div>
+    <div class="tokn-row"><span class="muted">Telefone</span><span>+55 (11) 99999-0000</span></div>
+    <div class="tokn-row"><span class="muted">E-mail</span><span>cliente@email.com</span></div>
+    <div class="tokn-row"><span class="muted">Canal</span><span>PDV</span></div>
+    <div class="tokn-row"><span class="muted">ID interno</span><span>CLI-00123</span></div>
+  </div>
+
+  <div class="tokn-sec">
+    <div class="tokn-sectit">Resumo de fidelidade</div>
+    <div class="tokn-row"><span class="muted">Recebidas</span><span>650</span></div>
+    <div class="tokn-row"><span class="muted">Resgatadas</span><span>300</span></div>
+    <div class="tokn-row"><span class="muted">Saldo atual</span><span>350</span></div>
+    <div class="tokn-row"><span class="muted">Transações</span><span>8</span></div>
+  </div>
+
+  <div class="tokn-sec">
+    <div class="tokn-sectit">Histórico de transações</div>
+    <ul class="tokn-timeline" id="tokn-tl">
+      <li>Recebeu 100 moedas <span class="muted">02/11/2025</span></li>
+      <li>Resgatou 50 moedas <span class="muted">20/10/2025</span></li>
+      <li>Recebeu 200 moedas <span class="muted">10/10/2025</span></li>
+    </ul>
+  </div>
+  
+  
+  <button class="tokn-pbtn">📜 Histórico (infinite scroll)</button>
+
+</aside>
+
+{% endblock %}

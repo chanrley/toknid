@@ -1,0 +1,104 @@
+{% load static %}
+{% extends "app/base.html" %}
+
+{% block title %}Integrações: PDV e WhatsApp — Ajuda Tokn.id{% endblock %}
+
+{% block header_title %}
+  <h1>Integrações: PDV e WhatsApp</h1>
+  <p class="tokn-header-sub">Deixe o fluxo mais automático sem complicar o time.</p>
+{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'app/css/ajuda.css' %}">
+
+<div class="tokn-help-article">
+
+  <a href="/ajuda" class="tokn-help-back">← Voltar para Ajuda</a>
+
+  <h2 class="tokn-help-title">Como funcionam as integrações</h2>
+  <p class="tokn-help-sub">
+    Visão geral para você entender quando usar integração e quando manter o fluxo manual.
+  </p>
+
+  <section class="tokn-help-section">
+    <h3>Integração com WhatsApp</h3>
+    <ul>
+      <li>Permite enviar convites e atualizações direto para o cliente.</li>
+      <li>Ajuda na etapa de cadastro e envio do endereço da carteira Phantom.</li>
+      <li>Pode ser usada para campanhas específicas (ex.: clientes inativos).</li>
+    </ul>
+    <p class="tokn-note">
+      Nesta fase beta, muitas ações ainda são semiautomáticas, via mensagem sugerida.
+    </p>
+  </section>
+
+  <section class="tokn-help-section">
+    <h3>Integração com PDV</h3>
+    <ul>
+      <li>Objetivo é conectar o sistema de caixa com a Tokn.id para criar transações automaticamente.</li>
+      <li>Evita digitar duas vezes o valor da compra.</li>
+      <li>Permite ativar regras específicas por canal (só PDV, só delivery etc.).</li>
+    </ul>
+    <p class="tokn-note">
+      A disponibilidade depende do seu sistema de PDV. Fale com o time Tokn.id para avaliar.
+    </p>
+  </section>
+
+  <section class="tokn-help-section">
+    <h3>Quando faz sentido integrar</h3>
+    <ul>
+      <li>Quando o volume de vendas é alto e o time não consegue lançar tudo manualmente.</li>
+      <li>Quando já existe um sistema de gestão ou PDV consolidado.</li>
+      <li>Quando você quer relatórios mais precisos entre PDV e programa de fidelidade.</li>
+    </ul>
+  </section>
+
+  <section class="tokn-help-section">
+    <h3>Quando o fluxo manual é suficiente</h3>
+    <ul>
+      <li>Negócios em fase de teste do programa de fidelidade.</li>
+      <li>Equipe pequena, com baixo volume de atendimentos.</li>
+      <li>Quando o objetivo é validar a ideia antes de investir em integração.</li>
+    </ul>
+  </section>
+
+  <a href="https://wa.me/5511999999999?text=Quero%20saber%20sobre%20integra%C3%A7%C3%B5es%20Tokn.id"
+     target="_blank"
+     class="tokn-help-final">
+    Falar com o time sobre integrações
+  </a>
+</div>
+
+<!-- =====================================================
+   BLOCO UNIVERSAL — FINAL DO ARTIGO
+===================================================== -->
+
+<section class="tokn-help-article-next">
+
+  <h3>O que você pode fazer agora</h3>
+
+  <div class="tokn-next-actions">
+    <a href="/clientes" class="tokn-btn tokn-btn--ghost">
+      👥 Ir para lista de clientes
+    </a>
+
+    <a href="/transacoes" class="tokn-btn tokn-btn--ghost">
+      🔄 Ver transações
+    </a>
+
+    <a href="https://wa.me/5511999999999?text=Oi%20Tokn.id%2C%20preciso%20de%20ajuda%20sobre%20{{ request.path }}"
+       target="_blank"
+       class="tokn-btn tokn-btn--primary">
+      💬 Falar com o suporte
+    </a>
+  </div>
+
+  <div class="tokn-feedback">
+    <p>Este guia te ajudou?</p>
+    <button class="tokn-feedback-btn" onclick="toknUI.soon('Obrigado pelo feedback!')">Sim 😊</button>
+    <button class="tokn-feedback-btn" onclick="toknUI.soon('Vamos melhorar!')">Quase 😕</button>
+  </div>
+
+</section>
+
+{% endblock %}

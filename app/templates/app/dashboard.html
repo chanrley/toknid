@@ -1,0 +1,300 @@
+{% extends "app/base.html" %}
+
+{% block title %}Dashboard — tokn.id | partners{% endblock %}
+
+{% block header_title %}
+  <h1>Dashboard</h1> Django 6 🚀🚀🚀
+  <p class="tokn-header-sub">Visão geral do desempenho do seu programa de fidelidade.</p>
+{% endblock %}
+
+{% block content %}
+
+<!-- FILTRO DE PERÍODO -->
+<section class="dash-header-row">
+  <div class="dash-header-left">
+    <h2 class="dash-section-title">Resumo do período</h2>
+    <p class="dash-section-sub">Acompanhe os principais números de clientes e moedas.</p>
+  </div>
+
+  <div class="dash-filter">
+    <!-- Esses botões são estáticos por enquanto; depois podemos ligar com backend -->
+    <button class="dash-filter-pill is-active">Últimos 7 dias</button>
+    <button class="dash-filter-pill">30 dias</button>
+    <button class="dash-filter-pill">90 dias</button>
+    <button class="dash-filter-pill dash-filter-pill--ghost">Personalizado</button>
+  </div>
+</section>
+
+<!-- KPIs PRINCIPAIS -->
+<section class="dash-block">
+  <div class="tokn-kpis dash-kpis">
+    <div class="tokn-kpi">
+      <div class="tokn-kpi-value">925</div>
+      <div class="tokn-kpi-label">CLIENTES ATIVOS</div>
+      <div class="dash-kpi-meta dash-kpi-meta--up">+18% vs período anterior</div>
+    </div>
+
+    <div class="tokn-kpi">
+      <div class="tokn-kpi-value">12.450</div>
+      <div class="tokn-kpi-label">MOEDAS CREDITADAS</div>
+      <div class="dash-kpi-meta">R$ 6.225,00 em benefícios potenciais</div>
+    </div>
+
+    <div class="tokn-kpi">
+      <div class="tokn-kpi-value">3.280</div>
+      <div class="tokn-kpi-label">MOEDAS RESGATADAS</div>
+      <div class="dash-kpi-meta dash-kpi-meta--up">+9% resgates</div>
+    </div>
+
+    <div class="tokn-kpi dash-kpi-optional">
+      <div class="tokn-kpi-value">26%</div>
+      <div class="tokn-kpi-label">TAXA DE RESGATE</div>
+      <div class="dash-kpi-meta dash-kpi-meta--goal">Meta sugerida: 30–40%</div>
+    </div>
+  </div>
+</section>
+
+<!-- GRADE PRINCIPAL: GRÁFICOS + CAMPANHAS -->
+<section class="dash-main-grid">
+
+  <!-- COLUNA ESQUERDA: ATIVIDADE DE MOEDAS -->
+  <article class="dash-card dash-card--wide">
+    <header class="dash-card-head">
+      <div>
+        <h3 class="dash-card-title">Atividade de moedas</h3>
+        <p class="dash-card-sub">Comparativo de moedas creditadas e resgatadas no período.</p>
+      </div>
+      <div class="dash-card-controls">
+        <span class="dash-legend-item">
+          <span class="dash-dot dash-dot--creditadas"></span> Creditadas
+        </span>
+        <span class="dash-legend-item">
+          <span class="dash-dot dash-dot--resgatadas"></span> Resgatadas
+        </span>
+      </div>
+    </header>
+
+    <!-- “Gráfico” simples em barras mockadas (puro CSS) -->
+    <div class="dash-chart dash-chart--bars">
+      <div class="dash-chart-row">
+        <span class="dash-chart-label">Seg</span>
+        <div class="dash-chart-bar-wrap">
+          <span class="dash-chart-bar dash-chart-bar--creditadas" style="width: 70%"></span>
+          <span class="dash-chart-bar dash-chart-bar--resgatadas" style="width: 40%"></span>
+        </div>
+      </div>
+      <div class="dash-chart-row">
+        <span class="dash-chart-label">Ter</span>
+        <div class="dash-chart-bar-wrap">
+          <span class="dash-chart-bar dash-chart-bar--creditadas" style="width: 55%"></span>
+          <span class="dash-chart-bar dash-chart-bar--resgatadas" style="width: 35%"></span>
+        </div>
+      </div>
+      <div class="dash-chart-row">
+        <span class="dash-chart-label">Qua</span>
+        <div class="dash-chart-bar-wrap">
+          <span class="dash-chart-bar dash-chart-bar--creditadas" style="width: 80%"></span>
+          <span class="dash-chart-bar dash-chart-bar--resgatadas" style="width: 60%"></span>
+        </div>
+      </div>
+      <div class="dash-chart-row">
+        <span class="dash-chart-label">Qui</span>
+        <div class="dash-chart-bar-wrap">
+          <span class="dash-chart-bar dash-chart-bar--creditadas" style="width: 65%"></span>
+          <span class="dash-chart-bar dash-chart-bar--resgatadas" style="width: 45%"></span>
+        </div>
+      </div>
+      <div class="dash-chart-row">
+        <span class="dash-chart-label">Sex</span>
+        <div class="dash-chart-bar-wrap">
+          <span class="dash-chart-bar dash-chart-bar--creditadas" style="width: 90%"></span>
+          <span class="dash-chart-bar dash-chart-bar--resgatadas" style="width: 70%"></span>
+        </div>
+      </div>
+      <div class="dash-chart-row">
+        <span class="dash-chart-label">Sáb</span>
+        <div class="dash-chart-bar-wrap">
+          <span class="dash-chart-bar dash-chart-bar--creditadas" style="width: 60%"></span>
+          <span class="dash-chart-bar dash-chart-bar--resgatadas" style="width: 30%"></span>
+        </div>
+      </div>
+      <div class="dash-chart-row">
+        <span class="dash-chart-label">Dom</span>
+        <div class="dash-chart-bar-wrap">
+          <span class="dash-chart-bar dash-chart-bar--creditadas" style="width: 40%"></span>
+          <span class="dash-chart-bar dash-chart-bar--resgatadas" style="width: 20%"></span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- COLUNA DIREITA: CANAIS + CAMPANHAS -->
+  <div class="dash-right-col">
+
+    <!-- Canais de maior movimento -->
+    <article class="dash-card">
+      <header class="dash-card-head">
+        <div>
+          <h3 class="dash-card-title">Onde os clientes mais se movem</h3>
+          <p class="dash-card-sub">Distribuição de transações por canal.</p>
+        </div>
+      </header>
+
+      <ul class="dash-list dash-list--channels">
+        <li class="dash-list-item">
+          <div class="dash-list-main">
+            <span class="dash-list-label">PDV</span>
+            <span class="dash-list-meta">52% das transações</span>
+          </div>
+          <div class="dash-list-bar">
+            <span class="dash-list-bar-fill" style="width: 52%"></span>
+          </div>
+        </li>
+        <li class="dash-list-item">
+          <div class="dash-list-main">
+            <span class="dash-list-label">WhatsApp</span>
+            <span class="dash-list-meta">28% das transações</span>
+          </div>
+          <div class="dash-list-bar">
+            <span class="dash-list-bar-fill" style="width: 28%"></span>
+          </div>
+        </li>
+        <li class="dash-list-item">
+          <div class="dash-list-main">
+            <span class="dash-list-label">App / Link</span>
+            <span class="dash-list-meta">20% das transações</span>
+          </div>
+          <div class="dash-list-bar">
+            <span class="dash-list-bar-fill" style="width: 20%"></span>
+          </div>
+        </li>
+      </ul>
+    </article>
+
+    <!-- Top campanhas -->
+    <article class="dash-card">
+      <header class="dash-card-head">
+        <div>
+          <h3 class="dash-card-title">Campanhas em destaque</h3>
+          <p class="dash-card-sub">As campanhas que mais estão gerando movimento.</p>
+        </div>
+      </header>
+
+      <ul class="dash-list dash-list--campaigns">
+        <li class="dash-list-item">
+          <div class="dash-list-main">
+            <span class="dash-list-label">Outubro em Dobro</span>
+            <span class="dash-badge dash-badge--success">Alta performance</span>
+          </div>
+          <div class="dash-list-meta-line">
+            3.200 moedas creditadas · 1.450 resgatadas
+          </div>
+        </li>
+        <li class="dash-list-item">
+          <div class="dash-list-main">
+            <span class="dash-list-label">Aniversário do Cliente</span>
+          </div>
+          <div class="dash-list-meta-line">
+            980 moedas creditadas · 610 resgatadas
+          </div>
+        </li>
+        <li class="dash-list-item">
+          <div class="dash-list-main">
+            <span class="dash-list-label">Indique e Ganhe</span>
+          </div>
+          <div class="dash-list-meta-line">
+            450 moedas creditadas · 190 resgatadas
+          </div>
+        </li>
+      </ul>
+    </article>
+
+  </div>
+</section>
+
+<!-- LINHA DO TEMPO + AÇÕES RECOMENDADAS -->
+<section class="dash-bottom-grid">
+
+  <!-- Timeline -->
+  <article class="dash-card dash-card--timeline">
+    <header class="dash-card-head">
+      <div>
+        <h3 class="dash-card-title">Últimas atividades de clientes</h3>
+        <p class="dash-card-sub">Veja em tempo real o que está acontecendo no seu programa.</p>
+      </div>
+    </header>
+
+    <ul class="dash-timeline">
+      <li class="dash-timeline-item">
+        <div class="dash-timeline-main">
+          João Silva recebeu 80 moedas
+        </div>
+        <div class="dash-timeline-meta">
+          Campanha Outubro em Dobro · via WhatsApp · há 2 min
+        </div>
+      </li>
+      <li class="dash-timeline-item">
+        <div class="dash-timeline-main">
+          Maria Souza resgatou 50 moedas
+        </div>
+        <div class="dash-timeline-meta">
+          Cupom Aniversário · no PDV · há 1 h
+        </div>
+      </li>
+      <li class="dash-timeline-item">
+        <div class="dash-timeline-main">
+          Carlos Lima recebeu 120 moedas
+        </div>
+        <div class="dash-timeline-meta">
+          Campanha Fim de Semana Premium · via App · há 3 h
+        </div>
+      </li>
+      <li class="dash-timeline-item">
+        <div class="dash-timeline-main">
+          Ana Souza resgatou 90 moedas
+        </div>
+        <div class="dash-timeline-meta">
+          Combo especial · no PDV · ontem
+        </div>
+      </li>
+    </ul>
+
+    <div class="dash-card-footer">
+      <button class="dash-link-button">Ver todas as transações</button>
+    </div>
+  </article>
+
+  <!-- Ações recomendadas -->
+  <article class="dash-card dash-card--actions">
+    <header class="dash-card-head">
+      <div>
+        <h3 class="dash-card-title">Próximos passos sugeridos</h3>
+        <p class="dash-card-sub">Aproveite o momento certo para engajar seus clientes.</p>
+      </div>
+    </header>
+
+    <div class="dash-actions-grid">
+      <button class="dash-action-pill">
+        Criar campanha relâmpago
+      </button>
+      <button class="dash-action-pill">
+        Ver clientes inativos há 60+ dias
+      </button>
+      <button class="dash-action-pill">
+        Exportar relatório deste mês
+      </button>
+    </div>
+  </article>
+
+<!-- FAB – Dashboard: Creditar moedas / Cadastrar -->
+<button
+  type="button"
+  class="tokn-fab"
+  onclick="toknUI.openCreditModal()"
+>
+  <span class="tokn-fab-icon">✚</span>
+  <span class="tokn-fab-label">Creditar moedas / Cadastrar</span>
+</button>
+</section>
+
+{% endblock %}

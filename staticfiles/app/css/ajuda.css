@@ -1,0 +1,275 @@
+/* CONTÊINER PRINCIPAL */
+.tokn-help-article {
+  background: #0d0d0d;
+  color: #fff;
+  padding: 2rem;
+  border-radius: 22px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+  max-width: 900px;
+  margin: 2rem auto;
+}
+
+/* BREADCRUMB */
+.tokn-help-back {
+  display: inline-block;
+  margin-bottom: 1rem;
+  color: #fc0454;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.tokn-help-back:hover {
+  text-decoration: underline;
+}
+
+/* TÍTULO PRINCIPAL DO ARTIGO */
+.tokn-help-title {
+  font-size: 1.9rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.tokn-help-sub {
+  opacity: 0.7;
+  margin-bottom: 1.5rem;
+}
+
+/* BOTÕES INICIAIS DO ARTIGO (páginas internas de ajuda) */
+.tokn-help-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.tokn-help-btn {
+  background: #fff;
+  padding: 0.6rem 1.2rem;
+  border-radius: 40px;
+  color: #000;
+  font-weight: 600;
+  text-decoration: none;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.1s ease, box-shadow 0.15s ease;
+}
+
+.tokn-help-btn:hover {
+  background: #f2f2f2;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+}
+
+.tokn-help-btn.danger {
+  background: #fc0454;
+  color: #fff;
+}
+
+.tokn-help-btn.danger:hover {
+  background: #fc0454;
+}
+
+/* SEÇÕES INTERNAS */
+.tokn-help-section {
+  margin-bottom: 2rem;
+}
+
+.tokn-help-section h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 0.6rem;
+}
+
+.tokn-help-section p {
+  margin-bottom: 0.5rem;
+  line-height: 1.6;
+}
+
+/* Listas em seções (tanto UL quanto OL) */
+.tokn-help-section ul,
+.tokn-help-section ol {
+  margin-left: 1.2rem;
+  padding-left: 1rem;
+  line-height: 1.7rem;
+}
+
+.tokn-help-section li {
+  margin-bottom: 0.4rem;
+}
+
+/* BOTÃO FINAL */
+.tokn-help-final {
+  display: block;
+  text-align: center;
+  margin-top: 2rem;
+  background: #fc0454;
+  color: #fff;
+  padding: 1rem;
+  border-radius: 16px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.15s ease, transform 0.1s ease, box-shadow 0.15s ease;
+}
+
+.tokn-help-final:hover {
+  background: #fc0454;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.35);
+}
+
+/* Rodapé universal do artigo */
+.tokn-help-article-next {
+  margin-top: 2rem;
+  padding: 2rem;
+  background: #0f0f0f;
+  border-radius: 1rem;
+  border: 1px solid #222;
+}
+
+.tokn-help-article-next h3 {
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.tokn-next-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.tokn-next-actions a {
+  text-decoration: none;
+  padding: 0.55rem 1rem;
+  border-radius: 999px;
+  border: 1px solid #333;
+  font-size: 0.9rem;
+  background: #141414;
+  color: #fff;
+  transition: background 0.15s ease, border-color 0.15s ease, transform 0.1s ease;
+}
+
+.tokn-next-actions a:hover {
+  background: #1f1f1f;
+  border-color: #ff4b6e;
+  transform: translateY(-1px);
+}
+
+/* Feedbackzinho no fim do artigo */
+.tokn-feedback {
+  border-top: 1px solid #222;
+  padding-top: 1rem;
+}
+
+.tokn-feedback p {
+  margin-bottom: 0.5rem;
+  color: #ddd;
+}
+
+.tokn-feedback-btn {
+  background: #1a1a1a;
+  color: #fff;
+  padding: 0.6rem 1rem;
+  border-radius: 0.75rem;
+  border: 1px solid #333;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background 0.15s ease, border-color 0.15s ease, transform 0.1s ease;
+}
+
+.tokn-feedback-btn:hover {
+  background: #ff4f6d;
+  border-color: #ff4f6d;
+  transform: translateY(-1px);
+}
+
+/* ---------- AJUDA HOME: BOTÕES / CHIPS / LINKS ---------- */
+
+/* Não deixar nenhum botão da ajuda com sublinhado */
+.tokn-help-card .tokn-btn,
+.tokn-help-card .tokn-btn:link,
+.tokn-help-card .tokn-btn:visited,
+.tokn-help-btn,
+.tokn-help-btn:link,
+.tokn-help-btn:visited {
+  text-decoration: none;
+}
+
+/* Chips de busca "Cliente não recebeu moedas", etc. */
+.tokn-help-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.tokn-pill,
+.tokn-pill:link,
+.tokn-pill:visited {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.45rem 0.9rem;
+  border-radius: 999px;
+  border: 1px solid #333;
+  font-size: 0.85rem;
+  background: #000;
+  color: #fff;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease, transform 0.1s ease;
+}
+
+.tokn-pill:hover {
+  background: #181818;
+  border-color: #555;
+  text-decoration: none;
+}
+
+/* Estado ativo – magenta da marca visível */
+.tokn-pill.is-active {
+  background: #fc0454;
+  border-color: #fc0454;
+  color: #fff;
+  text-decoration: none;
+}
+
+.tokn-pill.is-active:hover {
+  background: #ff4b6e;
+  border-color: #ff4b6e;
+}
+
+/* Links de "Abrir guia rápido →", etc., sem sublinhado visual de botão */
+.tokn-help-link,
+.tokn-help-link:link,
+.tokn-help-link:visited {
+  text-decoration: none;
+}
+
+/* ---------- AJUSTES ESPECÍFICOS PARA ARTIGOS ---------- */
+
+/* Remover sublinhado dos links dentro dos cards de artigo */
+.tokn-help-article a,
+.tokn-help-article a:link,
+.tokn-help-article a:visited {
+  text-decoration: none;
+}
+
+/* Ajustes responsivos */
+@media (max-width: 768px) {
+  .tokn-help-article {
+    margin: 1rem 1rem 2rem;
+    padding: 1.5rem;
+  }
+
+  .tokn-help-actions {
+    flex-direction: column;
+  }
+
+  .tokn-next-actions {
+    flex-direction: column;
+  }
+}

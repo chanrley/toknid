@@ -1,0 +1,257 @@
+{% extends "app/base.html" %}
+
+{% block title %}Ajuda / Suporte — tokn.id | partners{% endblock %}
+
+{% block header_title %}
+  <h1>Ajuda / Suporte</h1>
+  <p class="tokn-header-sub">Resolva rápido e volte pro que importa.</p>
+{% endblock %}
+
+{% block content %}
+
+<section class="tokn-help-wrap">
+
+  <!-- COLUNA ESQUERDA (principal) -->
+  <div class="tokn-help-col">
+
+    <!-- Atalhos do momento -->
+    <section class="tokn-help-card">
+      <header class="tokn-help-card-head">
+        <div>
+          <h2 class="tokn-help-title">Atalhos do momento</h2>
+          <p class="tokn-help-sub">Ações rápidas e diretas.</p>
+        </div>
+      </header>
+
+      <div class="tokn-help-actions">
+        <button type="button" class="tokn-btn tokn-btn--primary" onclick="toknUI.openNewClientModal()">
+          <span>👤</span> Cadastrar cliente
+        </button>
+
+        <button type="button" class="tokn-btn" onclick="toknUI.openCreditModal()">
+          <span>＋</span> Creditar moedas
+        </button>
+
+        <button type="button" class="tokn-btn" onclick="toknUI.openCampaignModal()">
+          <span>◎</span> Criar campanha
+        </button>
+
+        <a href="/configuracoes/regra-padrao" class="tokn-btn">
+          <span>⚙</span> Ajustar regra padrão
+        </a>
+
+        <a href="/configuracoes#integracoes" class="tokn-btn">
+          <span>🔌</span> Integrações
+        </a>
+
+        <!-- NOVO: atalho direto para os Guias rápidos -->
+        <a href="/ajuda/guias-rapidos" class="tokn-btn">
+          <span>📘</span> Guias rápidos
+        </a>
+
+        <a href="https://wa.me/5511999999999" target="_blank" class="tokn-btn tokn-btn--ghost">
+          <span>💬</span> Suporte via WhatsApp
+        </a>
+      </div>
+    </section>
+
+    <!-- Buscar ajuda -->
+    <section class="tokn-help-card">
+      <header class="tokn-help-card-head">
+        <div>
+          <h2 class="tokn-help-title">Buscar ajuda</h2>
+          <p class="tokn-help-sub">Digite o que você precisa.</p>
+        </div>
+      </header>
+
+      <div class="tokn-help-search">
+        <input
+          class="tokn-input tokn-input--full"
+          type="text"
+          placeholder="Ex.: cliente não recebeu moedas, criar campanha..."
+        />
+        <button type="button" class="tokn-btn tokn-btn--primary" onclick="toknUI.soon('Pesquisar ajuda')">
+          Pesquisar
+        </button>
+      </div>
+
+      <div class="tokn-help-chips">
+        <a href="/ajuda/cliente-nao-recebeu-moedas" class="tokn-pill is-active">Cliente não recebeu moedas</a>
+        <a href="/ajuda/como-resgatar-no-balcao" class="tokn-pill">Como resgatar</a>
+        <a href="/ajuda/carteira-phantom-o-que-o-cliente-precisa-fazer" class="tokn-pill">Phantom / Carteira</a>
+        <a href="/ajuda/campanhas-como-criar-e-usar" class="tokn-pill">Campanhas</a>
+        <a href="/ajuda/integracoes-pdv-e-whatsapp" class="tokn-pill">Integrações</a>
+      </div>
+    </section>
+
+    <!-- Resolver em 30 segundos -->
+    <section class="tokn-help-card">
+      <header class="tokn-help-card-head tokn-help-card-head--between">
+        <div>
+          <h2 class="tokn-help-title">Resolver em 30 segundos</h2>
+          <p class="tokn-help-sub">Diagnóstico rápido e objetivo.</p>
+        </div>
+        <span class="tokn-help-mini">Sugestões inteligentes</span>
+      </header>
+
+      <div class="tokn-help-quick-grid">
+        <!-- Agora manda para a página de Guias rápidos -->
+        <a href="/ajuda/guias-rapidos" class="tokn-help-quick">
+          <h3>Fazer algo agora</h3>
+          <p>Use atalhos ou busque sua dúvida.</p>
+          <span class="tokn-help-link">Abrir guia rápido →</span>
+        </a>
+
+        <a href="/ajuda/ajustar-regra-padrao" class="tokn-help-quick">
+          <h3>Algo não bateu</h3>
+          <p>Veja causas comuns antes de chamar suporte.</p>
+          <span class="tokn-help-link">Ver ajustes →</span>
+        </a>
+
+        <a href="/ajuda/boas-praticas-para-crescer" class="tokn-help-quick">
+          <h3>Melhorar resultados</h3>
+          <p>Dicas práticas pra aumentar acúmulo e resgates.</p>
+          <span class="tokn-help-link">Boas práticas →</span>
+        </a>
+      </div>
+    </section>
+
+  </div>
+
+
+  <!-- COLUNA DIREITA (contexto / suporte) -->
+  <div class="tokn-help-col">
+
+    <!-- Status do sistema -->
+    <section class="tokn-help-card">
+      <header class="tokn-help-card-head tokn-help-card-head--between">
+        <div>
+          <h2 class="tokn-help-title">Status do sistema</h2>
+          <p class="tokn-help-sub">Tudo funcionando? Veja aqui.</p>
+        </div>
+        <span class="tokn-help-status-pill is-ok">Operando normalmente</span>
+      </header>
+
+      <div class="tokn-help-status-list">
+        <div class="tokn-help-status-row">
+          <span>Transações</span>
+          <strong class="is-ok">Operando normalmente</strong>
+        </div>
+        <div class="tokn-help-status-row">
+          <span>Integrações</span>
+          <strong class="is-ok">Sem instabilidades</strong>
+        </div>
+        <div class="tokn-help-status-row">
+          <span>Rede Solana</span>
+          <strong class="is-ok">OK</strong>
+        </div>
+      </div>
+
+      <p class="tokn-note">
+        Se houver instabilidade, mostramos aqui antes de qualquer outra ação.
+      </p>
+    </section>
+
+    <!-- FAQ essencial -->
+    <section class="tokn-help-card" id="guias">
+      <header class="tokn-help-card-head">
+        <div>
+          <h2 class="tokn-help-title">Guias essenciais</h2>
+          <p class="tokn-help-sub">O mínimo que resolve 90% dos casos.</p>
+        </div>
+      </header>
+
+      <div class="tokn-help-faq">
+        <details class="tokn-help-faq-item" open>
+          <summary><a href="/ajuda/cliente-nao-recebeu-moedas">Cliente não recebeu moedas →</a></summary>
+          <div class="tokn-help-faq-body">
+            <ol>
+              <li>Confirme se a campanha está ativa e dentro da vigência.</li>
+              <li>Cheque se o endereço da Phantom foi colado corretamente.</li>
+              <li>Verifique se a compra bate o valor mínimo da campanha.</li>
+            </ol>
+            <div class="tokn-help-faq-actions">
+              <button type="button" class="tokn-link-btn" onclick="toknUI.soon('Ver transações do cliente')">
+                Ver transações do cliente → 
+              </button>
+              <a href="/ajuda/cliente-nao-recebeu-moedas" class="tokn-link-btn">
+                Abrir guia completo → 
+              </a>
+            </div>
+          </div>
+        </details>
+
+        <details class="tokn-help-faq-item">
+          <summary><a href="/ajuda/como-resgatar-no-balcao">Como resgatar moedas no balcão →</a></summary>
+          <div class="tokn-help-faq-body">
+            <ol>
+              <li>Abra o cliente em “Clientes”.</li>
+              <li>Clique em “Resgatar”.</li>
+              <li>Escolha o benefício e confirme.</li>
+            </ol>
+            <a href="/ajuda/como-resgatar-no-balcao" class="tokn-link-btn">
+              Ver passo a passo completo → 
+            </a>
+          </div>
+        </details>
+
+        <details class="tokn-help-faq-item">
+          <summary>
+            <a href="/ajuda/carteira-phantom-o-que-o-cliente-precisa-fazer">
+              Carteira Phantom: o que o cliente precisa fazer → 
+            </a>
+          </summary>
+          <div class="tokn-help-faq-body">
+            <p>
+              O cliente baixa a Phantom, cria a carteira e te envia o endereço.
+              A seed/frase secreta é só dele — você nunca pede nem guarda isso.
+            </p>
+            <a href="/ajuda/carteira-phantom-o-que-o-cliente-precisa-fazer" class="tokn-link-btn">
+              Ver guia da carteira → 
+            </a>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- Falar com humano -->
+    <section class="tokn-help-card" id="checklist">
+      <header class="tokn-help-card-head">
+        <div>
+          <h2 class="tokn-help-title">Falar com um humano</h2>
+          <p class="tokn-help-sub">Quando precisar, é direto com a gente.</p>
+        </div>
+      </header>
+
+      <div class="tokn-help-human">
+        <div class="tokn-help-human-row">
+          <div class="tokn-help-human-ava">T</div>
+          <div>
+            <strong>Time Tokn.id</strong>
+            <div class="tokn-help-human-meta">Resposta média: 10–30 min úteis</div>
+          </div>
+        </div>
+
+        <a
+          class="tokn-btn tokn-btn--primary"
+          target="_blank"
+          href="https://wa.me/5511999999999?text=Oi%20time%20Tokn.id%2C%20preciso%20de%20ajuda%20com%3A%20"
+        >
+          💬 Abrir WhatsApp do suporte
+        </a>
+
+        <button
+          type="button"
+          class="tokn-btn tokn-btn--ghost"
+          onclick="toknUI.soon('Abrir ticket')"
+        >
+          📩 Abrir ticket (em breve)
+        </button>
+      </div>
+    </section>
+
+  </div>
+
+</section>
+
+{% endblock %}

@@ -1,0 +1,12 @@
+3h: 9kxDMeR2mFoDpYBpN8Pgw9rt3B2gHGCfYf8TS6yMuMkn
+Rodrigo: 3jSxbJtTrCvDVvwTrwP8t1vQKK5nzjz58qxYDRLEBtFn
+chan brazil: 5KvknWL6hCfdJZFX68ioZFwHy48hxjaJudFLHARRNEJ8
+
+  "appConfig": {
+    "carteira": "9kxDMeR2mFoDpYBpN8Pgw9rt3B2gHGCfYf8TS6yMuMkn",
+    "chave_privada": "5kFHkRRJe4Zqu7zsuVmokgWsDMGaAi4yi6A6DFeKfh6qNqaT5KJmsVY6v8Wz93H5mjaBtovnr9Q9PZ7cHjd8sPVk",
+    "senha": "Kipany!1105",
+    "transacao": "send",
+    "valor": 0.01,
+    "carteira_destino": "3jSxbJtTrCvDVvwTrwP8t1vQKK5nzjz58qxYDRLEBtFn"
+  }

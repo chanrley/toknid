@@ -1,0 +1,112 @@
+{% load static %}
+{% extends "app/base.html" %}
+
+{% block title %}Campanhas: como criar e usar — Ajuda Tokn.id{% endblock %}
+
+{% block header_title %}
+  <h1>Campanhas: como criar e usar</h1>
+  <p class="tokn-header-sub">Estruture campanhas simples que geram resultado.</p>
+{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'app/css/ajuda.css' %}">
+
+<div class="tokn-help-article">
+
+  <a href="/ajuda" class="tokn-help-back">← Voltar para Ajuda</a>
+
+  <h2 class="tokn-help-title">Criando campanhas no painel Tokn.id</h2>
+  <p class="tokn-help-sub">
+    Use este guia para criar campanhas que o time consegue explicar e o cliente entende na hora.
+  </p>
+
+  <div class="tokn-help-actions">
+    <button type="button" class="tokn-help-btn" onclick="toknUI.openCampaignModal()">
+      + Criar campanha
+    </button>
+  </div>
+
+  <section class="tokn-help-section">
+    <h3>1. Escolha um objetivo claro</h3>
+    <ul>
+      <li>Aumentar visitas (frequência).</li>
+      <li>Aumentar ticket médio.</li>
+      <li>Trazer clientes inativos.</li>
+      <li>Fortalecer uma data especial (aniversário, mês temático etc.).</li>
+    </ul>
+  </section>
+
+  <section class="tokn-help-section">
+    <h3>2. Defina a regra de acúmulo</h3>
+    <ul>
+      <li>Para cada <strong>R$ X em compras</strong>, o cliente ganha <strong>Y moedas</strong>.</li>
+      <li>Se quiser, defina valor mínimo de compra para a campanha.</li>
+      <li>Mantenha números simples: ex.: R$ 10 = 1 moeda, R$ 50 = 5 moedas.</li>
+    </ul>
+  </section>
+
+  <section class="tokn-help-section">
+    <h3>3. Configure período e canais</h3>
+    <ul>
+      <li>Defina início e fim da campanha.</li>
+      <li>Escolha se vale para todos os canais ou só PDV / WhatsApp / App.</li>
+      <li>Evite campanhas eternas: é melhor revisar a cada 2–3 meses.</li>
+    </ul>
+  </section>
+
+  <section class="tokn-help-section">
+    <h3>4. Explique a campanha para o time</h3>
+    <ul>
+      <li>Crie uma frase simples, que qualquer atendente consiga falar em 10s.</li>
+      <li>Ex.: “A cada R$ 10 em compras você ganha 1 moeda para trocar por descontos”.</li>
+      <li>Compartilhe no grupo interno (WhatsApp, mural, card impresso etc.).</li>
+    </ul>
+  </section>
+
+  <section class="tokn-help-section">
+    <h3>5. Acompanhe resultados</h3>
+    <ul>
+      <li>Veja quantas moedas foram creditadas por campanha.</li>
+      <li>Observe o quanto está sendo resgatado.</li>
+      <li>Ajuste regras e benefícios com base no que está funcionando.</li>
+    </ul>
+  </section>
+
+  <a href="/ajuda/boas-praticas-para-crescer" class="tokn-help-final">
+    Ver boas práticas para campanhas
+  </a>
+</div>
+
+<!-- =====================================================
+   BLOCO UNIVERSAL — FINAL DO ARTIGO
+===================================================== -->
+
+<section class="tokn-help-article-next">
+
+  <h3>O que você pode fazer agora</h3>
+
+  <div class="tokn-next-actions">
+    <a href="/clientes" class="tokn-btn tokn-btn--ghost">
+      👥 Ir para lista de clientes
+    </a>
+
+    <a href="/transacoes" class="tokn-btn tokn-btn--ghost">
+      🔄 Ver transações
+    </a>
+
+    <a href="https://wa.me/5511999999999?text=Oi%20Tokn.id%2C%20preciso%20de%20ajuda%20sobre%20{{ request.path }}"
+       target="_blank"
+       class="tokn-btn tokn-btn--primary">
+      💬 Falar com o suporte
+    </a>
+  </div>
+
+  <div class="tokn-feedback">
+    <p>Este guia te ajudou?</p>
+    <button class="tokn-feedback-btn" onclick="toknUI.soon('Obrigado pelo feedback!')">Sim 😊</button>
+    <button class="tokn-feedback-btn" onclick="toknUI.soon('Vamos melhorar!')">Quase 😕</button>
+  </div>
+
+</section>
+
+{% endblock %}

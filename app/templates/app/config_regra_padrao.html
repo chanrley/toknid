@@ -1,0 +1,160 @@
+{% extends "app/base.html" %}
+
+{% block title %}Ajuda / Suporte — tokn.id | partners{% endblock %}
+
+{% block header_title %}
+  <h1>Ajuda / Suporte</h1>
+  <p class="tokn-header-sub">
+    Resolva rápido e volte pro que importa.
+  </p>
+{% endblock %}
+
+{% block content %}
+
+<section class="tokn-settings-wrap tokn-help-wrap">
+
+  <div class="tokn-settings-col">
+
+    <!-- ATALHOS DO MOMENTO -->
+    <section class="tokn-settings-card tokn-help-card">
+      <header class="tokn-settings-card-head">
+        <div>
+          <h2 class="tokn-settings-title">Atalhos do momento</h2>
+          <p class="tokn-settings-sub">Ações rápidas e diretas.</p>
+        </div>
+      </header>
+
+      <div class="tokn-help-actions">
+        <button class="tokn-btn tokn-btn--primary" onclick="window.location.href='/clientes'">👥 Cadastrar cliente</button>
+        <button class="tokn-btn" onclick="toknUI.openCreditModal()">＋ Creditar moedas</button>
+        <button class="tokn-btn" onclick="window.location.href='/campanhas'">◎ Criar campanha</button>
+        <button class="tokn-btn" onclick="window.location.href='/configuracoes/regra-padrao'">⚙ Ajustar regra padrão</button>
+        <button class="tokn-btn" onclick="window.location.href='/configuracoes#integracoes'">⇄ Integrações</button>
+        <button class="tokn-btn tokn-btn--ghost" onclick="toknUI.openSupportWhats()">💬 Suporte via WhatsApp</button>
+      </div>
+    </section>
+
+    <!-- BUSCA -->
+    <section class="tokn-settings-card tokn-help-card">
+      <header class="tokn-settings-card-head">
+        <div>
+          <h2 class="tokn-settings-title">Buscar ajuda</h2>
+          <p class="tokn-settings-sub">Digite o que você precisa.</p>
+        </div>
+      </header>
+
+      <div class="tokn-help-search">
+        <input id="helpSearch" class="tokn-input tokn-input--full"
+          placeholder="Ex.: cliente não recebeu moedas, criar campanha..." />
+        <button class="tokn-btn" onclick="toknHelp.search()">Pesquisar</button>
+      </div>
+
+      <div class="tokn-help-chips">
+        <button class="tokn-settings-tag is-active" onclick="toknHelp.quick('cliente não recebeu moedas')">Cliente não recebeu moedas</button>
+        <button class="tokn-settings-tag" onclick="toknHelp.quick('como resgatar')">Como resgatar</button>
+        <button class="tokn-settings-tag" onclick="toknHelp.quick('phantom')">Phantom / Carteira</button>
+        <button class="tokn-settings-tag" onclick="toknHelp.quick('campanhas')">Campanhas</button>
+        <button class="tokn-settings-tag" onclick="toknHelp.quick('integracoes')">Integrações</button>
+      </div>
+    </section>
+
+    <!-- RESOLVER EM 30 SEGUNDOS -->
+    <section class="tokn-settings-card tokn-help-card">
+      <header class="tokn-settings-card-head">
+        <h2 class="tokn-settings-title">Resolver em 30 segundos</h2>
+        <p class="tokn-settings-sub">Diagnóstico rápido e objetivo.</p>
+      </header>
+
+      <div class="tokn-help-fast">
+        <div class="tokn-help-fast-item">
+          <h3>Fazer algo agora</h3>
+          <p>Use os atalhos acima ou busque sua dúvida.</p>
+          <button class="tokn-link-btn" onclick="toknHelp.open('como-fazer')">Abrir guias →</button>
+        </div>
+
+        <div class="tokn-help-fast-item">
+          <h3>Algo não bateu</h3>
+          <p>Veja as causas mais comuns antes de chamar suporte.</p>
+          <button class="tokn-link-btn" onclick="toknHelp.open('deu-ruim')">Checklist →</button>
+        </div>
+
+        <div class="tokn-help-fast-item">
+          <h3>Melhorar resultados</h3>
+          <p>Dicas práticas para aumentar acúmulo e resgates.</p>
+          <button class="tokn-link-btn" onclick="toknHelp.open('melhorar')">Boas práticas →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- STATUS DO SISTEMA -->
+    <section class="tokn-settings-card tokn-help-card">
+      <header class="tokn-settings-card-head">
+        <h2 class="tokn-settings-title">Status do sistema</h2>
+        <p class="tokn-settings-sub">Tudo funcionando? Veja aqui.</p>
+      </header>
+
+      <div class="tokn-settings-summary">
+        <div class="tokn-settings-field">
+          <span class="tokn-settings-label">Transações</span>
+          <span class="tokn-settings-value">Operando normalmente</span>
+        </div>
+        <div class="tokn-settings-field">
+          <span class="tokn-settings-label">Integrações</span>
+          <span class="tokn-settings-value">Sem instabilidades</span>
+        </div>
+        <div class="tokn-settings-field">
+          <span class="tokn-settings-label">Rede Solana</span>
+          <span class="tokn-settings-value">OK</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- SUPORTE HUMANO -->
+    <section class="tokn-settings-card tokn-help-card">
+      <header class="tokn-settings-card-head">
+        <h2 class="tokn-settings-title">Falar com suporte</h2>
+        <p class="tokn-settings-sub">Quando preferir ajuda de verdade.</p>
+      </header>
+
+      <div class="tokn-help-support">
+        <button class="tokn-btn tokn-btn--primary" onclick="toknUI.openSupportWhats()">
+          💬 Suporte no WhatsApp
+        </button>
+        <button class="tokn-btn" onclick="toknUI.soon('Chat interno em breve')">
+          💻 Chat interno <span class="tokn-settings-badge">em breve</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- DICA DA SEMANA -->
+    <section class="tokn-settings-card tokn-help-card">
+      <header class="tokn-settings-card-head">
+        <h2 class="tokn-settings-title">Dica rápida</h2>
+        <p class="tokn-settings-sub">Um insight útil de cada vez.</p>
+      </header>
+
+      <p class="tokn-settings-value">
+        Campanhas curtas (7–14 dias) costumam gerar mais recorrência que campanhas longas.
+      </p>
+    </section>
+
+  </div>
+
+</section>
+
+<script>
+  window.toknHelp = {
+    quick(q) {
+      document.getElementById('helpSearch').value = q;
+      this.search();
+    },
+    search() {
+      toknUI.soon("Buscar ajuda: " + document.getElementById('helpSearch').value);
+    },
+    open(slug) {
+      toknUI.soon("Abrir guia: " + slug);
+    }
+  };
+</script>
+
+{% endblock %}

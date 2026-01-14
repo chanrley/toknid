@@ -1,0 +1,476 @@
+{% extends "app/base.html" %}
+
+{% block title %}Campanhas — tokn.id | partners{% endblock %}
+
+{% block header_title %}
+  <h1>Campanhas</h1>
+  <p class="tokn-header-sub">
+    Gerencie as campanhas que geram moedas e benefícios para seus clientes.
+  </p>
+{% endblock %}
+
+{% block content %}
+
+  <!-- ==============================
+       RESUMO DO PERÍODO
+  =============================== -->
+  <section class="tokn-sec-head">
+    <div>
+      <h2 class="tokn-sec-title">Resumo do período</h2>
+      <p class="tokn-sec-sub">
+        Veja os principais números das campanhas ativas.
+      </p>
+    </div>
+
+    <div class="tokn-period-filters">
+      <button type="button" class="tokn-pill is-active">Últimos 7 dias</button>
+      <button type="button" class="tokn-pill">30 dias</button>
+      <button type="button" class="tokn-pill">90 dias</button>
+      <button type="button" class="tokn-pill">Personalizado</button>
+    </div>
+  </section>
+
+  <div class="tokn-kpis tokn-kpis--4">
+    <div class="tokn-kpi">
+      <div class="tokn-kpi-value">4</div>
+      <div class="tokn-kpi-label">Campanhas ativas</div>
+      <div class="tokn-kpi-meta">+1 vs período anterior</div>
+    </div>
+    <div class="tokn-kpi">
+      <div class="tokn-kpi-value">9.850</div>
+      <div class="tokn-kpi-label">Moedas creditadas em campanhas</div>
+      <div class="tokn-kpi-meta">R$ 4.925,00 em benefícios potenciais</div>
+    </div>
+    <div class="tokn-kpi">
+      <div class="tokn-kpi-value">3.120</div>
+      <div class="tokn-kpi-label">Clientes impactados</div>
+      <div class="tokn-kpi-meta">37% da base total</div>
+    </div>
+    <div class="tokn-kpi">
+      <div class="tokn-kpi-value">31%</div>
+      <div class="tokn-kpi-label">Taxa de resgate em campanhas</div>
+      <div class="tokn-kpi-meta">Meta sugerida: 30–40%</div>
+    </div>
+  </div>
+
+  <!-- ==============================
+       BUSCA + FILTROS
+  =============================== -->
+  <section class="tokn-sec tokn-camp-search-wrap">
+    <form
+      class="tokn-search"
+      onsubmit="return toknUI.searchCampaigns && toknUI.searchCampaigns(this);"
+    >
+      <input
+        class="tokn-input"
+        type="search"
+        name="q"
+        placeholder="Buscar campanha pelo nome"
+      />
+      <button type="submit" class="tokn-btn">
+        Pesquisar
+      </button>
+    </form>
+
+    <div class="tokn-camp-filters">
+      <div class="tokn-camp-filter-group">
+        <span class="tokn-camp-filter-label">Status</span>
+        <div class="tokn-filtros">
+          <button type="button" class="tokn-pill is-active">Todas</button>
+          <button type="button" class="tokn-pill">Ativas</button>
+          <button type="button" class="tokn-pill">Pausadas</button>
+          <button type="button" class="tokn-pill">Agendadas</button>
+        </div>
+      </div>
+
+      <div class="tokn-camp-filter-group">
+        <span class="tokn-camp-filter-label">Tipo</span>
+        <div class="tokn-filtros">
+          <button type="button" class="tokn-pill is-active">Todos</button>
+          <button type="button" class="tokn-pill">Cashback</button>
+          <button type="button" class="tokn-pill">Pontos</button>
+          <button type="button" class="tokn-pill">Aniversário</button>
+          <button type="button" class="tokn-pill">Indique e ganhe</button>
+        </div>
+      </div>
+
+      <div class="tokn-camp-filter-group">
+        <span class="tokn-camp-filter-label">Canal</span>
+        <div class="tokn-filtros">
+          <button type="button" class="tokn-pill is-active">Todos</button>
+          <button type="button" class="tokn-pill">PDV</button>
+          <button type="button" class="tokn-pill">WhatsApp</button>
+          <button type="button" class="tokn-pill">App / Link</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==============================
+       LISTA DE CAMPANHAS
+  =============================== -->
+  <section class="tokn-sec-head tokn-sec-head--table">
+    <div>
+      <h2 class="tokn-sec-title">Campanhas em andamento</h2>
+      <p class="tokn-sec-sub">
+        Acompanhe o desempenho de cada campanha e faça ajustes rápidos.
+      </p>
+    </div>
+  </section>
+
+  <section class="tokn-camp-list">
+    <!-- Campanha 1 -->
+    <article
+      class="tokn-camp-card"
+      onclick="toknUI.openCampaignPanel && toknUI.openCampaignPanel('Outubro em Dobro');"
+    >
+      <header class="tokn-camp-card-head">
+        <div>
+          <h3 class="tokn-camp-name">Outubro em Dobro</h3>
+          <p class="tokn-camp-meta">
+            Cashback em dobro no mês de outubro · Canal: PDV · Vigência: 01/10 a 31/10
+          </p>
+        </div>
+        <div class="tokn-camp-head-right">
+          <span class="tokn-pill tokn-camp-status tokn-camp-status--on">
+            Ativa
+          </span>
+        </div>
+      </header>
+
+      <div class="tokn-camp-body">
+        <div class="tokn-camp-metrics">
+          <div class="tokn-camp-metric">
+            <span class="tokn-camp-metric-label">Moedas creditadas</span>
+            <span class="tokn-camp-metric-value">3.200</span>
+          </div>
+          <div class="tokn-camp-metric">
+            <span class="tokn-camp-metric-label">Moedas resgatadas</span>
+            <span class="tokn-camp-metric-value">1.450</span>
+          </div>
+          <div class="tokn-camp-metric">
+            <span class="tokn-camp-metric-label">Clientes impactados</span>
+            <span class="tokn-camp-metric-value">980</span>
+          </div>
+          <div class="tokn-camp-metric">
+            <span class="tokn-camp-metric-label">Ticket médio</span>
+            <span class="tokn-camp-metric-value">R$ 82,40</span>
+          </div>
+        </div>
+
+        <div class="tokn-camp-chart-mini">
+          <div class="tokn-chart-label">Período</div>
+          <div class="tokn-chart-bars">
+            <div class="tokn-chart-bar tokn-chart-bar--cred" style="width: 60%;"></div>
+            <div class="tokn-chart-bar tokn-chart-bar--resg" style="width: 35%;"></div>
+          </div>
+          <div class="tokn-camp-chart-legend">
+            <span><span class="tokn-dot tokn-dot--cred"></span>Creditadas</span>
+            <span><span class="tokn-dot tokn-dot--resg"></span>Resgatadas</span>
+          </div>
+        </div>
+      </div>
+
+      <footer class="tokn-camp-foot">
+        <span class="tokn-camp-foot-meta">
+          Atualizada há 2 dias · Criada em 01/10/2025
+        </span>
+        <div class="tokn-camp-actions">
+          <button
+            type="button"
+            class="tokn-act"
+            onclick="event.stopPropagation(); toknUI.soon('Pausar campanha');"
+            title="Pausar campanha"
+          >
+            ⏸
+          </button>
+          <button
+            type="button"
+            class="tokn-act"
+            onclick="event.stopPropagation(); toknUI.soon('Editar campanha');"
+            title="Editar"
+          >
+            ✎
+          </button>
+          <button
+            type="button"
+            class="tokn-act"
+            onclick="event.stopPropagation(); toknUI.soon('Duplicar campanha');"
+            title="Duplicar"
+          >
+            ⧉
+          </button>
+          <button
+            type="button"
+            class="tokn-act"
+            onclick="event.stopPropagation(); toknUI.soon('Ver transações da campanha');"
+            title="Ver transações"
+          >
+            ⤵
+          </button>
+        </div>
+      </footer>
+    </article>
+
+    <!-- Campanha 2 -->
+    <article
+      class="tokn-camp-card"
+      onclick="toknUI.openCampaignPanel && toknUI.openCampaignPanel('Aniversariante do Cliente');"
+    >
+      <header class="tokn-camp-card-head">
+        <div>
+          <h3 class="tokn-camp-name">Aniversariante do Cliente</h3>
+          <p class="tokn-camp-meta">
+            Bônus de moedas para clientes que fazem aniversário no mês corrente.
+          </p>
+        </div>
+        <div class="tokn-camp-head-right">
+          <span class="tokn-pill tokn-camp-status tokn-camp-status--on">
+            Ativa
+          </span>
+        </div>
+      </header>
+
+      <div class="tokn-camp-body">
+        <div class="tokn-camp-metrics">
+          <div class="tokn-camp-metric">
+            <span class="tokn-camp-metric-label">Moedas creditadas</span>
+            <span class="tokn-camp-metric-value">980</span>
+          </div>
+          <div class="tokn-camp-metric">
+            <span class="tokn-camp-metric-label">Moedas resgatadas</span>
+            <span class="tokn-camp-metric-value">610</span>
+          </div>
+          <div class="tokn-camp-metric">
+            <span class="tokn-camp-metric-label">Clientes impactados</span>
+            <span class="tokn-camp-metric-value">420</span>
+          </div>
+          <div class="tokn-camp-metric">
+            <span class="tokn-camp-metric-label">Ticket médio</span>
+            <span class="tokn-camp-metric-value">R$ 95,10</span>
+          </div>
+        </div>
+
+        <div class="tokn-camp-chart-mini">
+          <div class="tokn-chart-label">Período</div>
+          <div class="tokn-chart-bars">
+            <div class="tokn-chart-bar tokn-chart-bar--cred" style="width: 45%;"></div>
+            <div class="tokn-chart-bar tokn-chart-bar--resg" style="width: 30%;"></div>
+          </div>
+          <div class="tokn-camp-chart-legend">
+            <span><span class="tokn-dot tokn-dot--cred"></span>Creditadas</span>
+            <span><span class="tokn-dot tokn-dot--resg"></span>Resgatadas</span>
+          </div>
+        </div>
+      </div>
+
+      <footer class="tokn-camp-foot">
+        <span class="tokn-camp-foot-meta">
+          Atualizada ontem · Criada em 05/09/2025
+        </span>
+        <div class="tokn-camp-actions">
+          <button
+            type="button"
+            class="tokn-act"
+            onclick="event.stopPropagation(); toknUI.soon('Pausar campanha');"
+          >
+            ⏸
+          </button>
+          <button
+            type="button"
+            class="tokn-act"
+            onclick="event.stopPropagation(); toknUI.soon('Editar campanha');"
+          >
+            ✎
+          </button>
+          <button
+            type="button"
+            class="tokn-act"
+            onclick="event.stopPropagation(); toknUI.soon('Duplicar campanha');"
+          >
+            ⧉
+          </button>
+          <button
+            type="button"
+            class="tokn-act"
+            onclick="event.stopPropagation(); toknUI.soon('Ver transações da campanha');"
+          >
+            ⤵
+          </button>
+        </div>
+      </footer>
+    </article>
+
+    <!-- Campanha 3 -->
+    <article
+      class="tokn-camp-card"
+      onclick="toknUI.openCampaignPanel && toknUI.openCampaignPanel('Indique e Ganhe');"
+    >
+      <header class="tokn-camp-card-head">
+        <div>
+          <h3 class="tokn-camp-name">Indique e Ganhe</h3>
+          <p class="tokn-camp-meta">
+            Cliente ganha moedas ao indicar novos clientes que consomem no comércio.
+          </p>
+        </div>
+        <div class="tokn-camp-head-right">
+          <span class="tokn-pill tokn-camp-status tokn-camp-status--paused">
+            Pausada
+          </span>
+        </div>
+      </header>
+
+      <div class="tokn-camp-body">
+        <div class="tokn-camp-metrics">
+          <div class="tokn-camp-metric">
+            <span class="tokn-camp-metric-label">Moedas creditadas</span>
+            <span class="tokn-camp-metric-value">420</span>
+          </div>
+          <div class="tokn-camp-metric">
+            <span class="tokn-camp-metric-label">Moedas resgatadas</span>
+            <span class="tokn-camp-metric-value">190</span>
+          </div>
+          <div class="tokn-camp-metric">
+            <span class="tokn-camp-metric-label">Clientes impactados</span>
+            <span class="tokn-camp-metric-value">140</span>
+          </div>
+          <div class="tokn-camp-metric">
+            <span class="tokn-camp-metric-label">Ticket médio</span>
+            <span class="tokn-camp-metric-value">R$ 76,30</span>
+          </div>
+        </div>
+
+        <div class="tokn-camp-chart-mini">
+          <div class="tokn-chart-label">Período</div>
+          <div class="tokn-chart-bars">
+            <div class="tokn-chart-bar tokn-chart-bar--cred" style="width: 35%;"></div>
+            <div class="tokn-chart-bar tokn-chart-bar--resg" style="width: 20%;"></div>
+          </div>
+          <div class="tokn-camp-chart-legend">
+            <span><span class="tokn-dot tokn-dot--cred"></span>Creditadas</span>
+            <span><span class="tokn-dot tokn-dot--resg"></span>Resgatadas</span>
+          </div>
+        </div>
+      </div>
+
+      <footer class="tokn-camp-foot">
+        <span class="tokn-camp-foot-meta">
+          Pausada há 5 dias · Criada em 10/08/2025
+        </span>
+        <div class="tokn-camp-actions">
+          <button
+            type="button"
+            class="tokn-act"
+            onclick="event.stopPropagation(); toknUI.soon('Reativar campanha');"
+          >
+            ▶
+          </button>
+          <button
+            type="button"
+            class="tokn-act"
+            onclick="event.stopPropagation(); toknUI.soon('Editar campanha');"
+          >
+            ✎
+          </button>
+          <button
+            type="button"
+            class="tokn-act"
+            onclick="event.stopPropagation(); toknUI.soon('Duplicar campanha');"
+          >
+            ⧉
+          </button>
+          <button
+            type="button"
+            class="tokn-act"
+            onclick="event.stopPropagation(); toknUI.soon('Ver transações da campanha');"
+          >
+            ⤵
+          </button>
+        </div>
+      </footer>
+    </article>
+  </section>
+
+  <!-- ==============================
+       OVERLAY + PAINEL LATERAL DA CAMPANHA
+       (só usa nesta página – debug visual)
+  =============================== -->
+  <div
+    class="tokn-camp-overlay"
+    onclick="toknUI.closeCampaignPanel && toknUI.closeCampaignPanel();"
+  ></div>
+
+  <aside
+    class="tokn-camp-panel"
+    aria-hidden="true"
+  >
+    <header class="tokn-camp-panel-head">
+      <div>
+        <h2 id="tokn-camp-title">Nome da campanha</h2>
+        <p class="tokn-camp-panel-sub">
+          Visão geral do desempenho e das regras desta campanha.
+        </p>
+      </div>
+      <button
+        type="button"
+        class="tokn-modal-x"
+        aria-label="Fechar"
+        onclick="toknUI.closeCampaignPanel && toknUI.closeCampaignPanel();"
+      >
+        ✕
+      </button>
+    </header>
+
+    <section class="tokn-camp-panel-sec">
+      <h3 class="tokn-sectit">Resumo da campanha</h3>
+      <div class="tokn-camp-panel-kpis">
+        <div class="tokn-camp-panel-kpi">
+          <span class="tokn-camp-panel-kpi-label">Moedas creditadas</span>
+          <span class="tokn-camp-panel-kpi-value">3.200</span>
+        </div>
+        <div class="tokn-camp-panel-kpi">
+          <span class="tokn-camp-panel-kpi-label">Moedas resgatadas</span>
+          <span class="tokn-camp-panel-kpi-value">1.450</span>
+        </div>
+        <div class="tokn-camp-panel-kpi">
+          <span class="tokn-camp-panel-kpi-label">Clientes impactados</span>
+          <span class="tokn-camp-panel-kpi-value">980</span>
+        </div>
+      </div>
+
+      <p class="tokn-camp-panel-note">
+        Esses números são apenas mock para layout. Depois conectamos com os dados reais.
+      </p>
+    </section>
+
+    <section class="tokn-camp-panel-sec">
+      <h3 class="tokn-sectit">Regras e benefícios</h3>
+      <ul class="tokn-camp-panel-list">
+        <li>1 moeda a cada R$ 5,00 em compras.</li>
+        <li>Resgates a partir de 200 moedas = R$ 20,00 de desconto.</li>
+        <li>Válida apenas para pagamentos via PDV nesta unidade.</li>
+      </ul>
+    </section>
+
+    <section class="tokn-camp-panel-sec">
+      <h3 class="tokn-sectit">Público e canais</h3>
+      <ul class="tokn-camp-panel-list">
+        <li>Público: todos os clientes cadastrados.</li>
+        <li>Canais: PDV + WhatsApp com link Tokn.id.</li>
+        <li>Vigência: 01/10/2025 a 31/10/2025.</li>
+      </ul>
+    </section>
+  </aside>
+
+<!-- FAB – Campanhas: Criar nova campanha -->
+<button
+  type="button"
+  class="tokn-fab"
+  onclick="toknUI.openCampaignModal()"
+>
+  <span class="tokn-fab-icon">✚</span>
+  <span class="tokn-fab-label">Criar nova campanha</span>
+</button>
+
+
+{% endblock %}

@@ -1,0 +1,2950 @@
+/* RESET BÁSICO */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-family: "Montserrat", system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+  background: #f4f4f7;
+  color: #111111;
+}
+
+/* Acessibilidade */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* LAYOUT GERAL */
+.tokn-shell {
+  min-height: 100vh;
+  display: flex;
+  background: #f4f4f7;
+}
+
+/* SIDEBAR / NAV */
+.tokn-nav {
+  width: 260px;
+  background: #050505;
+  color: #f9fafb;
+  padding: 1.25rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.tokn-nav-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+/* ### AJUSTE: logo no topo do menu, com tamanho controlado e responsivo */
+.tokn-nav-brand {
+  display: inline-flex;
+  align-items: center;
+}
+
+.tokn-nav-logo {
+  max-width: 150px;
+  height: auto;
+  display: block;
+  padding-top: 3%;
+  padding-left: 14px;
+}
+
+/* Toggle + avatar pequeno (mobile) – oculto no desktop, mostrado no @media */
+.tokn-nav-top-right {
+  display: none;
+}
+
+/* avatares do nav mobile */
+.tokn-nav-avatar-sm,
+.tokn-nav-avatar-lg {
+  border-radius: 999px;
+  background: #111111;
+  color: #f9fafb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+}
+
+/* Toggle menu */
+.tokn-nav-toggle {
+  border-radius: 999px;
+  border: 1px solid #262626;
+  background: transparent;
+  color: #f9fafb;
+  padding: 0.25rem 0.5rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.tokn-nav-items {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  margin-top: 0.75rem;
+}
+
+/* menu mais “bold” (fonte + ícone) */
+.tokn-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.55rem 0.7rem;
+  border-radius: 999px;
+  text-decoration: none;
+  color: #d4d4d4;
+  font-size: 1rem;
+  font-weight: 800;
+  transition: background 0.16s, color 0.16s, transform 0.05s;
+}
+
+/* HOVER: texto + ícone magenta ToknId */
+.tokn-nav-item:hover {
+  background: #111111;
+  color: #fc0454;
+  transform: translateX(1px);
+}
+
+.tokn-nav-item:hover .tokn-nav-icon {
+  color: #fc0454;
+}
+
+/* ATIVO: mantém magenta no texto + ícone */
+.tokn-nav-item.is-active {
+  background: #111111;
+  color: #fc0454;
+}
+
+.tokn-nav-item.is-active .tokn-nav-icon {
+  color: #fc0454;
+}
+
+/* acessibilidade: foco por teclado acompanha o hover */
+.tokn-nav-item:focus-visible {
+  outline: none;
+  background: #111111;
+  color: #fc0454;
+}
+.tokn-nav-item:focus-visible .tokn-nav-icon {
+  color: #fc0454;
+}
+
+/* Ícones do menu – flat branco, maiores e bold */
+.tokn-nav-icon {
+  width: 22px;
+  text-align: center;
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 700;
+  transition: color 0.16s;
+}
+
+.tokn-nav-foot {
+  margin-top: auto;
+  padding-top: 0.6rem;
+  border-top: 1px dashed #262626;
+  font-size: 0.75rem;
+  color: #737373;
+}
+
+/* ÁREA PRINCIPAL */
+.tokn-main-wrap {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* HEADER BRANCO */
+.tokn-header {
+  padding: 1.3rem 2rem 0.8rem;
+  background: #ffffff;
+  border-bottom: 1px solid #e5e5e5;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.tokn-header-left h1 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 0.15rem;
+}
+
+.tokn-header-sub {
+  font-size: 0.9rem;
+  color: #6b7280;
+}
+
+.tokn-header-right {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.tokn-header-user {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.tokn-header-user-info {
+  text-align: right;
+  font-size: 0.8rem;
+}
+
+.tokn-header-user-name {
+  font-weight: 600;
+}
+
+.tokn-header-user-meta {
+  color: #9ca3af;
+  font-size: 0.75rem;
+}
+
+.tokn-header-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  background: #111111;
+  color: #f9fafb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+}
+
+/* ### AJUSTE: garantir círculos perfeitos (não achatar no mobile) */
+.tokn-header-avatar,
+.tokn-avatar,
+.tokn-nav-avatar-sm,
+.tokn-nav-avatar-lg {
+  flex-shrink: 0;
+  aspect-ratio: 1 / 1;
+}
+
+/* CONTEÚDO PRINCIPAL */
+.tokn-main {
+  padding: 1.5rem 2rem 2rem;
+}
+
+/* AÇÕES TOPO (botões) */
+.tokn-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 1.2rem;
+}
+
+/* botões com fonte 800, hover só com grow */
+.tokn-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  border-radius: 999px;
+  border: 1px solid #d4d4d4;
+  padding: 0.55rem 1.2rem;
+  font-size: 0.9rem;
+  font-weight: 800;
+  background: #ffffff;
+  color: #111111;
+  cursor: pointer;
+  transition: transform 0.12s ease-out, box-shadow 0.12s ease-out;
+}
+
+.tokn-btn:hover {
+  transform: scale(1.03);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.16);
+}
+
+.tokn-btn span {
+  display: inline-flex;
+}
+
+/* Botão primário: Novo Cliente – magenta ToknId */
+.tokn-btn--primary {
+  background: #fc0454;
+  border-color: #fc0454;
+  color: #ffffff;
+}
+
+/* Botão secundário: Exportar CSV – fundo preto, texto branco */
+.tokn-actions .tokn-btn:not(.tokn-btn--primary) {
+  background: #050505;
+  border-color: #050505;
+  color: #ffffff;
+}
+
+/* BUSCA */
+.tokn-search {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.3rem;
+}
+
+.tokn-input {
+  flex: 1;
+  min-width: 260px;
+  padding: 0.7rem 1rem;
+  border-radius: 999px;
+  border: 1px solid #d4d4d4;
+  background: #ffffff;
+  font-size: 0.9rem;
+  color: #111111;
+}
+
+.tokn-input::placeholder {
+  color: #9ca3af;
+}
+
+/* KPIs – cards pretos */
+.tokn-kpis {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.tokn-kpi {
+  border-radius: 1.1rem;
+  padding: 1.1rem 1.25rem;
+  background: radial-gradient(circle at top left, #111111, #000000);
+  color: #f9fafb;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.45);
+}
+
+.tokn-kpi-value {
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+.tokn-kpi-label {
+  margin-top: 0.4rem;
+  font-size: 0.75rem;
+  color: #e5e5e5;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* FILTROS */
+.tokn-filtros {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.tokn-pill {
+  border-radius: 999px;
+  border: 1px solid #d4d4d4;
+  padding: 0.35rem 0.9rem;
+  font-size: 0.8rem;
+  background: #ffffff;
+  color: #4b5563;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+
+.tokn-pill:hover {
+  border-color: #a3a3a3;
+  color: #111111;
+}
+
+.tokn-pill.is-active {
+  border-color: #111111;
+  background: #111111;
+  color: #f9fafb;
+}
+
+/* TABELA – preto */
+.tokn-table-wrap {
+  margin-top: 0.5rem;
+  border-radius: 1rem;
+  border: 1px solid #111111;
+  overflow: hidden;
+  background: #050505;
+}
+
+.tokn-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+
+.tokn-table thead {
+  background: #000000;
+  color: #9ca3af;
+}
+
+.tokn-table th,
+.tokn-table td {
+  padding: 0.65rem 0.9rem;
+  text-align: left;
+  border-bottom: 1px solid #171717;
+  vertical-align: top;
+}
+
+.tokn-table th {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.tokn-table tbody tr {
+  color: #f9fafb;
+}
+
+.tokn-table tbody tr:nth-child(odd) {
+  background: #050505;
+}
+
+.tokn-table tbody tr:nth-child(even) {
+  background: #0b0b0b;
+}
+
+.tokn-table tbody tr:hover {
+  background: #181818;
+}
+
+/* Nome + meta */
+.tokn-name {
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.tokn-meta {
+  font-size: 0.75rem;
+  color: #9ca3af;
+}
+
+/* Badge VIP */
+.tokn-badge {
+  font-size: 0.7rem;
+  border-radius: 999px;
+  padding: 0.1rem 0.55rem;
+  border: 1px solid #facc15;
+  color: #fef9c3;
+  background: rgba(250, 204, 21, 0.08);
+}
+
+/* Status */
+.tokn-status {
+  font-size: 0.75rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  border: 1px solid transparent;
+}
+
+.tokn-status--on {
+  background: rgba(34, 197, 94, 0.25);
+  border-color: rgba(34, 197, 94, 0.9);
+  color: #bbf7d0;
+}
+
+.tokn-status--off {
+  background: rgba(82, 82, 82, 0.7);
+  border-color: rgba(115, 115, 115, 0.9);
+  color: #e5e5e5;
+}
+
+/* AÇÕES NA TABELA */
+.tokn-acts {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.25rem;
+}
+
+.tokn-act {
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+  border: 1px solid #262626;
+  background: #000000;
+  color: #f9fafb;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  transition: transform 0.12s ease-out, box-shadow 0.12s ease-out,
+    background 0.12s ease-out;
+}
+
+.tokn-act:hover {
+  transform: scale(1.05);
+  background: #181818;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
+}
+
+/* OVERLAY + PAINEL */
+.tokn-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+  z-index: 80;
+}
+
+.tokn-overlay.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.tokn-panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: min(420px, 100%);
+  height: 100%;
+  background: #050505;
+  color: #f9fafb;
+  border-left: 1px solid #171717;
+  transform: translateX(100%);
+  transition: transform 0.22s ease-out;
+  z-index: 90;
+  display: flex;
+  flex-direction: column;
+}
+
+.tokn-panel.is-open {
+  transform: translateX(0);
+}
+
+/* Cabeçalho painel */
+.tokn-phd {
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid #171717;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.tokn-avatar {
+  width: 42px;
+  height: 42px;
+  margin-top: -26px;
+  border-radius: 999px;
+  background: radial-gradient(circle at top, #fc0454, #f97316);
+  color: #050505;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+}
+
+.tokn-pbtns {
+  margin-top: 0.35rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+}
+
+.tokn-pbtn {
+  border-radius: 999px;
+  border: 1px solid #262626;
+  background: #050505;
+  color: #f9fafb;
+  padding: 0.25rem 0.6rem;
+  font-size: 0.75rem;
+  cursor: pointer;
+}
+
+.tokn-pbtn--pink {
+  border-color: #f472b6;
+  background: linear-gradient(135deg, #ec4899, #f97316);
+  color: #050505;
+}
+
+.tokn-x {
+  margin-left: auto;
+  border-radius: 999px;
+  border: 1px solid #262626;
+  background: #050505;
+  color: #f9fafb;
+  cursor: pointer;
+  width: 26px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Seções painel */
+.tokn-sec {
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid #171717;
+  font-size: 0.85rem;
+}
+
+.tokn-sectit {
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+}
+
+.tokn-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-top: 0.2rem;
+}
+
+.tokn-row .muted {
+  color: #9ca3af;
+}
+
+/* Timeline */
+.tokn-timeline {
+  list-style: none;
+  font-size: 0.8rem;
+}
+
+.tokn-timeline li {
+  padding: 0.25rem 0;
+  border-bottom: 1px dashed #171717;
+}
+
+/* =========================================================
+   RESPONSIVO
+   ====================================================== */
+
+/* ### RESPONSIVO GERAL (até 900px) */
+@media (max-width: 900px) {
+  .tokn-shell {
+    flex-direction: column;
+  }
+
+  /* NAV VIRA TOP BAR + DRAWER */
+  .tokn-nav {
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    border-right: none;
+    border-bottom: 1px solid #171717;
+    padding: 0.75rem 1rem;
+  }
+
+  .tokn-nav-top-right {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .tokn-nav-avatar-sm {
+    width: 28px;
+    height: 28px;
+  }
+
+  /* bloco user dentro do menu mobile */
+  .tokn-nav-mobile-user {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding-bottom: 0.75rem;
+    margin-bottom: 0.75rem;
+    border-bottom: 1px dashed #262626;
+  }
+
+  .tokn-nav-avatar-lg {
+    width: 38px;
+    height: 38px;
+  }
+
+  .tokn-nav-mobile-user-text {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.8rem;
+  }
+
+  .tokn-nav-mobile-name {
+    font-weight: 600;
+  }
+
+  .tokn-nav-mobile-store {
+    color: #9ca3af;
+    font-size: 0.75rem;
+  }
+
+  /* itens do menu só aparecem quando .is-nav-open */
+  .tokn-nav-items {
+    display: none;
+    flex-direction: column;
+    gap: 0.3rem;
+    margin-top: 0.75rem;
+  }
+
+  .tokn-shell.is-nav-open .tokn-nav-items {
+    display: flex;
+  }
+
+  /* some modo parceiro no mobile */
+  .tokn-nav-foot {
+    display: none;
+  }
+
+  /* header branca perde o bloco de usuário (já mostramos no topo preto) */
+  .tokn-header-right {
+    display: none;
+  }
+
+  .tokn-main {
+    padding: 1rem;
+  }
+
+  .tokn-kpis {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ### MOBILE – TABELA VIROU CARDS (apenas retrato) */
+@media (max-width: 900px) and (orientation: portrait) {
+  .tokn-table {
+    display: block;
+  }
+
+  .tokn-table thead {
+    display: none;
+  }
+
+  .tokn-table tbody {
+    display: block;
+  }
+
+  /* ### AJUSTE: separar visualmente os cards */
+  .tokn-table-wrap {
+    border: none;
+    border-radius: 0;
+    background: transparent;
+    overflow: visible;
+  }
+
+  .tokn-table tbody tr {
+    display: block;
+    margin: 0.9rem 0; /* espaçamento entre cards */
+    background: #050505;
+    border-radius: 0.75rem;
+    border: 1px solid #171717;
+    overflow: hidden;
+  }
+
+  .tokn-table td {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 0.45rem 0.9rem;
+    border-bottom: 1px solid #171717;
+  }
+
+  .tokn-table td:last-child {
+    border-bottom: none;
+  }
+
+  /* label do campo no card */
+  .tokn-table td::before {
+    content: attr(data-label);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #9ca3af;
+    margin-right: 0.75rem;
+    flex: 0 0 40%;
+  }
+
+  /* célula de cliente vira bloco em coluna */
+  .tokn-table td[data-label="Cliente"] {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .tokn-table td[data-label="Cliente"]::before {
+    margin-bottom: 0.2rem;
+  }
+
+  .tokn-acts {
+    justify-content: flex-start;
+  }
+}
+
+/* Desktop-only: esconde elementos mobile extras */
+@media (min-width: 901px) {
+  .tokn-nav-top-right,
+  .tokn-nav-mobile-user {
+    display: none;
+  }
+}
+
+/* =========================================================
+   DASHBOARD – LAYOUT E COMPONENTES
+   ====================================================== */
+
+.dash-block {
+  margin-bottom: 1.75rem;
+}
+
+.dash-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.dash-header-left {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.dash-section-title {
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+.dash-section-sub {
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
+/* Filtro de período */
+.dash-filter {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.dash-filter-pill {
+  border-radius: 999px;
+  border: 1px solid #d4d4d4;
+  padding: 0.25rem 0.8rem;
+  font-size: 0.8rem;
+  background: #ffffff;
+  color: #4b5563;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+
+.dash-filter-pill.is-active {
+  background: #111111;
+  border-color: #111111;
+  color: #f9fafb;
+}
+
+.dash-filter-pill--ghost {
+  background: transparent;
+}
+
+/* KPIs do dashboard */
+.dash-kpis {
+  margin-bottom: 0;
+}
+
+.dash-kpi-meta {
+  margin-top: 0.35rem;
+  font-size: 0.75rem;
+  color: #e5e5e5;
+}
+
+.dash-kpi-meta--up {
+  color: #bbf7d0;
+}
+
+.dash-kpi-meta--goal {
+  color: #fde68a;
+}
+
+/* Em telas menores, o quarto KPI vira linha de baixo */
+.dash-kpi-optional {
+  display: block;
+}
+
+/* Grade principal: gráfico + cards à direita */
+.dash-main-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1.1fr);
+  gap: 1.25rem;
+  margin-bottom: 1.75rem;
+}
+
+/* Cards base do dashboard */
+.dash-card {
+  border-radius: 1.1rem;
+  background: #050505;
+  color: #f9fafb;
+  border: 1px solid #111111;
+  padding: 1rem 1.1rem 1rem;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.35);
+}
+
+.dash-card--wide {
+  padding: 1rem 1.3rem 1.2rem;
+}
+
+.dash-right-col {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.dash-card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.dash-card-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.dash-card-sub {
+  font-size: 0.8rem;
+  color: #9ca3af;
+  margin-top: 0.1rem;
+}
+
+.dash-card-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  justify-content: flex-end;
+}
+
+.dash-legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.75rem;
+  color: #9ca3af;
+}
+
+.dash-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  display: inline-block;
+}
+
+.dash-dot--creditadas {
+  background: #fc0454;
+}
+
+.dash-dot--resgatadas {
+  background: #22c55e;
+}
+
+/* Gráfico em barras (mock) */
+.dash-chart {
+  margin-top: 0.5rem;
+}
+
+.dash-chart--bars {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.dash-chart-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.dash-chart-label {
+  width: 2rem;
+  font-size: 0.75rem;
+  color: #9ca3af;
+}
+
+.dash-chart-bar-wrap {
+  flex: 1;
+  position: relative;
+  height: 16px;
+  border-radius: 999px;
+  background: #0b0b0b;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: 2px;
+}
+
+.dash-chart-bar {
+  height: 100%;
+  border-radius: 999px;
+  display: block;
+}
+
+.dash-chart-bar--creditadas {
+  background: linear-gradient(135deg, #fc0454, #f97316);
+}
+
+.dash-chart-bar--resgatadas {
+  background: rgba(34, 197, 94, 0.85);
+}
+
+/* Listas (canais / campanhas) */
+.dash-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 0.3rem;
+}
+
+.dash-list-item {
+  padding: 0.35rem 0.1rem;
+  border-bottom: 1px solid #171717;
+}
+
+.dash-list-item:last-child {
+  border-bottom: none;
+}
+
+.dash-list-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.dash-list-label {
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.dash-list-meta {
+  font-size: 0.75rem;
+  color: #9ca3af;
+}
+
+.dash-list-meta-line {
+  margin-top: 0.15rem;
+  font-size: 0.75rem;
+  color: #9ca3af;
+}
+
+/* barras de canais */
+.dash-list-bar {
+  position: relative;
+  height: 8px;
+  border-radius: 999px;
+  background: #0b0b0b;
+  margin-top: 0.3rem;
+  overflow: hidden;
+}
+
+.dash-list-bar-fill {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #fc0454, #f97316);
+}
+
+/* badges */
+.dash-badge {
+  border-radius: 999px;
+  padding: 0.1rem 0.55rem;
+  font-size: 0.7rem;
+  border: 1px solid #22c55e;
+  color: #bbf7d0;
+  background: rgba(34, 197, 94, 0.12);
+}
+
+.dash-badge--success {
+  border-color: #22c55e;
+}
+
+/* Timeline */
+.dash-bottom-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1.1fr);
+  gap: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.dash-card--timeline {
+  padding-bottom: 0.75rem;
+}
+
+.dash-timeline {
+  list-style: none;
+  margin-top: 0.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.dash-timeline-item {
+  position: relative;
+  padding-left: 1.1rem;
+}
+
+.dash-timeline-item::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.35rem;
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: #fc0454;
+}
+
+.dash-timeline-main {
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.dash-timeline-meta {
+  font-size: 0.75rem;
+  color: #9ca3af;
+}
+
+.dash-card-footer {
+  margin-top: 0.75rem;
+}
+
+.dash-link-button {
+  border: none;
+  background: transparent;
+  color: #fc0454;
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+/* Ações recomendadas */
+.dash-card--actions {
+  padding-bottom: 1rem;
+}
+
+.dash-actions-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 0.4rem;
+}
+
+.dash-action-pill {
+  border-radius: 999px;
+  border: 1px solid #262626;
+  background: #111111;
+  color: #f9fafb;
+  font-size: 0.8rem;
+  padding: 0.55rem 0.9rem;
+  text-align: left;
+  cursor: pointer;
+  transition: transform 0.12s ease-out, box-shadow 0.12s ease-out,
+    background 0.12s ease-out;
+}
+
+.dash-action-pill:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.45);
+  background: #181818;
+}
+
+/* RESPONSIVO DASHBOARD */
+@media (max-width: 900px) {
+  .dash-header-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .dash-filter {
+    width: 100%;
+  }
+
+  .dash-main-grid,
+  .dash-bottom-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dash-right-col {
+    flex-direction: column;
+  }
+}
+
+/* ================================
+   TRANSACÕES – SEÇÕES E TÍTULOS
+================================ */
+.tokn-sec-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.tokn-sec-head--table {
+  margin-top: 2rem;
+}
+
+.tokn-sec-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  padding-left: 15px;
+}
+
+.tokn-sec-sub {
+  font-size: 0.85rem;
+  color: #6b7280;
+  margin-top: 0.15rem;
+  padding-left: 15px;
+}
+
+/* Cards de resumo – 4 colunas no desktop */
+.tokn-kpis--4 {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.tokn-kpi-meta {
+  margin-top: 0.4rem;
+  font-size: 0.8rem;
+  color: #d1d5db;
+}
+
+/* Filtros de período no cabeçalho */
+.tokn-period-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+/* Filtros avançados de transações */
+.tokn-trans-filters {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.tokn-trans-filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.tokn-trans-filter-group {
+  min-width: 220px;
+}
+
+.tokn-trans-filter-label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+  color: #4b5563;
+}
+
+/* ================================
+   TRANSACÕES – GRÁFICO SIMPLES
+================================ */
+.tokn-trans-chart-sec {
+  margin-bottom: 2rem;
+}
+
+.tokn-trans-chart-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.tokn-chart {
+  border-radius: 1rem;
+  padding: 1rem 1.25rem;
+  background: #050505;
+  color: #f9fafb;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.45);
+}
+
+.tokn-chart-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.25rem 0;
+}
+
+.tokn-chart-label {
+  width: 2.2rem;
+  font-size: 0.8rem;
+  color: #9ca3af;
+}
+
+.tokn-chart-bars {
+  flex: 1;
+  display: flex;
+  gap: 0.25rem;
+}
+
+.tokn-chart-bar {
+  height: 8px;
+  border-radius: 999px;
+  background: #111111;
+}
+
+.tokn-chart-bar--cred {
+  background: linear-gradient(90deg, #fc0454, #f97316);
+}
+
+.tokn-chart-bar--resg {
+  background: linear-gradient(90deg, #22c55e, #16a34a);
+}
+
+.tokn-chart-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  font-size: 0.8rem;
+  color: #9ca3af;
+}
+
+.tokn-dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  margin-right: 0.3rem;
+}
+
+.tokn-dot--cred {
+  background: linear-gradient(90deg, #fc0454, #f97316);
+}
+
+.tokn-dot--resg {
+  background: linear-gradient(90deg, #22c55e, #16a34a);
+}
+
+/* ================================
+   TRANSACÕES – TABELA / TAGS
+================================ */
+.tokn-table-wrap--trans {
+  margin-top: 1rem;
+}
+
+.tokn-table--trans td {
+  vertical-align: middle;
+}
+
+.tokn-tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  padding: 0.15rem 0.7rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.tokn-tag--cred {
+  background: rgba(252, 4, 84, 0.2);
+  color: #fecaca;
+  border: 1px solid rgba(252, 4, 84, 0.9);
+}
+
+.tokn-tag--resg {
+  background: rgba(34, 197, 94, 0.2);
+  color: #bbf7d0;
+  border: 1px solid rgba(34, 197, 94, 0.9);
+}
+
+.tokn-moedas {
+  font-weight: 600;
+}
+
+/* RESPONSIVO – TRANSACÕES */
+@media (max-width: 1100px) {
+  .tokn-kpis--4 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 900px) {
+  .tokn-kpis--4 {
+    grid-template-columns: 1fr;
+  }
+
+  .tokn-trans-filter-row {
+    flex-direction: column;
+  }
+
+  .tokn-trans-chart-head {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  /* 🔹 AJUSTE: botões de período logo abaixo do título em mobile */
+  .tokn-sec-head {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .tokn-period-filters {
+    width: 100%;
+    margin-top: 0.4rem;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 0.3rem;
+    scrollbar-width: none; /* Firefox */
+  }
+
+  .tokn-period-filters::-webkit-scrollbar {
+    display: none; /* Chrome, etc. */
+  }
+
+  .tokn-period-filters .tokn-pill {
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+}
+
+/* ============================================================
+   FAB GLOBAL – CREDITAÇÃO RÁPIDA
+   ============================================================ */
+.tokn-fab {
+  position: fixed;
+  right: 1.5rem;
+  bottom: 1.5rem;
+  z-index: 70;
+  border-radius: 999px;
+  border: none;
+  padding: 0.75rem 1.3rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: #fc0454;
+  color: #ffffff;
+  cursor: pointer;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.45);
+  transition: transform 0.12s ease-out, box-shadow 0.12s ease-out;
+}
+
+.tokn-fab:hover {
+  transform: translateY(-1px) scale(1.03);
+  box-shadow: 0 18px 34px rgba(0, 0, 0, 0.55);
+}
+
+@media (max-width: 768px) {
+  .tokn-fab {
+    right: 1rem;
+    bottom: 1rem;
+    padding-inline: 1.1rem;
+  }
+}
+
+/* ============================================================
+   MODAIS GENÉRICOS (CREDITO + NOVO CLIENTE)
+   ============================================================ */
+
+.tokn-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.18s ease-out;
+  z-index: 80;
+}
+
+.tokn-modal-overlay.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.tokn-modal {
+  position: fixed;
+  inset: auto;
+  left: 50%;
+  top: 10vh;
+  transform: translateX(-50%) translateY(20px) scale(0.97);
+  width: min(720px, 96vw);
+  max-height: 80vh;
+  background: #050505;
+  color: #f9fafb;
+  border-radius: 1.2rem;
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.7);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 90;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition:
+    opacity 0.18s ease-out,
+    transform 0.18s ease-out;
+}
+
+.tokn-modal.is-open {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0) scale(1);
+}
+
+.tokn-modal-head {
+  padding: 1rem 1.4rem 0.6rem;
+  border-bottom: 1px solid #171717;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.tokn-modal-head h2 {
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.tokn-modal-sub {
+  font-size: 0.85rem;
+  color: #9ca3af;
+  margin-top: 0.15rem;
+}
+
+.tokn-modal-x {
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+  border: 1px solid #262626;
+  background: #050505;
+  color: #f9fafb;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+}
+
+.tokn-modal-body {
+  padding: 1rem 1.4rem 0.2rem;
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+
+.tokn-modal-foot {
+  padding: 0.8rem 1.4rem 1rem;
+  border-top: 1px solid #171717;
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+
+/* Layout em duas colunas no desktop */
+.tokn-modal-body--split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.2rem;
+}
+
+.tokn-modal-col {
+  font-size: 0.85rem;
+}
+
+.tokn-modal-label {
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.tokn-modal-help {
+  font-size: 0.8rem;
+  color: #9ca3af;
+  margin-bottom: 0.6rem;
+}
+
+/* Campos e notas dentro do modal */
+.tokn-field-label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-top: 0.6rem;
+  margin-bottom: 0.2rem;
+}
+
+.tokn-input--full {
+  width: 100%;
+}
+
+.tokn-textarea {
+  resize: vertical;
+}
+
+.tokn-note {
+  font-size: 0.75rem;
+  color: #9ca3af;
+  margin-top: 0.3rem;
+}
+
+/* Botões dentro do modal */
+.tokn-btn--ghost {
+  background: transparent;
+  border-color: #4b5563;
+  color: #e5e7eb;
+}
+
+.tokn-link-btn {
+  margin-top: 0.6rem;
+  font-size: 0.8rem;
+  background: none;
+  border: none;
+  color: #fc0454;
+  cursor: pointer;
+  padding: 0;
+}
+
+/* Ações de seleção (QR / busca) */
+.tokn-modal-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.tokn-chip-action {
+  border-radius: 999px;
+  border: 1px solid #262626;
+  padding: 0.35rem 0.9rem;
+  background: #0b0b0b;
+  color: #f9fafb;
+  font-size: 0.8rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.tokn-chip-badge {
+  font-size: 0.7rem;
+  padding: 0.05rem 0.5rem;
+  border-radius: 999px;
+  background: #111111;
+  color: #e5e7eb;
+}
+
+/* Abas do modal de novo cliente */
+.tokn-modal-tabs {
+  padding: 0.4rem 1.4rem 0;
+  display: flex;
+  gap: 0.5rem;
+  border-bottom: 1px solid #171717;
+}
+
+.tokn-tab {
+  border-radius: 999px;
+  border: 1px solid #262626;
+  background: #050505;
+  color: #9ca3af;
+  font-size: 0.8rem;
+  padding: 0.35rem 0.9rem;
+  cursor: pointer;
+}
+
+.tokn-tab.is-active {
+  background: #ffffff;
+  color: #111111;
+  border-color: #ffffff;
+}
+
+.tokn-tab-pane {
+  display: none;
+}
+
+.tokn-tab-pane.is-active {
+  display: block;
+}
+
+/* Grid de campos dentro do modal */
+.tokn-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.6rem;
+  margin-top: 0.3rem;
+}
+
+.tokn-grid-col {
+  min-width: 0;
+}
+
+/* ============================================================
+   BLOCO "CLIENTE IDENTIFICADO" – MODAL CREDITO DE MOEDAS
+   ============================================================ */
+
+.is-hidden {
+  display: none !important;
+}
+
+/* Container geral */
+.tokn-found {
+  margin-top: 0.8rem;
+  padding: 0.8rem 0.95rem;
+  border-radius: 0.95rem;
+  background: #050505;
+  color: #f9fafb;
+  border: 1px solid #171717;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+/* Linha principal: avatar + infos */
+.tokn-found-main {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* Avatar com iniciais (mesma pegada do restante do app) */
+.tokn-found-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  background: radial-gradient(circle at top, #fc0454, #f97316);
+  color: #050505;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+/* Textos do cliente */
+.tokn-found-name {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.tokn-found-meta {
+  font-size: 0.8rem;
+  color: #d1d5db;
+}
+
+.tokn-found-extra {
+  margin-top: 0.2rem;
+  font-size: 0.75rem;
+  color: #9ca3af;
+}
+
+/* Rodapé: status + ação */
+.tokn-found-foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.8rem;
+  flex-wrap: wrap;
+}
+
+.tokn-found-ok {
+  color: #bbf7d0;
+  font-weight: 500;
+}
+
+/* Botão/link de texto (Trocar cliente + debug) */
+.tokn-link-btn {
+  border: none;
+  background: transparent;
+  color: #fc0454;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: none;
+}
+
+.tokn-link-btn:hover {
+  text-decoration: underline;
+}
+
+/* Botão de debug – só pra você, discreto */
+.tokn-debug-btn {
+  font-size: 0.75rem;
+  opacity: 0.7;
+}
+
+/* Ajuste mobile: bloco 100% fluido e bem espaçado */
+@media (max-width: 768px) {
+  .tokn-found {
+    margin-top: 0.7rem;
+  }
+
+  .tokn-found-foot {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 768px) {
+  .tokn-modal {
+    top: auto;
+    bottom: 0;
+    max-height: 90vh;
+    border-radius: 1.2rem 1.2rem 0 0;
+  }
+
+  .tokn-modal-body--split {
+    grid-template-columns: 1fr;
+  }
+
+  .tokn-grid-2 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ============================================================
+   AJUSTE FINO – ESPAÇAMENTO DOS MODAIS (CREDITAR / NOVO CLIENTE)
+   ============================================================ */
+
+/* Deixa o conteúdo do modal em coluna e com respiro entre blocos */
+.tokn-modal-body {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Cada bloco interno do modal (texto, campos, textarea, botões, etc.)
+   ganha um espaçamento vertical padrão entre si */
+.tokn-modal-body > * + * {
+  margin-top: 0.9rem;
+}
+
+/* Campos individuais com um pouco menos de margem entre label/input
+   para não aumentar demais o scroll geral */
+.tokn-field {
+  margin-bottom: 0.35rem;
+}
+
+/* Quando for textarea (mensagem sugerida, por ex.), damos um pouco
+   mais de respiro embaixo pra não colar no botão "Copiar mensagem..." */
+.tokn-field--textarea {
+  margin-bottom: 0.55rem;
+}
+
+/* Linha de botão único (tipo "Copiar mensagem para enviar") com
+   um espacinho extra em relação ao bloco anterior */
+.tokn-modal-body .tokn-btn-row,
+.tokn-modal-body .tokn-btn {
+  margin-top: 0.5rem;
+}
+
+/* Grupo dos botões finais (Cancelar / Confirmar / Salvar) */
+.tokn-modal-actions {
+  margin-top: 1rem;
+  display: flex;
+  gap: 0.9rem;
+}
+
+/* Ícone do FAB — flat e branco */
+.tokn-fab-icon {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #ffffff;      /* garante branco absoluto */
+  line-height: 1;
+  margin-right: 0.2rem;
+  display: inline-block;
+}
+
+/* Rodapé do modal de campanha – layout padrão (desktop) */
+.tokn-modal-foot--stack {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* Botão ícone redondinho */
+.tokn-btn--icon-only {
+  padding: 0.55rem;
+  border-radius: 999px;
+  min-width: 0;
+}
+
+/* Rodapé específico do modal de campanha */
+.tokn-modal-foot--camp {
+  gap: 0.75rem; /* dá um respiro entre os botões */
+}
+
+/* Mobile: empilhar os três botões na ordem:
+   Criar campanha -> Salvar como rascunho -> Cancelar */
+@media (max-width: 768px) {
+  .tokn-modal-foot--camp {
+    flex-direction: column;      /* empilha tudo */
+    align-items: stretch;        /* botões full width */
+  }
+
+  .tokn-modal-foot--camp .tokn-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .tokn-camp-btn-create {
+    order: 1;
+  }
+
+  .tokn-camp-btn-draft {
+    order: 2;
+  }
+
+  .tokn-camp-btn-cancel {
+    order: 3;
+  }
+}
+
+/* ============================================================
+   CAMPANHAS – BUSCA, FILTROS E LISTA
+   ============================================================ */
+
+.tokn-camp-search-wrap {
+  margin-top: 1.5rem;
+}
+
+.tokn-camp-filters {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.tokn-camp-filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.tokn-camp-filter-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #4b5563;
+}
+
+/* Lista de campanhas */
+
+.tokn-camp-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+}
+
+.tokn-camp-card {
+  border-radius: 1rem;
+  padding: 1rem 1.25rem 0.85rem;
+  background: radial-gradient(circle at top left, #111111, #000000);
+  color: #f9fafb;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.45);
+  cursor: pointer;
+  transition: transform 0.12s ease-out, box-shadow 0.12s ease-out,
+    background 0.12s ease-out;
+}
+
+.tokn-camp-card:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.6);
+  background: radial-gradient(circle at top left, #181818, #000000);
+}
+
+.tokn-camp-card-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: flex-start;
+  margin-bottom: 0.75rem;
+}
+
+.tokn-camp-name {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.tokn-camp-meta {
+  font-size: 0.8rem;
+  color: #d1d5db;
+  margin-top: 0.15rem;
+}
+
+.tokn-camp-head-right {
+  display: flex;
+  align-items: center;
+}
+
+.tokn-camp-status {
+  font-size: 0.75rem;
+  padding-inline: 0.7rem;
+  padding-block: 0.15rem;
+}
+
+.tokn-camp-status--on {
+  background: rgba(34, 197, 94, 0.18);
+  border-color: rgba(34, 197, 94, 0.9);
+  color: #bbf7d0;
+}
+
+.tokn-camp-status--paused {
+  background: rgba(252, 211, 77, 0.2);
+  border-color: rgba(252, 211, 77, 0.9);
+  color: #fef9c3;
+}
+
+/* Métricas dentro do card */
+
+.tokn-camp-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.tokn-camp-metrics {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.tokn-camp-metric {
+  font-size: 0.8rem;
+}
+
+.tokn-camp-metric-label {
+  display: block;
+  color: #9ca3af;
+  margin-bottom: 0.2rem;
+}
+
+.tokn-camp-metric-value {
+  font-weight: 600;
+}
+
+/* Mini gráfico aproveitando as barras já existentes */
+
+.tokn-camp-chart-mini {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.tokn-camp-chart-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  font-size: 0.8rem;
+  color: #d1d5db;
+}
+
+/* Rodapé do card */
+
+.tokn-camp-foot {
+  margin-top: 0.8rem;
+  padding-top: 0.6rem;
+  border-top: 1px solid rgba(55, 65, 81, 0.7);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  font-size: 0.8rem;
+  color: #9ca3af;
+}
+
+.tokn-camp-actions {
+  display: flex;
+  gap: 0.25rem;
+}
+
+/* ============================================================
+   CAMPANHAS – PAINEL LATERAL
+   ============================================================ */
+
+.tokn-camp-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+  z-index: 80;
+}
+
+.tokn-camp-overlay.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.tokn-camp-panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: min(420px, 100%);
+  height: 100%;
+  background: #050505;
+  color: #f9fafb;
+  border-left: 1px solid #171717;
+  transform: translateX(100%);
+  transition: transform 0.22s ease-out;
+  z-index: 90;
+  display: flex;
+  flex-direction: column;
+}
+
+.tokn-camp-panel.is-open {
+  transform: translateX(0);
+}
+
+.tokn-camp-panel-head {
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid #171717;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.tokn-camp-panel-head h2 {
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.tokn-camp-panel-sub {
+  font-size: 0.8rem;
+  color: #9ca3af;
+  margin-top: 0.15rem;
+}
+
+.tokn-camp-panel-sec {
+  padding: 0.9rem 1.25rem;
+  border-bottom: 1px solid #171717;
+  font-size: 0.85rem;
+}
+
+.tokn-camp-panel-kpis {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.tokn-camp-panel-kpi-label {
+  display: block;
+  font-size: 0.75rem;
+  color: #9ca3af;
+}
+
+.tokn-camp-panel-kpi-value {
+  font-weight: 600;
+}
+
+.tokn-camp-panel-note {
+  font-size: 0.75rem;
+  color: #9ca3af;
+  margin-top: 0.4rem;
+}
+
+.tokn-camp-panel-list {
+  list-style: disc;
+  padding-left: 1.1rem;
+  color: #e5e7eb;
+}
+
+.tokn-camp-panel-list li + li {
+  margin-top: 0.15rem;
+}
+
+/* ============================================================
+   RESPONSIVO – CAMPANHAS
+   ============================================================ */
+
+@media (max-width: 1100px) {
+  .tokn-camp-metrics {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .tokn-camp-metrics {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .tokn-camp-foot {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* =========================================================
+   CONFIGURAÇÕES – GRID GERAL
+   ====================================================== */
+
+.tokn-settings-wrap {
+  display: grid;
+  grid-template-columns: minmax(0, 1.7fr) minmax(0, 1.3fr);
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.tokn-settings-col {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Card base */
+
+.tokn-settings-card {
+  background: #050505;
+  border-radius: 1.5rem;
+  padding: 1.5rem;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
+  color: #ffffff;
+}
+
+.tokn-settings-card-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.tokn-settings-title {
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.tokn-settings-sub {
+  font-size: 0.8rem;
+  color: #b0b0b6;
+  margin: 0.25rem 0 0;
+}
+
+.tokn-settings-head-btn {
+  white-space: nowrap;
+}
+
+/* Badge "Em breve" */
+
+.tokn-settings-badge {
+  align-self: flex-start;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+/* Identidade / merchant */
+
+.tokn-settings-merchant {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.tokn-settings-logo-circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #ff3460, #ff8f3c);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.tokn-settings-merchant-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.tokn-settings-merchant-name {
+  font-size: 0.95rem;
+}
+
+.tokn-settings-merchant-program {
+  font-size: 0.75rem;
+  color: #b0b0b6;
+}
+
+/* Campos simples */
+
+.tokn-settings-fields {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.75rem 1rem;
+  margin-bottom: 1rem;
+}
+
+.tokn-settings-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.tokn-settings-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #9a9aa1;
+}
+
+.tokn-settings-value {
+  font-size: 0.85rem;
+}
+
+/* Tags / chips de canais */
+
+.tokn-settings-tags-group {
+  margin-top: 0.5rem;
+}
+
+.tokn-settings-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.4rem;
+}
+
+.tokn-settings-tag {
+  font-size: 0.75rem;
+  padding: 0.25rem 0.7rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #d0d0d6;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.tokn-settings-tag.is-active {
+  background: linear-gradient(135deg, #ff3460, #ff8f3c);
+  border-color: transparent;
+  color: #ffffff;
+}
+
+/* Notas dentro dos cards */
+
+.tokn-settings-note {
+  margin-top: 0.4rem;
+  font-size: 0.7rem;
+  color: #a0a0a7;
+}
+
+/* Regra padrão */
+
+.tokn-settings-rule-box {
+  margin-top: 0.5rem;
+  padding: 0.75rem 0.9rem;
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px dashed rgba(255, 255, 255, 0.16);
+}
+
+.tokn-settings-rule-title {
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin: 0 0 0.25rem;
+}
+
+.tokn-settings-rule-text {
+  font-size: 0.8rem;
+  margin: 0 0 0.35rem;
+}
+
+/* Listas (equipe, integrações) */
+
+.tokn-settings-list {
+  list-style: none;
+  margin: 0 0 1rem;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.tokn-settings-list-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.tokn-settings-list-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.tokn-settings-list-title {
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.tokn-settings-list-sub {
+  font-size: 0.75rem;
+  color: #b0b0b6;
+}
+
+.tokn-settings-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  background: #1e1e22;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+/* Texto vazio / info */
+
+.tokn-settings-team .tokn-settings-empty {
+  font-size: 0.8rem;
+  color: #b0b0b6;
+  margin: 0 0 0.75rem;
+}
+
+/* Plano */
+
+.tokn-settings-plan {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.tokn-settings-plan-main {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.tokn-settings-plan-name {
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.tokn-settings-plan-note {
+  font-size: 0.8rem;
+  color: #b0b0b6;
+}
+
+/* Responsivo */
+
+@media (max-width: 960px) {
+  .tokn-settings-wrap {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .tokn-settings-card {
+    border-radius: 1.25rem;
+    padding: 1.25rem;
+  }
+
+  .tokn-settings-card-head {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .tokn-settings-head-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* ================================
+   CONFIGURAÇÕES – FORMULÁRIOS
+   (estabelecimento + regra padrão)
+   ================================ */
+
+/* Blocos e títulos genéricos */
+.tokn-section {
+  margin-bottom: 2.5rem;
+}
+
+.tokn-section-head {
+  margin-bottom: 1.25rem;
+}
+
+.tokn-section-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.tokn-section-sub {
+  font-size: 0.9rem;
+  color: #b4b4b4;
+}
+
+/* Form básico em configurações */
+.tokn-settings-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.tokn-card--settings {
+  padding: 1.25rem 1.5rem;
+}
+
+/* Upload fake (logo) */
+.tokn-upload-placeholder {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 0.9rem;
+  border-radius: 999px;
+  background: #191919;
+}
+
+.tokn-upload-circle {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #ff4b6a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: #fff;
+}
+
+.tokn-upload-text {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.8rem;
+  color: #e0e0e0;
+}
+
+.tokn-upload-text strong {
+  font-weight: 600;
+  margin-bottom: 0.1rem;
+}
+
+/* Grupo de badges / chips */
+.tokn-badge-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.25rem;
+}
+
+/* Pré-visualização da regra */
+.tokn-rule-preview {
+  border-radius: 1rem;
+  background: #111111;
+  padding: 1rem;
+  font-size: 0.9rem;
+  color: #dcdcdc;
+  border: 1px solid #262626;
+}
+
+.tokn-rule-line + .tokn-rule-line {
+  margin-top: 0.35rem;
+}
+
+/* ================================
+   AÇÕES NAS PÁGINAS DE CONFIGURAÇÃO
+   ================================ */
+
+.tokn-settings-actions {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: flex-start;  /* DESKTOP: botões alinhados à esquerda */
+  gap: 1rem;
+  flex-wrap: wrap;              /* evita “grudar” na barra preta em telas médias */
+}
+
+.tokn-settings-actions .tokn-btn {
+  min-width: 160px;             /* todos com largura mínima parecida */
+}
+
+/* Apenas o botão “Voltar sem salvar” (ghost) em configurações:
+   fundo preto, texto branco — sem mexer no magenta nem no branco */
+.tokn-settings-actions .tokn-btn--ghost {
+  background: #050505;
+  border-color: #444444;
+  color: #ffffff;
+}
+
+/* Versão especial: alinhar ações ao centro em telas médias
+   (usado só na página Ajustar Regra Padrão) */
+@media (max-width: 900px) and (min-width: 681px) {
+  .tokn-settings-actions--center-md {
+    justify-content: center;
+  }
+}
+
+/* ================================
+   REGRA PADRÃO – LAYOUT INTERNO
+   ================================ */
+
+.tokn-rule-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.tokn-rule-top {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+/* Grid responsiva, sem estourar o card */
+.tokn-rule-grid {
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+/* garante que o input não force largura mínima absurda */
+.tokn-rule-grid .tokn-input {
+  min-width: 0;
+}
+
+.tokn-rule-sim {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* ================================
+   RESPONSIVO
+   ================================ */
+
+/* Cards um pouco mais “compactos” em tablets/celulares */
+@media (max-width: 768px) {
+  .tokn-card--settings {
+    padding: 1rem 1rem;
+  }
+}
+
+/* Mobile: botões empilhados, centralizados, full-width
+   (ordem vem do HTML: primário, rascunho, voltar)
+   e com mais espaço vertical entre eles */
+@media (max-width: 680px) {
+  .tokn-settings-actions {
+    justify-content: center;
+    align-items: stretch;
+    flex-direction: column;
+    gap: 1.1rem;               /* espaçamento vertical mais confortável */
+  }
+
+  .tokn-settings-actions .tokn-btn {
+    width: 100%;
+  }
+}
+
+/* Mobile & tablets: grid da regra vira 1 coluna para caber no card
+   (especialmente iPhone / iPad vertical) */
+@media (max-width: 900px) {
+  .tokn-rule-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Empilhar as colunas em tablets/celulares e
+   trazer o card de resumo para o topo na tela de Estabelecimento */
+@media (max-width: 1024px) {
+  .tokn-settings-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+}
+
+/* Em telas <= 900px, o resumo vem antes da coluna de formulário */
+@media (max-width: 900px) {
+  .tokn-settings-col--summary {
+    order: -1;
+  }
+}
+
+/* Evitar campos estourando o card em telas menores */
+.tokn-settings-card input,
+.tokn-settings-card select {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* =========================================================
+   AJUDA / SUPORTE – LAYOUT 2 COLUNAS 
+     ====================================================== */
+
+.tokn-help-wrap {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+  gap: 1.5rem;
+}
+
+/* cards mais clean (menos “peso” que dashboards) */
+.tokn-help-card {
+  background: #050505;
+  border-radius: 1.25rem;
+  padding: 1.25rem 1.35rem;
+  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.35);
+  color: #ffffff;
+}
+
+.tokn-help-card + .tokn-help-card {
+  margin-top: 1.25rem;
+}
+
+.tokn-help-card-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.tokn-help-card-head--between {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.tokn-help-title {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.tokn-help-sub {
+  font-size: 0.82rem;
+  color: #b0b0b6;
+  margin-top: 0.15rem;
+}
+
+.tokn-help-mini {
+  font-size: 0.75rem;
+  color: #9ca3af;
+  white-space: nowrap;
+}
+
+/* Atalhos */
+.tokn-help-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+
+/* Busca */
+.tokn-help-search {
+  display: flex;
+  gap: 0.6rem;
+  align-items: center;
+}
+
+.tokn-help-search .tokn-input {
+  min-width: 0;
+}
+
+.tokn-help-chips {
+  margin-top: 0.7rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+/* Resolver em 30s */
+.tokn-help-quick-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.tokn-help-quick {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 0.9rem 0.95rem;
+  border-radius: 0.9rem;
+  background: #0b0b0b;
+  border: 1px solid #171717;
+  text-decoration: none;
+  color: #ffffff;
+  transition: transform 0.12s ease-out, background 0.12s ease-out, box-shadow 0.12s ease-out;
+}
+
+.tokn-help-quick:hover {
+  transform: translateY(-1px);
+  background: #111111;
+  box-shadow: 0 10px 18px rgba(0,0,0,0.45);
+}
+
+.tokn-help-quick h3 {
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.tokn-help-quick p {
+  font-size: 0.82rem;
+  color: #c9c9cf;
+}
+
+.tokn-help-link {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #fc0454;
+  margin-top: 0.25rem;
+}
+
+/* Status */
+.tokn-help-status-pill {
+  font-size: 0.75rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  border: 1px solid #262626;
+  background: #0b0b0b;
+}
+
+.tokn-help-status-pill.is-ok {
+  border-color: rgba(34,197,94,0.9);
+  color: #bbf7d0;
+  background: rgba(34,197,94,0.12);
+}
+
+.tokn-help-status-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  margin-top: 0.25rem;
+}
+
+.tokn-help-status-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  padding-bottom: 0.45rem;
+  border-bottom: 1px dashed #171717;
+}
+
+.tokn-help-status-row:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.tokn-help-status-row .is-ok {
+  color: #bbf7d0;
+}
+
+/* FAQ */
+.tokn-help-faq {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.tokn-help-faq-item {
+  background: #0b0b0b;
+  border: 1px solid #171717;
+  border-radius: 0.9rem;
+  padding: 0.6rem 0.9rem;
+}
+
+.tokn-help-faq-item summary {
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 600;
+  list-style: none;
+}
+
+.tokn-help-faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.tokn-help-faq-body {
+  margin-top: 0.6rem;
+  font-size: 0.85rem;
+  color: #e5e7eb;
+}
+
+.tokn-help-faq-body ol {
+  padding-left: 1.1rem;
+}
+
+.tokn-help-faq-body li + li {
+  margin-top: 0.35rem;
+}
+
+/* Humano */
+.tokn-help-human {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.tokn-help-human-row {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.tokn-help-human-ava {
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  background: radial-gradient(circle at top, #fc0454, #f97316);
+  color: #050505;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+}
+
+.tokn-help-human-meta {
+  font-size: 0.75rem;
+  color: #9ca3af;
+  margin-top: 0.1rem;
+}
+
+/* Responsivo */
+@media (max-width: 1100px) {
+  .tokn-help-wrap {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 900px) {
+  .tokn-help-quick-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tokn-help-search {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .tokn-help-search .tokn-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}

@@ -1,0 +1,101 @@
+{% load static %}
+{% extends "app/base.html" %}
+
+{% block title %}Como resgatar moedas no balcão — Ajuda Tokn.id{% endblock %}
+
+{% block header_title %}
+  <h1>Como resgatar moedas no balcão</h1>
+  <p class="tokn-header-sub">Garanta que o cliente use as moedas na hora certa.</p>
+{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'app/css/ajuda.css' %}">
+
+<div class="tokn-help-article">
+
+  <a href="/ajuda" class="tokn-help-back">← Voltar para Ajuda</a>
+
+  <h2 class="tokn-help-title">Resgate de moedas no balcão</h2>
+  <p class="tokn-help-sub">
+    Fluxo simples para resgatar benefícios usando o painel Tokn.id.
+  </p>
+
+  <div class="tokn-help-actions">
+    <a href="/clientes" class="tokn-help-btn">Abrir lista de clientes</a>
+  </div>
+
+  <section class="tokn-help-section">
+    <h3>Antes de começar</h3>
+    <ul>
+      <li>Combine com o cliente qual benefício ele quer usar.</li>
+      <li>Confirme o nome completo ou telefone para localizar o cadastro.</li>
+      <li>Cheque se o benefício está disponível na campanha ou na “tabela de resgates”.</li>
+    </ul>
+  </section>
+
+  <section class="tokn-help-section">
+    <h3>Passo a passo no painel</h3>
+    <ul>
+      <li>Acesse <strong>Clientes</strong> e busque pelo cliente.</li>
+      <li>Abra o painel lateral e clique em <strong>Resgatar moedas</strong> (ou equivalente).</li>
+      <li>Selecione o benefício a ser trocado (ex.: desconto, brinde, produto).</li>
+      <li>Confirme o valor em moedas e finalize o resgate.</li>
+    </ul>
+  </section>
+
+  <section class="tokn-help-section">
+    <h3>Confirmação com o cliente</h3>
+    <ul>
+      <li>Informe o benefício aplicado (ex.: “R$ 20,00 de desconto nesta conta”).</li>
+      <li>Se fizer sentido, peça para o cliente conferir o histórico na Phantom.</li>
+      <li>Registre qualquer observação relevante no sistema ou no próprio PDV.</li>
+    </ul>
+  </section>
+
+  <section class="tokn-help-section">
+    <h3>Boas práticas</h3>
+    <ul>
+      <li>Sempre explique quanto o cliente economizou usando moedas.</li>
+      <li>Use o resgate como gancho para convidar o cliente a voltar (“quando você voltar, acumula de novo”).</li>
+      <li>Evite resgatar sem o cliente presente, para não gerar conflito depois.</li>
+    </ul>
+  </section>
+
+  <a href="https://wa.me/5511999999999" target="_blank" class="tokn-help-final">
+    Preciso de ajuda com um resgate
+  </a>
+</div>
+
+<!-- =====================================================
+   BLOCO UNIVERSAL — FINAL DO ARTIGO
+===================================================== -->
+
+<section class="tokn-help-article-next">
+
+  <h3>O que você pode fazer agora</h3>
+
+  <div class="tokn-next-actions">
+    <a href="/clientes" class="tokn-btn tokn-btn--ghost">
+      👥 Ir para lista de clientes
+    </a>
+
+    <a href="/transacoes" class="tokn-btn tokn-btn--ghost">
+      🔄 Ver transações
+    </a>
+
+    <a href="https://wa.me/5511999999999?text=Oi%20Tokn.id%2C%20preciso%20de%20ajuda%20sobre%20{{ request.path }}"
+       target="_blank"
+       class="tokn-btn tokn-btn--primary">
+      💬 Falar com o suporte
+    </a>
+  </div>
+
+  <div class="tokn-feedback">
+    <p>Este guia te ajudou?</p>
+    <button class="tokn-feedback-btn" onclick="toknUI.soon('Obrigado pelo feedback!')">Sim 😊</button>
+    <button class="tokn-feedback-btn" onclick="toknUI.soon('Vamos melhorar!')">Quase 😕</button>
+  </div>
+
+</section>
+
+{% endblock %}

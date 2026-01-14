@@ -1,0 +1,231 @@
+{% extends "app/base.html" %}
+
+{% block title %}Transações — tokn.id | partners{% endblock %}
+
+{% block header_title %}
+  <h1>Transações</h1>
+  <p class="tokn-header-sub">
+    Acompanhe a movimentação de moedas do seu programa de fidelidade.
+  </p>
+{% endblock %}
+
+{% block content %}
+
+  <!-- RESUMO + FILTROS DE PERÍODO -->
+  <section aria-label="Resumo de transações">
+    <div class="tokn-sec-head">
+      <div>
+        <h2 class="tokn-sec-title">Resumo do período</h2>
+        <p class="tokn-sec-sub">
+          Veja os principais números de moedas creditadas e resgatadas.
+        </p>
+      </div>
+
+      <div class="tokn-period-filters">
+        <button class="tokn-pill is-active" type="button">Últimos 7 dias</button>
+        <button class="tokn-pill" type="button">30 dias</button>
+        <button class="tokn-pill" type="button">90 dias</button>
+        <button class="tokn-pill" type="button">Personalizado</button>
+      </div>
+    </div>
+
+    <!-- CARDS DE RESUMO -->
+    <div class="tokn-kpis tokn-kpis--4">
+      <div class="tokn-kpi">
+        <div class="tokn-kpi-value">12.450</div>
+        <div class="tokn-kpi-label">Moedas creditadas</div>
+        <div class="tokn-kpi-meta">+14% vs período anterior</div>
+      </div>
+
+      <div class="tokn-kpi">
+        <div class="tokn-kpi-value">3.280</div>
+        <div class="tokn-kpi-label">Moedas resgatadas</div>
+        <div class="tokn-kpi-meta">+9% em resgates</div>
+      </div>
+
+      <div class="tokn-kpi">
+        <div class="tokn-kpi-value">R$ 62,25</div>
+        <div class="tokn-kpi-label">Ticket médio (compras que geram moedas)</div>
+        <div class="tokn-kpi-meta">Com base em transações creditadas</div>
+      </div>
+
+      <div class="tokn-kpi">
+        <div class="tokn-kpi-value">15.730</div>
+        <div class="tokn-kpi-label">Moedas movimentadas</div>
+        <div class="tokn-kpi-meta">Soma de créditos e resgates</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FILTROS DETALHADOS + BUSCA -->
+  <section class="tokn-trans-filters" aria-label="Filtros de transações">
+    <form class="tokn-search" role="search">
+      <label for="tokn-q-trans" class="sr-only">
+        Buscar por cliente, telefone, e-mail ou ID
+      </label>
+      <input
+        id="tokn-q-trans"
+        name="q"
+        class="tokn-input"
+        type="search"
+        placeholder="Buscar por nome, telefone, e-mail ou ID do cliente"
+      />
+      <button class="tokn-btn" type="submit">Pesquisar</button>
+    </form>
+
+    <div class="tokn-trans-filter-row">
+      <div class="tokn-trans-filter-group">
+        <span class="tokn-trans-filter-label">Tipo</span>
+        <div class="tokn-filtros">
+          <button class="tokn-pill is-active" type="button">Todas</button>
+          <button class="tokn-pill" type="button">Creditadas</button>
+          <button class="tokn-pill" type="button">Resgatadas</button>
+        </div>
+      </div>
+
+      <div class="tokn-trans-filter-group">
+        <span class="tokn-trans-filter-label">Canal</span>
+        <div class="tokn-filtros">
+          <button class="tokn-pill is-active" type="button">Todos</button>
+          <button class="tokn-pill" type="button">PDV</button>
+          <button class="tokn-pill" type="button">WhatsApp</button>
+          <button class="tokn-pill" type="button">App / Link</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GRÁFICO DE ATIVIDADE -->
+  <section class="tokn-trans-chart-sec" aria-label="Atividade de moedas">
+    <div class="tokn-trans-chart-head">
+      <div>
+        <h2 class="tokn-sec-title">Atividade de moedas</h2>
+        <p class="tokn-sec-sub">
+          Comparativo de moedas creditadas e resgatadas ao longo dos dias.
+        </p>
+      </div>
+      <div class="tokn-chart-legend">
+        <span><span class="tokn-dot tokn-dot--cred"></span>Creditadas</span>
+        <span><span class="tokn-dot tokn-dot--resg"></span>Resgatadas</span>
+      </div>
+    </div>
+
+    <div class="tokn-chart">
+      <div class="tokn-chart-row">
+        <span class="tokn-chart-label">Seg</span>
+        <div class="tokn-chart-bars">
+          <div class="tokn-chart-bar tokn-chart-bar--cred" style="width: 65%"></div>
+          <div class="tokn-chart-bar tokn-chart-bar--resg" style="width: 35%"></div>
+        </div>
+      </div>
+
+      <div class="tokn-chart-row">
+        <span class="tokn-chart-label">Ter</span>
+        <div class="tokn-chart-bars">
+          <div class="tokn-chart-bar tokn-chart-bar--cred" style="width: 55%"></div>
+          <div class="tokn-chart-bar tokn-chart-bar--resg" style="width: 25%"></div>
+        </div>
+      </div>
+
+      <div class="tokn-chart-row">
+        <span class="tokn-chart-label">Qua</span>
+        <div class="tokn-chart-bars">
+          <div class="tokn-chart-bar tokn-chart-bar--cred" style="width: 80%"></div>
+          <div class="tokn-chart-bar tokn-chart-bar--resg" style="width: 40%"></div>
+        </div>
+      </div>
+
+      <div class="tokn-chart-row">
+        <span class="tokn-chart-label">Qui</span>
+        <div class="tokn-chart-bars">
+          <div class="tokn-chart-bar tokn-chart-bar--cred" style="width: 70%"></div>
+          <div class="tokn-chart-bar tokn-chart-bar--resg" style="width: 30%"></div>
+        </div>
+      </div>
+
+      <div class="tokn-chart-row">
+        <span class="tokn-chart-label">Sex</span>
+        <div class="tokn-chart-bars">
+          <div class="tokn-chart-bar tokn-chart-bar--cred" style="width: 90%"></div>
+          <div class="tokn-chart-bar tokn-chart-bar--resg" style="width: 55%"></div>
+        </div>
+      </div>
+
+      <div class="tokn-chart-row">
+        <span class="tokn-chart-label">Sáb</span>
+        <div class="tokn-chart-bars">
+          <div class="tokn-chart-bar tokn-chart-bar--cred" style="width: 45%"></div>
+          <div class="tokn-chart-bar tokn-chart-bar--resg" style="width: 18%"></div>
+        </div>
+      </div>
+
+      <div class="tokn-chart-row">
+        <span class="tokn-chart-label">Dom</span>
+        <div class="tokn-chart-bars">
+          <div class="tokn-chart-bar tokn-chart-bar--cred" style="width: 30%"></div>
+          <div class="tokn-chart-bar tokn-chart-bar--resg" style="width: 10%"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TABELA / LISTA DE TRANSACÕES -->
+  <section aria-label="Lista de transações">
+    <div class="tokn-sec-head tokn-sec-head--table">
+      <div>
+        <h2 class="tokn-sec-title">Transações do período</h2>
+        <p class="tokn-sec-sub">
+          Detalhamento das moedas creditadas e resgatadas por cliente.
+        </p>
+      </div>
+    </div>
+
+    <div class="tokn-table-wrap tokn-table-wrap--trans">
+      <table class="tokn-table tokn-table--trans">
+        <thead>
+          <tr>
+            <th scope="col">Cliente</th>
+            <th scope="col">Tipo</th>
+            <th scope="col">Moedas</th>
+            <th scope="col">Canal</th>
+            <th scope="col">Descrição</th>
+            <th scope="col">Data</th>
+            <th scope="col">Ref.</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for t in transacoes %}
+          <tr>
+            <td data-label="Cliente">
+              <div class="tokn-name">{{ t.cliente }}</div>
+            </td>
+            <td data-label="Tipo">
+              {% if t.tipo == "Creditada" %}
+              <span class="tokn-tag tokn-tag--cred">Creditada</span>
+              {% else %}
+              <span class="tokn-tag tokn-tag--resg">Resgatada</span>
+              {% endif %}
+            </td>
+            <td data-label="Moedas">
+              <span class="tokn-moedas">{{ t.moedas }}</span>
+            </td>
+            <td data-label="Canal">
+              <span class="tokn-meta">{{ t.canal }}</span>
+            </td>
+            <td data-label="Descrição">
+              <span class="tokn-meta">{{ t.descricao }}</span>
+            </td>
+            <td data-label="Data">
+              <span class="tokn-meta">{{ t.data }}</span>
+            </td>
+            <td data-label="Ref.">
+              <span class="tokn-meta">{{ t.referencia }}</span>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+{% endblock %}

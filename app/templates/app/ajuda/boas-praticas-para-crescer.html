@@ -1,0 +1,109 @@
+{% load static %}
+{% extends "app/base.html" %}
+
+{% block title %}Boas práticas para crescer — Tokn.id{% endblock %}
+
+{% block header_title %}
+  <h1>Boas práticas para crescer</h1>
+  <p class="tokn-header-sub">Como usar a Tokn.id para ir além do básico.</p>
+{% endblock %}
+
+{% block content %}
+
+<article class="tokn-help-article">
+
+  <a href="/ajuda" class="tokn-help-back">← Voltar para Ajuda</a>
+
+  <h2 class="tokn-help-title">Boas práticas para crescer com o programa</h2>
+  <p class="tokn-help-sub">
+    Aqui não é só “como usar o painel”. É como transformar a moeda do seu comércio
+    em uma ferramenta real de relacionamento e aumento de faturamento.
+  </p>
+
+  <section class="tokn-help-section">
+    <h3>1. Comece simples, mas com intenção</h3>
+    <ul>
+      <li>Defina um objetivo claro: mais visitas, maior tíquete médio ou resgate de clientes inativos.</li>
+      <li>Escolha uma <strong>regra padrão</strong> coerente com sua margem.</li>
+      <li>Evite prometer algo que não consiga sustentar por vários meses.</li>
+    </ul>
+    <p>
+      Se ainda não configurou, veja primeiro:
+      <a href="/ajuda/ajustar-regra-padrao">Como ajustar a regra padrão</a>.
+    </p>
+  </section>
+
+  <section class="tokn-help-section">
+    <h3>2. Crie campanhas com propósito</h3>
+    <ul>
+      <li>Use campanhas para reforçar datas importantes do seu negócio (ex.: mês do hambúrguer, semana do aniversário da casa).</li>
+      <li>Evite ter muitas campanhas simultâneas — melhor poucas, bem comunicadas.</li>
+      <li>Sempre deixe claro para o cliente: “como acumula” e “como resgata”.</li>
+    </ul>
+    <p>
+      Para estruturar melhor, veja:
+      <a href="/ajuda/campanhas-como-criar-e-usar">Campanhas: como criar e usar bem</a>.
+    </p>
+  </section>
+
+  <section class="tokn-help-section">
+    <h3>3. Experiência no balcão é tudo</h3>
+    <ul>
+      <li>Combine com o time uma frase simples para oferecer o programa em cada compra.</li>
+      <li>Deixe claro que o cliente controla a própria carteira Phantom — aumenta confiança.</li>
+      <li>Quando o cliente resgatar algo, comemore. Isso reforça o valor da moeda.</li>
+    </ul>
+    <p>
+      Se o time não sabe resgatar de cabeça, deixe o guia
+      <a href="/ajuda/como-resgatar-no-balcao">Como resgatar moedas no balcão</a>
+      fácil de acessar.
+    </p>
+  </section>
+
+  <section class="tokn-help-section">
+    <h3>4. Comunique as moedas fora do balcão</h3>
+    <ul>
+      <li>Use WhatsApp para lembrar clientes de campanhas ativas e benefícios próximos de resgate.</li>
+      <li>Quando fizer campanhas sazonais, mande exemplos reais: “Com X moedas você já consegue Y”.</li>
+      <li>Evite spam: poucas mensagens, mas bem segmentadas, funcionam melhor.</li>
+    </ul>
+    <p>
+      Se quiser integrar melhor isso, consulte:
+      <a href="/ajuda/integracoes-pdv-e-whatsapp">Integrações: PDV e WhatsApp</a>.
+    </p>
+  </section>
+
+  <section class="tokn-help-section">
+    <h3>5. Acompanhe números e ajuste a rota</h3>
+    <ul>
+      <li>Olhe periodicamente quantas moedas foram <strong>creditadas</strong> e <strong>resgatadas</strong>.</li>
+      <li>Se acumula muito e resgata pouco, talvez o benefício esteja distante demais.</li>
+      <li>Se resgata muito e aperta a margem, reduza um pouco a regra ou ajuste os benefícios.</li>
+    </ul>
+    <p>
+      Use o painel de <strong>Campanhas</strong> e <strong>Transações</strong> como termômetro,
+      não só como histórico.
+    </p>
+  </section>
+
+  <a href="/ajuda/guias-rapidos" class="tokn-help-final">
+    Quero aplicar na prática agora → Ver guias rápidos
+  </a>
+
+  <div class="tokn-help-article-next">
+    <h3>Próximos passos sugeridos</h3>
+    <div class="tokn-next-actions">
+      <a href="/ajuda/guias-rapidos">Ver guias rápidos para balcão</a>
+      <a href="/ajuda/checklist-problemas-comuns">Usar checklist de problemas comuns</a>
+    </div>
+
+    <div class="tokn-feedback">
+      <p>Esse conteúdo ajudou a ter novas ideias?</p>
+      <button type="button" class="tokn-feedback-btn">🚀 Sim, vou aplicar</button>
+      <button type="button" class="tokn-feedback-btn">🤔 Preciso de algo mais avançado</button>
+    </div>
+  </div>
+
+</article>
+
+{% endblock %}
