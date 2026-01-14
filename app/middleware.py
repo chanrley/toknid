@@ -15,18 +15,18 @@ class DebugHostMiddleware:
         try:
             log_path = Path(__file__).resolve().parent.parent / 'logs' / 'debug.log'
             os.makedirs(log_path.parent, exist_ok=True)
-            host = request.get_host()
+            http_host = request.META.get('HTTP_HOST', '')
+            from django.conf import settings
             with open(log_path, 'a') as f:
                 f.write(json.dumps({
                     'sessionId': 'debug-session',
                     'runId': 'run1',
                     'hypothesisId': 'C',
                     'location': 'middleware.py:__call__',
-                    'message': 'Host recebido na requisição',
+                    'message': 'Host recebido na requisição (antes do CommonMiddleware)',
                     'data': {
-                        'host': host,
-                        'HTTP_HOST': request.META.get('HTTP_HOST', ''),
-                        'ALLOWED_HOSTS': getattr(request, '_allowed_hosts', 'N/A')
+                        'HTTP_HOST': http_host,
+                        'ALLOWED_HOSTS': list(settings.ALLOWED_HOSTS),
                     },
                     'timestamp': int(__import__('time').time() * 1000)
                 }) + '\n')
@@ -49,7 +49,6 @@ class DebugHostMiddleware:
                         'location': 'middleware.py:DisallowedHost',
                         'message': 'DisallowedHost capturado',
                         'data': {
-                            'host': request.get_host(),
                             'HTTP_HOST': request.META.get('HTTP_HOST', ''),
                             'ALLOWED_HOSTS': list(settings.ALLOWED_HOSTS),
                             'error': str(e)

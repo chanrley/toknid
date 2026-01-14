@@ -32,7 +32,7 @@ ALLOWED_HOSTS = [host.strip() for host in allowed_hosts_env.split(',') if host.s
 
 # #region agent log
 import json
-import os
+import time
 _log_path = BASE_DIR / 'logs' / 'debug.log'
 os.makedirs(_log_path.parent, exist_ok=True)
 try:
@@ -44,47 +44,19 @@ try:
             'location': 'settings.py:31',
             'message': 'ALLOWED_HOSTS inicial',
             'data': {'allowed_hosts_env': allowed_hosts_env, 'ALLOWED_HOSTS': ALLOWED_HOSTS},
-            'timestamp': int(__import__('time').time() * 1000)
+            'timestamp': int(time.time() * 1000)
         }) + '\n')
 except Exception as e:
     import sys
     print(f"DEBUG LOG ERROR: {e}", file=sys.stderr)
 # #endregion
 
-# Adicionar localhost e 127.0.0.1 para healthchecks e desenvolvimento interno
-if 'localhost' not in ALLOWED_HOSTS:
-    ALLOWED_HOSTS.append('localhost')
-    # #region agent log
-    try:
-        with open(_log_path, 'a') as f:
-            f.write(json.dumps({
-                'sessionId': 'debug-session',
-                'runId': 'run1',
-                'hypothesisId': 'A',
-                'location': 'settings.py:35',
-                'message': 'Adicionado localhost',
-                'data': {'ALLOWED_HOSTS': ALLOWED_HOSTS},
-                'timestamp': int(__import__('time').time() * 1000)
-            }) + '\n')
-    except: pass
-    # #endregion
-
-if '127.0.0.1' not in ALLOWED_HOSTS:
-    ALLOWED_HOSTS.append('127.0.0.1')
-    # #region agent log
-    try:
-        with open(_log_path, 'a') as f:
-            f.write(json.dumps({
-                'sessionId': 'debug-session',
-                'runId': 'run1',
-                'hypothesisId': 'A',
-                'location': 'settings.py:37',
-                'message': 'Adicionado 127.0.0.1',
-                'data': {'ALLOWED_HOSTS': ALLOWED_HOSTS},
-                'timestamp': int(__import__('time').time() * 1000)
-            }) + '\n')
-    except: pass
-    # #endregion
+# SEMPRE adicionar localhost e 127.0.0.1 para healthchecks e desenvolvimento interno
+# Usar set para garantir unicidade e depois converter para list
+_allowed_hosts_set = set(ALLOWED_HOSTS)
+_allowed_hosts_set.add('localhost')
+_allowed_hosts_set.add('127.0.0.1')
+ALLOWED_HOSTS = list(_allowed_hosts_set)
 
 # #region agent log
 try:
@@ -93,10 +65,10 @@ try:
             'sessionId': 'debug-session',
             'runId': 'run1',
             'hypothesisId': 'A',
-            'location': 'settings.py:38',
-            'message': 'ALLOWED_HOSTS final',
+            'location': 'settings.py:final',
+            'message': 'ALLOWED_HOSTS final garantido',
             'data': {'ALLOWED_HOSTS': ALLOWED_HOSTS},
-            'timestamp': int(__import__('time').time() * 1000)
+            'timestamp': int(time.time() * 1000)
         }) + '\n')
 except: pass
 # #endregion
