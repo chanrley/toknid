@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: toknid-d2-web
+    command: gunicorn --bind 0.0.0.0:8000 --workers 3 settings.wsgi:application
+    volumes:
+      - .:/app
+      - static_volume:/app/staticfiles
+      - media_volume:/app/media
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    environment:
+      - DJANGO_SETTINGS_MODULE=settings.settings
+      - PYTHONUNBUFFERED=1
+    stdin_open: true
+    tty: true
+    restart: unless-stopped
+
+volumes:
+  static_volume:
+  media_volume:
